@@ -7,20 +7,43 @@ import { CollapseListings } from "../components/layout/CollapseListings";
 import PageLayout from "../components/layout/PageLayout";
 import { NoResults } from "../components/search";
 import useLocalStorage from "../lib/hooks/use-local-storage";
-import { GlobalStateContext } from "../context/GlobalContextProvider";
+import {
+  GlobalStateContext,
+  GlobalDispatchContext,
+} from "../context/GlobalContextProvider";
+import { useMutation, gql } from "@apollo/client";
+
+const UPDATE_BUCKET_LIST = gql`
+  mutation ($input: UpdateBlMutationInput!) {
+    updateBlMutation(input: $input) {
+      bucketListUpdated
+    }
+  }
+`;
 
 const BucketListPage = () => {
   //   const { data: filters } = filtersData
   let [lsItems, setLsItems] = useLocalStorage("bucketList", []);
   //   const [openFilters, setOpenFilters] = useState(false)
   let [isOpenModal, setIsOpenModal] = useState(false);
+  const [updateBlMutation] = useMutation(UPDATE_BUCKET_LIST);
 
   const { bucketListId, items: blItems } = useContext(GlobalStateContext);
 
   const items = bucketListId ? blItems : lsItems;
+  const dispatch = useContext(GlobalDispatchContext);
 
   const emptyBl = () => {
     setLsItems([]);
+    // updateBlMutation({
+    //   variables: {
+    //     input: {
+    //       idInput: bucketListId,
+    //       linksInput: [],
+    //     },
+    //   },
+    // });
+
     setIsOpenModal(false);
   };
 
@@ -28,11 +51,8 @@ const BucketListPage = () => {
     items?.map((item) => item.commonDataAttributes?.country?.name) || ["1"]
   );
 
-  // const countries = uniq([...roundUpsCountries, ...otherCountries]);
   return (
     <Layout>
-      {/* <Toaster position="bottom-center" reverseOrder={false} /> */}
-
       <EmptyModal
         isOpen={isOpenModal}
         setIsOpen={setIsOpenModal}
