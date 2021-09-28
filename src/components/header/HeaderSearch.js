@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import { FaSearch as Search } from "react-icons/fa";
 import { useMediaQuery } from "../../lib/hooks";
+import { navigate } from "@reach/router";
 
 export const HeaderSearch = ({ className, ...props }) => {
   const isLarge = useMediaQuery("(min-width: 1350px)");
+  const [searchText, setSearchtext] = useState("");
   return (
-    <form className={clsx("relative", className)} {...props}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        navigate(`/search/?q=${searchText}`, { replace: true });
+      }}
+      className={clsx("relative", className)}
+      {...props}
+    >
       <input
         type="text"
         placeholder="destinations | experiences | places to stay"
         aria-label="search"
+        value={searchText}
+        onChange={(event) => setSearchtext(event.currentTarget.value)}
         className={clsx(
           "h-11 w-[360px] rounded-sm px-3",
           "border-none",

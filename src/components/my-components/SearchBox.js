@@ -1,12 +1,22 @@
 import { connectSearchBox, Stats } from "react-instantsearch-dom";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IoSearch } from "react-icons/io5";
-
+import { navigate } from "@reach/router";
+import qs from "query-string";
 import clsx from "clsx";
 import { useMediaQuery } from "../../lib/hooks";
 import { Button } from "../ui-components/Button";
+
 const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => {
   const isSmall = useMediaQuery("(max-width:639px)");
+  const [searchText, setSearchtext] = useState("");
+  useEffect(() => {
+    const parsed = qs.parse(window.location.search);
+    if (parsed.q) {
+      setSearchtext(parsed.q);
+      refine(parsed.q);
+    }
+  }, []);
 
   return (
     <>
@@ -35,8 +45,8 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => {
                 "sm:pl-20",
                 "border-none shadow-input placeholder-grey3 font-semibold text-f-18 focus:placeholder-transparent  focus:ring-grey2 focus:border-none"
               )}
-              value={currentRefinement}
-              onChange={(event) => refine(event.currentTarget.value)}
+              value={searchText}
+              onChange={(event) => setSearchtext(event.currentTarget.value)}
             />
             <Button
               aria-label="search"
@@ -44,6 +54,12 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => {
                 "absolute  right-0 top-0 sm:right-1 sm:top-1",
                 "h-11 w-11 sm:h-[47px] sm:w-[135px] !p-0"
               )}
+              onClick={(e) => {
+                e.preventDefault();
+                if (currentRefinement === searchText) return null;
+                refine(searchText);
+                navigate(`?q=${searchText}`);
+              }}
             >
               {isSmall ? (
                 <IoSearch className={clsx("text-f-24 text-grey4")} />
