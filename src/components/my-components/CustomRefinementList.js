@@ -20,6 +20,18 @@ const CustomRefinementList = (props) => {
   if (!values) {
     return null;
   }
+
+  const filteredValues = values.sort(function (a, b) {
+    var nameA = a.label.toUpperCase();
+    var nameB = b.label.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
   return (
     <div className={className}>
       <div className="py-4 border-b border-grey2">
@@ -45,8 +57,8 @@ const CustomRefinementList = (props) => {
           className="duration-500 ease-in-out transition-height"
         >
           <ul>
-            {!!values &&
-              values.slice(0, arraySize).map((staticItem) => {
+            {!!filteredValues &&
+              filteredValues.slice(0, arraySize).map((staticItem) => {
                 const { isRefined } = items.find(
                   (item) => item.label === staticItem.label
                 ) || {
@@ -104,7 +116,7 @@ const CustomRefinementList = (props) => {
                   </li>
                 );
               })}
-            {!!values && values.length > 0 && (
+            {!!filteredValues && filteredValues.length > 0 && (
               <>
                 <Button
                   small
@@ -113,7 +125,7 @@ const CustomRefinementList = (props) => {
                   onClick={(e) => {
                     e.preventDefault();
                     setOpen(!open);
-                    setArraySize(arraySize == 4 ? values.length : 4);
+                    setArraySize(arraySize == 4 ? filteredValues.length : 4);
                   }}
                   css={{
                     "&:hover": {
