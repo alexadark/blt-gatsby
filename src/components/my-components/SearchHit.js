@@ -11,10 +11,7 @@ const SearchHit = ({ hits, hasMore, view, refineNext }) => {
   let listView = view || "list";
 
   const results = hits;
-  console.log("results", results);
-
   const isList = useMediaQuery("(min-width:768px)");
-
   return (
     <>
       {results.length === 0 ? (
