@@ -10,7 +10,6 @@ const MainSearchList = (props) => {
   const AllTotal = items.reduce((previousValue, currentValue) => {
     return previousValue + currentValue.count;
   }, 0);
-  console.log(values);
   useEffect(() => {
     const parsed = qs.parse(window.location.search);
     if (isEmpty(parsed) || !parsed.tab) {
