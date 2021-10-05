@@ -1,11 +1,31 @@
 import { connectRefinementList } from "react-instantsearch-dom";
 import clsx from "clsx";
-import React from "react";
+import React, { useEffect } from "react";
+import qs from "query-string";
+import isEmpty from "lodash/isEmpty";
+
+import isBrowser from "./../../utils/isBrowser";
 const MainSearchList = (props) => {
   const { values, currentRefinement, items, refine, setMainState } = props;
   const AllTotal = items.reduce((previousValue, currentValue) => {
     return previousValue + currentValue.count;
   }, 0);
+  useEffect(() => {
+    const parsed = qs.parse(window.location.search);
+    if (isEmpty(parsed) || !parsed.tab) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("tab", "All");
+      window.history.pushState(null, "", url);
+    }
+    if (parsed.tab) {
+      values.map((item) => {
+        if (item.value === parsed.tab) {
+          refine([item.value]);
+        }
+      });
+    }
+  }, []);
+
   return (
     <div>
       <ul className="ais-RefinementList-list grid md:grid-cols-6 grid-cols-2 sm:grid-cols-3 gap-4 uppercase">
@@ -20,6 +40,11 @@ const MainSearchList = (props) => {
             onClick={() => {
               refine([]);
               setMainState("All");
+              if (isBrowser()) {
+                const url = new URL(window.location.href);
+                url.searchParams.set("tab", "All");
+                window.history.pushState(null, "", url);
+              }
             }}
           >
             All
@@ -52,6 +77,11 @@ const MainSearchList = (props) => {
                 onClick={() => {
                   refine([staticItem.value]);
                   setMainState(staticItem.value);
+                  if (isBrowser()) {
+                    const url = new URL(window.location.href);
+                    url.searchParams.set("tab", staticItem.value);
+                    window.history.pushState(null, "", url);
+                  }
                 }}
               >
                 {staticItem.label}
@@ -65,21 +95,3 @@ const MainSearchList = (props) => {
   );
 };
 export default connectRefinementList(MainSearchList);
-{
-  /* <label>
-<input
-  type="checkbox"
-  value={staticItem.value}
-  checked={isRefined}
-  onChange={(event) => {
-    const value = event.currentTarget.value;
-    const next = currentRefinement.includes(value)
-      ? currentRefinement.filter((current) => current !== value)
-      : currentRefinement.concat(value);
-
-    refine(next);
-  }}
-/>
-{staticItem.label}[{count}]
-</label> */
-}
