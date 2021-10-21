@@ -1,11 +1,11 @@
-import React from "react"
-import { Image } from "../images"
-import { Link } from "gatsby"
-import clsx from "clsx"
-import { useBucketList } from "../../lib/hooks/useBucketList"
-import { Button } from ".."
-import { AddToBlButton } from "../bucket-list/AddToBlButton"
-import { ListingBottomInfo } from "./ListingBottomInfo"
+import React from "react";
+import { Image } from "../images";
+import { Link } from "gatsby";
+import clsx from "clsx";
+import { useBucketList } from "../../lib/hooks/useBucketList";
+import { Button } from "..";
+import { AddToBlButton } from "../bucket-list/AddToBlButton";
+import { ListingBottomInfo } from "./ListingBottomInfo";
 
 export const ListingCard = ({
   item,
@@ -18,12 +18,12 @@ export const ListingCard = ({
   className,
   ...props
 }) => {
-  let { title, intro, externalLink, link } = item
+  let { title, intro, externalLink, link } = item;
   let { featuredImage, uri, commonDataAttributes, customDataAttributes } = link
     ? link[0] || {}
-    : item || {}
+    : item || {};
 
-  let { country, standfirst } = commonDataAttributes || {}
+  let { country, standfirst } = commonDataAttributes || {};
 
   let {
     city,
@@ -36,19 +36,19 @@ export const ListingCard = ({
     duration,
     whenIsIt,
     summaryBio,
-  } = customDataAttributes || {}
+  } = customDataAttributes || {};
 
-  website = externalLink ? externalLink : website
-  profile = profile ? profile : "full"
+  website = externalLink ? externalLink : website;
+  profile = profile ? profile : "full";
   uri =
     profile === "full" || pts || itinerary || writer || roundUp || nested
       ? uri
       : website
       ? website
-      : "#"
+      : "#";
 
-  const blItem = item.link ? item.link[0] : item
-  const { addToBl, removeFromBl, isAdded } = useBucketList(blItem)
+  const blItem = item.link ? item.link[0] : item;
+  const { addToBl, removeFromBl, isAdded } = useBucketList(blItem);
 
   const img = featuredImage ? (
     <Image
@@ -62,9 +62,9 @@ export const ListingCard = ({
     <div className="flex items-center justify-center w-full h-full bg-veryLightGold">
       no image
     </div>
-  )
+  );
 
-  const isFull = profile === "full" || itinerary || pts || writer
+  const isFull = profile === "full" || itinerary || pts || writer;
 
   return (
     <div className={clsx("relative", className)} {...props}>
@@ -98,9 +98,11 @@ export const ListingCard = ({
         </div>
         {/* Content */}
 
-        <div className={clsx("p-4 text-center flex-col justify-between space-y-5")}>
+        <div
+          className={clsx("p-4 text-center flex-col justify-between space-y-5")}
+        >
           {/* Title and city */}
-          <div className="space-y-5 ">
+          <div className="space-y-5 min-h-[82px] ">
             <div>
               <Link
                 to={`${uri}`}
@@ -143,8 +145,8 @@ export const ListingCard = ({
             <div className="flex justify-center">
               {profile === "full" || itinerary || pts || writer || nested ? (
                 <Link to={uri}>
-                  <Button className="h-10" >
-                    {writer ? "Read more" : "Read review"}
+                  <Button className="h-10 text-sm">
+                    {writer ? "Read more" : "review"}
                   </Button>
                 </Link>
               ) : (
@@ -155,8 +157,9 @@ export const ListingCard = ({
                     href={website}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="text-sm"
                   >
-                    See Website
+                    Website
                   </Button>
                 )
               )}
@@ -165,5 +168,5 @@ export const ListingCard = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
