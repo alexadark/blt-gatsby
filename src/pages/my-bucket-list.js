@@ -1,37 +1,37 @@
-import React, { useState } from "react"
-import uniq from "lodash/uniq"
-import { CollapseSection, Layout, TravelQuote } from "../components"
-import { EmptyModal } from "../components/bucket-list/EmptyModal"
-import { CardsGrid } from "../components/layout/CardsGrid"
-import { CollapseListings } from "../components/layout/CollapseListings"
-import PageLayout from "../components/layout/PageLayout"
-import { NoResults } from "../components/search"
-import useLocalStorage from "../lib/hooks/use-local-storage"
-import { useDbBucketList } from "../lib/hooks/useDbBucketList"
-import { useAuth } from "../lib/hooks/useAuth"
-import { useUpdateBucketList } from "../lib/hooks/useUpdateBucketList"
-import Loader from "react-spinners/BeatLoader"
-import { Breadcrumbs } from "../components/Breadcrumbs"
+import React, { useState } from "react";
+import uniq from "lodash/uniq";
+import { CollapseSection, Layout, TravelQuote } from "../components";
+import { EmptyModal } from "../components/bucket-list/EmptyModal";
+import { CardsGrid } from "../components/layout/CardsGrid";
+import { CollapseListings } from "../components/layout/CollapseListings";
+import PageLayout from "../components/layout/PageLayout";
+import { NoResults } from "../components/search";
+import useLocalStorage from "../lib/hooks/use-local-storage";
+import { useDbBucketList } from "../lib/hooks/useDbBucketList";
+import { useAuth } from "../lib/hooks/useAuth";
+import { useUpdateBucketList } from "../lib/hooks/useUpdateBucketList";
+import Loader from "react-spinners/BeatLoader";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 
 const BucketListPage = () => {
   //   const { data: filters } = filtersData
-  let [lsItems, setLsItems] = useLocalStorage("bucketList", [])
+  let [lsItems, setLsItems] = useLocalStorage("bucketList", []);
   //   const [openFilters, setOpenFilters] = useState(false)
-  let [isOpenModal, setIsOpenModal] = useState(false)
+  let [isOpenModal, setIsOpenModal] = useState(false);
 
   // let { bucketListId, items } = useContext(GlobalStateContext);
-  const { loggedIn } = useAuth()
+  const { loggedIn } = useAuth();
 
-  const updateBlMutation = useUpdateBucketList()
+  const updateBlMutation = useUpdateBucketList();
 
-  const { data, loading } = useDbBucketList()
-  const bl = data?.bucketLists?.nodes[0]
+  const { data, loading } = useDbBucketList();
+  const bl = data?.bucketLists?.nodes[0];
   // const blItems = bl?.bucketListElements?.blLinks;
-  const items = lsItems
+  const items = lsItems;
 
   const emptyBl = () => {
-    setLsItems([])
-    setIsOpenModal(false)
+    setLsItems([]);
+    setIsOpenModal(false);
     loggedIn &&
       updateBlMutation({
         variables: {
@@ -40,29 +40,29 @@ const BucketListPage = () => {
             linksInput: [],
           },
         },
-      })
-  }
+      });
+  };
 
   const roundUpsItems = items?.filter(
     (item) => item.__typename === "WpRoundUp_Roundupdataattributes_links"
-  )
+  );
   const otherItems = items?.filter(
     (item) => item.__typename !== "WpRoundUp_Roundupdataattributes_links"
-  )
+  );
   const roundUpsCountries = roundUpsItems?.map(
     (item) => item.link[0].commonDataAttributes?.country?.name
-  ) || ["1"]
+  ) || ["1"];
 
   const otherCountries = otherItems?.map(
     (item) => item.commonDataAttributes?.country?.name
-  ) || ["1"]
+  ) || ["1"];
 
-  const countries = uniq([...roundUpsCountries, ...otherCountries])
+  const countries = uniq([...roundUpsCountries, ...otherCountries]);
   const breadcrumbsTerms = [
     { name: "home", link: "/" },
     { name: "My lists" },
     { name: "Bucket list" },
-  ]
+  ];
 
   // const countries = uniq([...roundUpsCountries, ...otherCountries]);
   return (
@@ -73,7 +73,7 @@ const BucketListPage = () => {
 
       <EmptyModal
         title="Empty bucket list"
-        text="Are you sure? this cannot be undone."
+        text="Are you sure? ...This cannot be undone."
         isOpen={isOpenModal}
         setIsOpen={setIsOpenModal}
         action={emptyBl}
@@ -101,12 +101,12 @@ const BucketListPage = () => {
             const countryRoundUps = roundUpsItems.filter(
               (item) =>
                 item.link[0].commonDataAttributes?.country?.name === country
-            )
+            );
 
             const otherItemsByCountry = otherItems.filter(
               (item) => item?.commonDataAttributes?.country?.name === country
-            )
-            const allItems = [...countryRoundUps, ...otherItemsByCountry]
+            );
+            const allItems = [...countryRoundUps, ...otherItemsByCountry];
             return (
               <CollapseSection title={country} key={i} listings>
                 <div className="mt-5">
@@ -114,7 +114,7 @@ const BucketListPage = () => {
                   <CardsGrid cards={allItems} className="md:hidden" />
                 </div>
               </CollapseSection>
-            )
+            );
           })
         ) : loading ? (
           <div className="flex justify-center py-20">
@@ -136,7 +136,7 @@ const BucketListPage = () => {
         Explore. Dream. Discover.”
       </TravelQuote>
     </Layout>
-  )
-}
+  );
+};
 
-export default BucketListPage
+export default BucketListPage;

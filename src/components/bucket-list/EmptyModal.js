@@ -16,17 +16,16 @@ export const EmptyModal = ({ isOpen, setIsOpen, action, title, text }) => {
           {title}
         </Dialog.Title>
         <div className="mb-10 text-lg">
-          <p>Are you sure? this cannot be undone.</p>
+          <p>{text}</p>
         </div>
 
         <div className="flex justify-between max-w-md mx-auto mt-4 space-x-3">
-        <Button className="w-[120px] h-10" onClick={closeModal}>
+          <Button secondary className="w-[120px] h-10" onClick={closeModal}>
             Cancel
           </Button>
           <Button className="w-[120px] h-10" onClick={action}>
             Yes
           </Button>
-
         </div>
       </div>
     </Modal>
