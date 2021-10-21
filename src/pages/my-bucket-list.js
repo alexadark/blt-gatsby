@@ -73,7 +73,7 @@ const BucketListPage = () => {
 
       <EmptyModal
         title="Empty bucket list"
-        text="Are you sure? ...This cannot be undone."
+        text="Are you sure? This cannot be undone."
         isOpen={isOpenModal}
         setIsOpen={setIsOpenModal}
         action={emptyBl}

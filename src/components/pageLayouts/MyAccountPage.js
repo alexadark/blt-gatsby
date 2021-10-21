@@ -85,7 +85,7 @@ export const MyAccountPage = () => {
     <AuthContent>
       <EmptyModal
         title="Delete my account"
-        text="Are you sure? All of your selections in your bucket list will be deleted, and cannot be recovered"
+        text="Are you sure? This cannot be undone."
         isOpen={isOpenModal}
         setIsOpen={setIsOpenModal}
         action={handleDeleteUser}
