@@ -65,6 +65,7 @@ const SearchBox = ({ currentRefinement, refine, totalSearchHit }) => {
                   const url = new URL(window.location.href);
                   url.searchParams.set("q", searchText);
                   window.history.pushState(null, "", url);
+                  window?.location.reload();
                 }
               }}
             >

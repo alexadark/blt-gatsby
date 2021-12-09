@@ -28,7 +28,6 @@ const MainSearchList = (props) => {
     const AllTotal = items.reduce((previousValue, currentValue) => {
       return previousValue + currentValue.count;
     }, 0);
-    //console.log(items);
     const getTabTotal = items
       .map((item) => {
         const lab = item.label;
@@ -42,12 +41,20 @@ const MainSearchList = (props) => {
             ...c,
           };
         },
-        { All: AllTotal }
+        {
+          All: AllTotal,
+          Experience: 0,
+          PlaceToStay: 0,
+          Destination: 0,
+          RoundUp: 0,
+          Itinerary: 0,
+        }
       );
     setTotalSearchHit(AllTotal);
     setSearchResultCount(getTabTotal);
     setDataFound(items?.length ? true : false);
   }, [items]);
+  //console.log(searchResultCount);
   useEffect(() => {
     const parsed = qs.parse(window.location.search);
     if (isEmpty(parsed) || !parsed.tab) {
