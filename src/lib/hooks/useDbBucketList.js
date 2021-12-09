@@ -20,7 +20,7 @@ export const useDbBucketList = () => {
   const bl = data?.bucketLists?.nodes[0];
   const blId = bl?.databaseId;
   const blItems = bl?.bucketListElements?.blLinks;
-  const blItemsIds = blItems?.map((item) => item.databaseId);
+  const blItemsIds = blItems?.map((item) => item?.databaseId);
 
   return {
     data,

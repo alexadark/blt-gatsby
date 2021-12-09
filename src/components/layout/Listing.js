@@ -148,9 +148,9 @@ export const Listing = ({
         <div className="flex flex-col items-end justify-between">
           {!noBl ? (
             isAdded ? (
-              <AddToBlButton remove addToBl={removeFromBl} />
+              <AddToBlButton remove={true} addToBl={removeFromBl} />
             ) : (
-              <AddToBlButton add addToBl={addToBl} />
+              <AddToBlButton add={true} addToBl={addToBl} />
             )
           ) : (
             <div></div>

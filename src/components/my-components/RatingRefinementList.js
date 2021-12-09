@@ -1,6 +1,6 @@
 import { connectRefinementList } from "react-instantsearch-dom";
 import clsx from "clsx";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "../ui-components/Button";
 import { WithCollapse } from "../ui-components/WithCollapse";
 import { FaChevronDown } from "react-icons/fa";
@@ -11,6 +11,7 @@ const RatingRefinementList = (props) => {
     currentRefinement,
     items,
     refine,
+    state,
     title = "CONTINENT",
     className,
     customOrderArray,
@@ -26,6 +27,9 @@ const RatingRefinementList = (props) => {
       );
     });
   }
+  useEffect(() => {
+    refine([]);
+  }, [state]);
   if (!values) {
     return null;
   }
