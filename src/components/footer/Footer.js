@@ -34,7 +34,7 @@ const FooterItem = ({ children }) => {
 export const Footer = () => {
   const data = useStaticQuery(FOOTER_QUERY);
   const { footerData: footer } = data.wp.options;
-  const { vatNumber, companyNumber, facebook, instagram } = footer || {};
+  const { companyNumber, facebook, instagram } = footer || {};
   const { nodes: menuItems } = data.footerMenu;
   return (
     <>

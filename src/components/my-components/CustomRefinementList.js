@@ -165,8 +165,10 @@ const CustomRefinementList = (props) => {
                         <div className="inline-block">
                           {Array.from({
                             length: parseInt(staticItem.label),
-                          }).map(() => (
-                            <span className="mr-0.5">{symbol}</span>
+                          }).map((_, index) => (
+                            <span key={index} className="mr-0.5">
+                              {symbol}
+                            </span>
                           ))}
                         </div>
                       )}
