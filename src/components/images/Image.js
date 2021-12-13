@@ -13,7 +13,7 @@ export const Image = ({
       <GatsbyImage
         loading={loading}
         image={img?.childImageSharp?.gatsbyImageData}
-        alt={img.altText}
+        alt={img?.altText ?? ""}
         {...props}
       />
     )

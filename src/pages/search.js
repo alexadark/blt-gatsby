@@ -4,7 +4,7 @@ import clsx from "clsx";
 import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, Configure } from "react-instantsearch-dom";
 import SearchHit from "../components/my-components/SearchHit";
-import StaticRefinementList from "../components/my-components/MainSearchList";
+import MainSearchList from "../components/my-components/MainSearchList";
 import SearchBox from "../components/my-components/SearchBox";
 import ViewSwitcher from "../components/my-components/ViewSwitcher";
 import ClearAllFilters from "../components/my-components/ClearAllFilters";
@@ -17,6 +17,7 @@ import LoaderSpinner from "react-loader-spinner";
 import SearchMap from "./../components/maps/SearchMap";
 import Sticky from "react-stickynode";
 import { useMediaQuery } from "./../lib/hooks";
+//import { CurrentRefinements } from "react-instantsearch-dom";
 
 const indexName = "BucketList";
 const searchClient = algoliasearch(
@@ -99,7 +100,7 @@ const SearchPage = () => {
                   Filters
                 </Button>
               </div>
-              <StaticRefinementList
+              <MainSearchList
                 attribute="nodeType"
                 setMainState={setMainState}
                 setTotalSearchHit={setTotalSearchHit}

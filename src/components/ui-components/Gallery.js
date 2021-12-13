@@ -1,16 +1,16 @@
-import React, { useState } from "react"
-import clsx from "clsx"
-import Slider from "react-slick"
-import { useMediaQuery } from "../../lib/hooks"
-import { Image } from "../images"
-import "../../styles/slick/slick.scss"
+import React, { useState } from "react";
+import clsx from "clsx";
+import Slider from "react-slick";
+import { useMediaQuery } from "../../lib/hooks";
+import { Image } from "../images";
+import "../../styles/slick/slick.scss";
 
 export const Gallery = ({ images = [], ...props }) => {
-  const isLarge = useMediaQuery("(min-width:800px)")
+  const isLarge = useMediaQuery("(min-width:800px)");
 
   const desktopSettings = {
     customPaging: function customPaging(i) {
-      const img = images[i]
+      const img = images[i];
 
       return (
         <a className="flex mx-1 mb-2 cursor-pointer">
@@ -22,7 +22,7 @@ export const Gallery = ({ images = [], ...props }) => {
             objectPosition="center"
           />
         </a>
-      )
+      );
     },
     dots: true,
     dotsClass: "slick-thumbs",
@@ -31,22 +31,22 @@ export const Gallery = ({ images = [], ...props }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-  }
+  };
   const mobileSettings = {
     infinite: true,
     fade: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-  }
-  const settings = isLarge ? desktopSettings : mobileSettings
+  };
+  const settings = isLarge ? desktopSettings : mobileSettings;
   return (
     <Slider {...settings} {...props} css={{ ...styles }}>
-      {images?.map((image) => {
-        const { id, altText, caption, description, localFile } = image || {}
+      {images?.map((image, index) => {
+        const { id, altText, caption, description, localFile } = image || {};
 
         return (
-          <div key={id} className="relative mb-2">
+          <div key={id + index} className="relative mb-2">
             <Image
               img={localFile}
               alt={altText}
@@ -84,11 +84,11 @@ export const Gallery = ({ images = [], ...props }) => {
               </>
             )}
           </div>
-        )
+        );
       })}
     </Slider>
-  )
-}
+  );
+};
 
 const styles = {
   ".slick-thumbs": {
@@ -142,4 +142,4 @@ const styles = {
       },
     },
   },
-}
+};

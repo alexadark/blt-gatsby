@@ -1,6 +1,6 @@
 import { connectRefinementList } from "react-instantsearch-dom";
 import clsx from "clsx";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import qs from "query-string";
 import isEmpty from "lodash/isEmpty";
 import isBrowser from "./../../utils/isBrowser";
@@ -14,14 +14,47 @@ const MainSearchList = (props) => {
     setMainState,
     setTotalSearchHit,
   } = props;
-  const AllTotal = items.reduce((previousValue, currentValue) => {
-    return previousValue + currentValue.count;
-  }, 0);
-
+  const [dataFound, setDataFound] = useState(false);
+  const [searchResultCount, setSearchResultCount] = useState({
+    All: 0,
+    Experience: 0,
+    PlaceToStay: 0,
+    Destination: 0,
+    RoundUp: 0,
+    Itinerary: 0,
+  });
   useEffect(() => {
+    if (dataFound) return;
+    const AllTotal = items.reduce((previousValue, currentValue) => {
+      return previousValue + currentValue.count;
+    }, 0);
+    const getTabTotal = items
+      .map((item) => {
+        const lab = item.label;
+        const cou = item.count;
+        return { [lab]: cou };
+      })
+      .reduce(
+        (p, c) => {
+          return {
+            ...p,
+            ...c,
+          };
+        },
+        {
+          All: AllTotal,
+          Experience: 0,
+          PlaceToStay: 0,
+          Destination: 0,
+          RoundUp: 0,
+          Itinerary: 0,
+        }
+      );
     setTotalSearchHit(AllTotal);
-  }, [AllTotal]);
-
+    setSearchResultCount(getTabTotal);
+    setDataFound(items?.length ? true : false);
+  }, [items]);
+  //console.log(searchResultCount);
   useEffect(() => {
     const parsed = qs.parse(window.location.search);
     if (isEmpty(parsed) || !parsed.tab) {
@@ -61,7 +94,7 @@ const MainSearchList = (props) => {
             }}
           >
             All
-            {/* <span className="ml-1">[{AllTotal}]</span> */}
+            <span className="ml-1">[{searchResultCount["All"]}]</span>
           </button>
         </li>
 
@@ -71,13 +104,7 @@ const MainSearchList = (props) => {
           ) || {
             isRefined: false,
           };
-          const countArray = items.map((item) => {
-            if (item.label === staticItem.label) return item.count;
-            return 0;
-          });
-          const count = countArray.reduce((previousValue, currentValue) => {
-            return previousValue + currentValue;
-          }, 0);
+
           return (
             <li className="border text-center" key={staticItem.value}>
               <button
@@ -98,7 +125,9 @@ const MainSearchList = (props) => {
                 }}
               >
                 {staticItem.label}
-                {/* <span className="ml-1">[{count}]</span> */}
+                <span className="ml-1">
+                  [{searchResultCount[staticItem.value]}]
+                </span>
               </button>
             </li>
           );

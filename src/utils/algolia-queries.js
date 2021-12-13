@@ -33,7 +33,6 @@ const allWpExperienceQuery = gql`
           }
         }
         commonDataAttributes {
-
           standfirst
           country {
             name
@@ -67,7 +66,6 @@ const allWpExperienceQuery = gql`
           profile
           website
           generic: isGenericRecommendation
-          affiliate: isAffiliateTour
         }
         tags {
           nodes {
@@ -123,8 +121,6 @@ const allWpDestinationQuery = gql`
           }
         }
         commonDataAttributes {
-
-
           standfirst
           country {
             name
@@ -207,8 +203,6 @@ const allWpPlaceToStayQuery = gql`
           }
         }
         commonDataAttributes {
-
-
           standfirst
           country {
             name
@@ -262,8 +256,6 @@ const allWpRoundUpQuery = gql`
           }
         }
         commonDataAttributes {
-
-
           standfirst
           country {
             name
@@ -332,8 +324,6 @@ const allWpItineraryQuery = gql`
           }
         }
         commonDataAttributes {
-
-
           standfirst
           country {
             name
@@ -422,8 +412,8 @@ const queries = [
       return data.allWpExperience.nodes
         .filter(({ customDataAttributes }) => {
           const isGeneric = customDataAttributes?.generic === "yes";
-          const isAffiliate = customDataAttributes?.affiliate === "yes";
-          if (isGeneric || isAffiliate) {
+
+          if (isGeneric) {
             return false;
           }
           return true;

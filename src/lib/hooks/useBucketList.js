@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-
+import toast from "react-hot-toast";
 import useLocalStorage from "./use-local-storage";
 import { useAuth } from "./useAuth";
 import { useDbBucketList } from "./useDbBucketList";
@@ -37,6 +37,9 @@ export const useBucketList = (item) => {
 
   const addToBl = () => {
     setBucket([...bucket, item]);
+    toast("Added to bucket list", {
+      duration: 1000,
+    });
   };
 
   const removeFromBl = () => {
@@ -50,6 +53,9 @@ export const useBucketList = (item) => {
         : bucket.filter((i) => i.id !== item.id);
 
     setBucket(newBucket);
+    toast("Removed from bucket list", {
+      duration: 1000,
+    });
   };
 
   return { addToBl, removeFromBl, isAdded };

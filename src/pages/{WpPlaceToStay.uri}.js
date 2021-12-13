@@ -22,7 +22,7 @@ import { useSeoGeneral } from "../lib/hooks/useSeoGeneral";
 
 import { CollapseListings } from "../components/layout/CollapseListings";
 import PageLayout from "../components/layout/PageLayout";
-// import { Price } from "../components/Price";
+import { Price } from "../components/Price";
 import SidebarTourOperator from "../components/sidebar/SidebarTourOperator";
 import { useRecentlyViewed } from "../lib/hooks/useRecentlyViewed";
 import { CollapseCards } from "../components/layout/CollapseCards";
@@ -194,15 +194,11 @@ const PlaceToStayPage = ({ data }) => {
         </CollapseSection>
 
         {/* Price */}
-        {/* {priceCheckingLinks ||
-          (website && (
-            <CollapseSection title="Price" id="price">
-              <Price
-                priceCheckingLinks={priceCheckingLinks}
-                website={website}
-              />
-            </CollapseSection>
-          ))} */}
+        {priceCheckingLinks && (
+          <CollapseSection title="Price" id="price">
+            <Price priceCheckingLinks={priceCheckingLinks} website={website} />
+          </CollapseSection>
+        )}
 
         {/* General Amenities */}
         <CollapseSection title="General amenities" id="amenities">

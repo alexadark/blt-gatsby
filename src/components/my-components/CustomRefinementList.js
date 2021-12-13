@@ -38,21 +38,8 @@ const CustomRefinementList = (props) => {
     //console.log("should be resetting");
     refine([]);
   }, [state]);
-  const [open, setOpen] = useState(false);
-  const [arraySize, setArraySize] = useState(4);
+
   const [openFilterSet, setOpenFilterSet] = useState(false);
-  if (!values) {
-    return (
-      <div className={className}>
-        <div className="py-4 border-b border-grey2">
-          <h4 className="uppercase text-[15px] tracking-wider text-grey5 mb-2">
-            {title}
-          </h4>
-          <p>Only Null Values found</p>
-        </div>
-      </div>
-    );
-  }
 
   function sortCustomArray(arr) {
     return arr.sort(function (a, b) {
@@ -76,6 +63,23 @@ const CustomRefinementList = (props) => {
         return 0;
       })
     : sortCustomArray(values);
+
+  const firstFour = filteredValues.slice(0, 4);
+  const haveMore = filteredValues.slice(4, filteredValues.length).length;
+  const [arrayItems, setArrayItems] = useState(firstFour);
+  if (!values) {
+    return (
+      <div className={className}>
+        <div className="py-4 border-b border-grey2">
+          <h4 className="uppercase text-[15px] tracking-wider text-grey5 mb-2">
+            {title}
+          </h4>
+          <p>Only Null Values found</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={className}>
       <div className="py-4 border-b border-grey2">
@@ -102,8 +106,8 @@ const CustomRefinementList = (props) => {
           className="duration-500 ease-in-out transition-height"
         >
           <ul>
-            {!!filteredValues &&
-              filteredValues.slice(0, arraySize).map((staticItem) => {
+            {!!arrayItems &&
+              arrayItems.map((staticItem) => {
                 const { isRefined } = items.find(
                   (item) => item.label === staticItem.label
                 ) || {
@@ -165,8 +169,10 @@ const CustomRefinementList = (props) => {
                         <div className="inline-block">
                           {Array.from({
                             length: parseInt(staticItem.label),
-                          }).map(() => (
-                            <span className="mr-0.5">{symbol}</span>
+                          }).map((_, index) => (
+                            <span key={index} className="mr-0.5">
+                              {symbol}
+                            </span>
                           ))}
                         </div>
                       )}
@@ -175,7 +181,7 @@ const CustomRefinementList = (props) => {
                   </li>
                 );
               })}
-            {!!filteredValues && filteredValues.length > 4 && (
+            {!!haveMore && (
               <>
                 <Button
                   small
@@ -183,8 +189,11 @@ const CustomRefinementList = (props) => {
                   className="mt-2"
                   onClick={(e) => {
                     e.preventDefault();
-                    setOpen(!open);
-                    setArraySize(arraySize == 4 ? filteredValues.length : 4);
+                    if (arrayItems.length > 4) {
+                      setArrayItems(firstFour);
+                    } else {
+                      setArrayItems(filteredValues);
+                    }
                   }}
                   css={{
                     "&:hover": {
@@ -192,13 +201,13 @@ const CustomRefinementList = (props) => {
                     },
                   }}
                 >
-                  {open ? "close" : "show all"}{" "}
+                  {arrayItems.length > 4 ? "close" : "show all"}{" "}
                   <FaChevronDown
                     className={clsx(
                       "transition duration-500",
                       "ml-1",
                       "text-lightBlue  text-sm",
-                      { "transform rotate-180": open }
+                      { "transform rotate-180": arrayItems.length > 4 }
                     )}
                   />
                 </Button>

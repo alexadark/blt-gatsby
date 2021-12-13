@@ -51,7 +51,7 @@ const BucketListPage = () => {
         },
       });
   };
-
+  console.log(items);
   const roundUpsItems = items?.filter(
     (item) => item.__typename === "WpRoundUp_Roundupdataattributes_links"
   );
@@ -110,10 +110,14 @@ const BucketListPage = () => {
             );
             const allItems = [...countryRoundUps, ...otherItemsByCountry];
             return (
-              <CollapseSection title={country} key={i} listings>
-                  <CollapseListings listings={allItems} />
-                  <CardsGrid cards={allItems} className="md:hidden" />
-              </CollapseSection>
+
+              <div key={i} className="bg-white">
+                <CollapseSection title={country} listings>
+                    <CollapseListings listings={allItems} />
+                    <CardsGrid cards={allItems} className="md:hidden" />
+                </CollapseSection>
+              </div>
+
             );
           })
         ) : loading ? (

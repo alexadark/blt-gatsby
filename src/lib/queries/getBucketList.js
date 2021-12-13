@@ -41,7 +41,7 @@ export const GET_BUCKET_LIST = gql`
                 city
                 duration
                 minAge
-                isAffiliateTour
+
                 isBucketList
                 profile
                 priceFrom

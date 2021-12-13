@@ -29,10 +29,9 @@ export const CollapseSection = ({
   useEffect(() => {
     const isDefaultOpen = window.matchMedia("(min-width: 768px)").matches;
     const currentElm = collapseContainer?.current;
-    // if (!open && !isDefaultOpen && buttonLocation) {
-    // }
-    console.log("Working");
-    currentElm.scrollIntoView();
+    if (!open && !isDefaultOpen && buttonLocation) {
+      currentElm.scrollIntoView();
+    }
   }, [open]);
   return (
     <Section

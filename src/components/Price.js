@@ -1,8 +1,9 @@
-import React from "react"
-import clsx from "clsx"
-import { Button } from "./ui-components"
+import React from "react";
+import clsx from "clsx";
+import { Button } from "./ui-components";
 
 export const Price = ({ priceCheckingLinks, website, className, ...props }) => {
+  //console.log({ priceCheckingLinks, website, className, ...props });
   return (
     <div
       className={clsx(
@@ -16,14 +17,16 @@ export const Price = ({ priceCheckingLinks, website, className, ...props }) => {
       <div className="relative flex flex-wrap items-center justify-center">
         {priceCheckingLinks?.map((item, i) => {
           return (
-            <a href={item.url} key={i} target="_blank" rel="noreferrer">
-              <img
-                src={item?.logo?.sourceUrl}
-                alt={item?.logo?.altText}
-                className="max-w-[100px] mx-3 mb-3 md:mb-0"
-              />
+            <a href={item?.url ?? "/"} key={i} target="_blank" rel="noreferrer">
+              {item?.logo?.sourceUrl && (
+                <img
+                  src={item?.logo?.sourceUrl}
+                  alt={item?.logo?.altText}
+                  className="max-w-[100px] mx-3 mb-3 md:mb-0"
+                />
+              )}
             </a>
-          )
+          );
         })}
         {website && (
           <Button
@@ -38,5 +41,5 @@ export const Price = ({ priceCheckingLinks, website, className, ...props }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};

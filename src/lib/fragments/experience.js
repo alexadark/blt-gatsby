@@ -38,7 +38,6 @@ export const experienceFragments = graphql`
       city
       duration
       minAge
-      isAffiliateTour
       isBucketList
       isGenericRecommendation
       profile
@@ -158,7 +157,6 @@ export const experienceFragments = graphql`
       duration
       eventSubType
       gettingThere
-      isAffiliateTour
       isBucketList
       isGenericRecommendation
       latitudeOfLocation1
