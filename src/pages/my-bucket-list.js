@@ -111,10 +111,8 @@ const BucketListPage = () => {
             const allItems = [...countryRoundUps, ...otherItemsByCountry];
             return (
               <CollapseSection title={country} key={i} listings>
-                <div className="mt-5">
                   <CollapseListings listings={allItems} />
                   <CardsGrid cards={allItems} className="md:hidden" />
-                </div>
               </CollapseSection>
             );
           })

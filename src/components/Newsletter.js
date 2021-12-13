@@ -65,7 +65,7 @@ const EbookCheckboxes = ({ homeNl }) => {
       />
       <Checkbox
         id="round-up"
-        label="A monthly round up of exclusive offers, ideas & inspiration"
+        label="Our newsletter round-up of ideas & inspiration"
         className="mb-8"
         large
         homeNl={homeNl}

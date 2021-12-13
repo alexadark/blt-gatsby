@@ -28,7 +28,9 @@ export const Header = () => {
           )}
           <div className="flex items-center space-x-5">
             <Menu className="hidden lg:flex" />
+            {path !== "/" && !path?.includes("search") && path !== "/404" && (
             <HeaderMobileSearch className="hidden mr-5 lg:block xl:hidden" />
+            )}
           </div>
           <div className={clsx("lg:hidden", "flex space-x-5")}>
             {path !== "/" && !path?.includes("search") && path !== "/404" && (
