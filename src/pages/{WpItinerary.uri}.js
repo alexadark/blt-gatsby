@@ -112,13 +112,13 @@ const ItineraryPage = ({ data }) => {
           return (
             <CollapseSection
               key={index}
-              title={`Day ${index + 1}${day.title ? ": " + day.title : ""}`}
+              title={day.title}
               listings
             >
               <IntroText content={about} />
               <div>
-                <CollapseListings listings={allLinks} pts />
-                <CollapseCards cards={allLinks} className="md:hidden" pts />
+                <CollapseListings listings={allLinks} />
+                <CollapseCards cards={allLinks} className="md:hidden" />
               </div>
             </CollapseSection>
           );
