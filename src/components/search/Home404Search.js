@@ -45,7 +45,7 @@ export const Home404Search = () => {
       </form>
       <Link
         to="/search"
-        className="block mt-10 text-base font-normal tracking-wider underline uppercase text-lightBlue sm:text-f-24 text-shadow-sm"
+        className="block sm:mt-10 text-base font-normal tracking-wider underline uppercase text-lightBlue sm:text-f-24 text-shadow-sm"
         css={{ textShadow: "1px 2px 4px #000" }}
       >
         {isSmall
