@@ -19,7 +19,7 @@ const Title = ({
   const { addToBl, removeFromBl, isAdded } = useBucketList(item || {});
   const path = window.location.pathname;
   const url = typeof window !== "undefined" ? window.location.href : "";
-  console.log("url", url);
+
 
   return (
     <div
@@ -30,7 +30,7 @@ const Title = ({
       {...props}
     >
       <div className="ml-5 xl:ml-14">
-        {intro && <div className={clsx("text-gold text-f-24")}>{intro}</div>}
+        {intro && <div className={clsx("text-gold text-f-24 leading-relaxed sm:leading-normal")}>{intro}</div>}
         <div
           className={clsx(
             "max-w-[940px] gap-5 flex justify-between items-center"
