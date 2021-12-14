@@ -45,6 +45,7 @@ export const Listing = ({
     priceCheckingLinks,
     website,
     minAge,
+    ageBestSuitedFrom,
     priceFrom,
     duration,
     profile,
@@ -136,7 +137,7 @@ export const Listing = ({
 
             <ListingBottomInfo
               starRating={starRating}
-              minAge={minAge}
+              age={ ageBestSuitedFrom}
               priceFrom={priceFrom}
               whenIsIt={whenIsIt}
               duration={duration}

@@ -3,7 +3,7 @@ import { StarIcons } from "../ui-components"
 
 export const ListingBottomInfo = ({
   starRating,
-  minAge,
+  age,
   priceFrom,
   duration,
   whenIsIt,
@@ -20,8 +20,8 @@ export const ListingBottomInfo = ({
       ) : (
 
          <div className={`flex mt-4 text-grey4 ${card && 'md:hidden'} ${className ? className : ""}`}>
-         {minAge !== undefined &&
-           `Ages: ${minAge === null ? "Any " : minAge + "+ "}`}
+         {
+           `Ages: ${!age ? "Any " : age + "+ "}`}
            {priceFrom ? ` |  Price from: ${priceFrom.toLowerCase() === "varies" ? priceFrom : "£" + priceFrom }`: `  | Price: Free`}
            {duration && ` | Duration: ${duration}`}
            {whenIsIt && ` | When: ${whenIsIt}`}
