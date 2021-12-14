@@ -143,7 +143,7 @@ const CustomRefinementList = (props) => {
                         value={staticItem.value}
                         checked={isRefined}
                         className={clsx(
-                          "input-item border-2 rounded-none text-gold form-checkbox border-grey2 w-5 h-5 mr-4",
+                          "input-item border-2 rounded-none text-gold form-checkbox border-grey2 w-5 h-5 mr-4 ml-1 sm:ml-0",
                           {
                             "cursor-not-allowed ": !count,
                           }
