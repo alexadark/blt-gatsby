@@ -8,10 +8,10 @@ export const Breadcrumbs = ({ terms = [] }) => {
         const { name, link } = term || {};
 
         return (
-          <div key={index} className="uppercase">
+          <div key={index} className="uppercase leading-relaxed">
             {link ? <Link to={link}>{name}</Link> : `${name}`}
             {index !== terms?.length - 1 && (
-              <span className="inline-block mx-2 sm:mx-3">{`>`}</span>
+              <span className="inline-block mx-2 sm:mx-3 ">{`>`}</span>
             )}
           </div>
         );
