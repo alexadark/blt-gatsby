@@ -35,8 +35,8 @@ export const ContactPage = ({ intro }) => {
     sendEmail({
       variables: {
         input: {
-          to: "alexaspalato@gmail.com",
-          from: "gatsbywpthemes@gmail.com",
+          to: "matt@bucketlisttravels.com",
+          from: "matt@bucketlisttravels.com",
           subject: "mail from bucket list site",
           body: `First name: ${firstName}, Email:${email}, Subject:${subject}, Message:${message}`,
           clientMutationId: uuidv4(),
