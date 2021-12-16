@@ -5,6 +5,7 @@ const config = {
     post: "lg",
     archive: "lg",
   },
+  addSiteMap: true,
   createCategories: false,
   createTags: false,
   createPosts: false,
