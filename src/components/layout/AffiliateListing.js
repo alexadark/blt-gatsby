@@ -49,12 +49,12 @@ export const AffiliateListing = ({ className, item, ...props }) => {
                 <h3 className="mb-2 text-f-18 text-grey5">{destination}</h3>
               </div>
             </div>
-            {/* <div
+            <div
               dangerouslySetInnerHTML={{
                 __html: description,
               }}
-              className="mt-4 mb-3 mr-2 leading-tight prose"
-            /> */}
+              className="mt-4 mb-3 mr-2 leading-tight prose line-clamp-3"
+            />
           </div>
         </div>
         <div className="flex flex-col items-end justify-center">

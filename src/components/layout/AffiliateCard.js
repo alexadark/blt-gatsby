@@ -35,7 +35,7 @@ export const AffiliateCard = ({
                 alt="viator logo"
                 objectFit="cover"
                 objectPosition="center"
-                className="w-full"
+                className="w-full mb-5"
 
               />
               </a>
@@ -55,7 +55,7 @@ export const AffiliateCard = ({
             >
                 <h3
                   className={clsx(
-                    "leading-tight text-f-24 text-grey4 font-medium"
+                    "leading-tight text-f-24 text-grey4 font-medium mt-3"
                   )}
                   dangerouslySetInnerHTML={{ __html: title }}
                 />
@@ -65,13 +65,11 @@ export const AffiliateCard = ({
               </div>
             </div>
             {/* Intro */}
-            {/* <div
-              dangerouslySetInnerHTML={{
-                description
-              }}
-              className="leading-tight prose text-left md:hidden "
+            <p
+              dangerouslySetInnerHTML={{ __html: description}}
+              className="leading-tight prose text-left  line-clamp-3"
             />
-          </div> */}
+
           {/* Website or link to profile (read our review) */}
           <div className="space-y-5">
 
