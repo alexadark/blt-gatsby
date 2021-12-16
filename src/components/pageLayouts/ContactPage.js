@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
 import tw, { styled } from "twin.macro";
 import { useMutation, gql } from "@apollo/client";
-
+import ReCAPTCHA from "react-google-recaptcha";
 import { Section, Input, Button, Label, Select } from "../ui-components";
 import { v4 as uuidv4 } from "uuid";
 
 export const ContactPage = ({ intro }) => {
   const [isMailSent, setIsMailSent] = useState(false);
-  console.log("mail sent", isMailSent);
+  const [isBot, setIsBot] = useState(false);
+  const rRef = useRef();
 
   const SEND_EMAIL = gql`
     mutation ($input: SendEmailInput!) {
@@ -29,12 +30,33 @@ export const ContactPage = ({ intro }) => {
     control,
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    setIsBot(false);
     const { firstName, email, subject, message } = data;
-    console.log(data);
+    const rToken = await rRef?.current?.executeAsync();
+    rRef?.current?.reset();
+
+    const response = await window.fetch("/api/validate-recaptch", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        rToken,
+      }),
+    });
+    const isHumanResponse = await response.json();
+    const isHuman = isHumanResponse?.message ?? false;
+
+    if (!isHuman) {
+      setIsBot(true);
+      reset();
+      return;
+    }
     sendEmail({
       variables: {
         input: {
+
           to: "matt@bucketlisttravels.com",
           from: "matt@bucketlisttravels.com",
           subject: "mail from bucket list site",
@@ -57,7 +79,6 @@ export const ContactPage = ({ intro }) => {
         dangerouslySetInnerHTML={{ __html: intro }}
         className="prose max-w-none mb-base2"
       />
-
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         <div className="grid-cols-2 gap-16 md:grid">
           <div>
@@ -133,6 +154,19 @@ export const ContactPage = ({ intro }) => {
           </div>
         </div>
       </form>
+      <ReCAPTCHA
+        sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
+        size="invisible"
+        ref={rRef}
+      />
+      ,
+      {isBot && (
+        <div className="flex justify-center">
+          <div className="px-5 py-2 text-lg font-semibold text-center text-red-500 bg-green-100 rounded-lg">
+            You are not fooling us bot!
+          </div>
+        </div>
+      )}
       {isMailSent && (
         <div className="flex justify-center">
           <div className="px-5 py-2 text-center text-green-500 bg-green-100 rounded-lg">
