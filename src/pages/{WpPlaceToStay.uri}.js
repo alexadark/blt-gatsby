@@ -194,7 +194,7 @@ const PlaceToStayPage = ({ data }) => {
         </CollapseSection>
 
         {/* Price */}
-        {priceCheckingLinks && (
+        {priceCheckingLinks || website && (
           <CollapseSection title="Price" id="price">
             <Price priceCheckingLinks={priceCheckingLinks} website={website} />
           </CollapseSection>
