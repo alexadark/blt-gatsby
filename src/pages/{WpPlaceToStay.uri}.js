@@ -194,11 +194,16 @@ const PlaceToStayPage = ({ data }) => {
         </CollapseSection>
 
         {/* Price */}
-        {(priceCheckingLinks || website) && (
+        {priceCheckingLinks && (
           <CollapseSection title="Price" id="price">
             <Price priceCheckingLinks={priceCheckingLinks} website={website} />
           </CollapseSection>
         )}
+        {/* {priceCheckingLinks || website && (
+          <CollapseSection title="Price" id="price">
+            <Price priceCheckingLinks={priceCheckingLinks} website={website} />
+          </CollapseSection>
+        )} */}
 
         {/* General Amenities */}
         <CollapseSection title="General amenities" id="amenities">
