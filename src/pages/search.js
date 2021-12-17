@@ -17,7 +17,6 @@ import LoaderSpinner from "react-loader-spinner";
 import SearchMap from "./../components/maps/SearchMap";
 import Sticky from "react-stickynode";
 import { useMediaQuery } from "./../lib/hooks";
-//import { CurrentRefinements } from "react-instantsearch-dom";
 
 const indexName = "BucketList";
 const searchClient = algoliasearch(
