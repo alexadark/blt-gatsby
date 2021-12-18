@@ -6,12 +6,10 @@ import { HeaderMobileSearch } from "./HeaderMobileSearch";
 import clsx from "clsx";
 import { window } from "browser-monads";
 import { Toaster } from "react-hot-toast";
-// import Headroom from "react-headroom";
-
 import { Branding } from "./Branding";
 
 export const Header = () => {
-  const path = window.location.pathname;
+  const path = window?.location?.pathname;
 
   return (
     // <Headroom>
@@ -30,7 +28,7 @@ export const Header = () => {
         <div className="flex items-center space-x-5">
           <Menu className="hidden lg:flex" />
           {path !== "/" && !path?.includes("search") && path !== "/404" && (
-          <HeaderMobileSearch className="hidden mr-5 lg:block xl:hidden" />
+            <HeaderMobileSearch className="hidden mr-5 lg:block xl:hidden" />
           )}
         </div>
         <div className={clsx("lg:hidden", "flex space-x-5")}>
@@ -40,7 +38,7 @@ export const Header = () => {
           <MobileMenu />
         </div>
       </div>
-      <Toaster />
+      <Toaster position="bottom-center" reverseOrder={false} />
     </header>
     // </Headroom>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "gatsby";
 import { useMutation, gql } from "@apollo/client";
 
@@ -6,7 +6,7 @@ import { Input, Button, Label } from "..";
 import { GET_USER } from "../../lib/hooks/useAuth";
 import ls from "local-storage";
 import { useDbBucketList } from "../../lib/hooks/useDbBucketList";
-
+import useCaptcha from "../../context/GlobalCaptcha";
 const LOG_IN = gql`
   mutation logIn($login: String!, $password: String!) {
     loginWithCookies(input: { login: $login, password: $password }) {
@@ -21,7 +21,8 @@ export function LogInForm({ setTabIndex, closeModal }) {
   });
 
   const { blItems } = useDbBucketList();
-
+  const rRef = useCaptcha();
+  const [isBot, setIsBot] = useState(false);
   useEffect(() => {
     if (loginData?.loginWithCookies?.status === "SUCCESS") {
       ls("bucketList", blItems);
@@ -38,10 +39,30 @@ export function LogInForm({ setTabIndex, closeModal }) {
     !errorMessage.includes("empty_password") &&
     !errorMessage.includes("incorrect_password");
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    const rToken = await rRef?.current?.executeAsync();
+    rRef?.current?.reset();
+
+    const response = await window.fetch("/api/validate-recaptch", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        rToken,
+      }),
+    });
+    const isHumanResponse = await response.json();
+    const isHuman = isHumanResponse?.message ?? false;
+
+    if (!isHuman) {
+      setIsBot(true);
+      return;
+    }
     const data = new FormData(event.currentTarget);
     const { email, password } = Object.fromEntries(data);
+
     logIn({
       variables: {
         login: email,
@@ -98,7 +119,6 @@ export function LogInForm({ setTabIndex, closeModal }) {
             <p className="error-message">Invalid password. Please try again.</p>
           </div>
         ) : null}
-
         <div className="flex justify-center">
           <Button
             type="submit"
@@ -108,6 +128,13 @@ export function LogInForm({ setTabIndex, closeModal }) {
             {loading ? "Logging in..." : "Submit"}
           </Button>
         </div>
+        {isBot && (
+          <div className="flex justify-center">
+            <div className="px-5 py-2 text-lg font-semibold text-center text-red-500 bg-green-100 rounded-lg">
+              You are not fooling us bot!
+            </div>
+          </div>
+        )}
       </fieldset>
       <p className="account-sign-up-message">
         Don&#39;t have an account yet?{" "}

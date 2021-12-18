@@ -74,7 +74,7 @@ const MainSearchList = (props) => {
 
   return (
     <div>
-      <ul className="ais-RefinementList-list grid md:grid-cols-6 grid-cols-2 sm:grid-cols-3 gap-4 uppercase">
+      <ul className="ais-RefinementList-list grid lg:grid-cols-6 grid-cols-2 sm:grid-cols-3 gap-4 uppercase">
         <li className="border text-center">
           <button
             className={clsx(

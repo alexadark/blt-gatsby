@@ -5,11 +5,13 @@ import { useMutation, gql } from "@apollo/client";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Section, Input, Button, Label, Select } from "../ui-components";
 import { v4 as uuidv4 } from "uuid";
+import useCaptcha from "../../context/GlobalCaptcha";
 
 export const ContactPage = ({ intro }) => {
   const [isMailSent, setIsMailSent] = useState(false);
   const [isBot, setIsBot] = useState(false);
-  const rRef = useRef();
+
+  const rRef = useCaptcha();
 
   const SEND_EMAIL = gql`
     mutation ($input: SendEmailInput!) {
@@ -56,7 +58,6 @@ export const ContactPage = ({ intro }) => {
     sendEmail({
       variables: {
         input: {
-
           to: "matt@bucketlisttravels.com",
           from: "matt@bucketlisttravels.com",
           subject: "mail from bucket list site",
@@ -154,12 +155,6 @@ export const ContactPage = ({ intro }) => {
           </div>
         </div>
       </form>
-      <ReCAPTCHA
-        sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
-        size="invisible"
-        ref={rRef}
-      />
-      ,
       {isBot && (
         <div className="flex justify-center">
           <div className="px-5 py-2 text-lg font-semibold text-center text-red-500 bg-green-100 rounded-lg">
