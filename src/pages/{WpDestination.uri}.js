@@ -25,7 +25,6 @@ import { useSeoGeneral } from "../lib/hooks/useSeoGeneral";
 import DetailPageMap from "./../components/maps/DetailPageMap";
 import { useDdestinationsArray } from "../lib/hooks/useDestinationsArray";
 
-
 const slugs = (string) => slugify(string, { lower: true, strict: true });
 
 const DestinationPage = ({ data }) => {
@@ -44,10 +43,7 @@ const DestinationPage = ({ data }) => {
     viAffiliate,
   } = destination || {};
   const seoImage = featuredImage?.node.localFile.childImageSharp.original;
-  const parsedViAffiliate = viAffiliate.map(item => JSON.parse(item));
-
-
-
+  const parsedViAffiliate = viAffiliate.map((item) => JSON.parse(item));
 
   const seo = {
     page: destination?.seo,
@@ -218,9 +214,12 @@ const DestinationPage = ({ data }) => {
             number={viAffiliate.length}
           >
             <div className="mt-5">
-
               <CollapseListings affiliate listings={parsedViAffiliate} />
-              <CollapseCards cards={parsedViAffiliate} affiliate className="md:hidden" />
+              <CollapseCards
+                cards={parsedViAffiliate}
+                affiliate
+                className="md:hidden"
+              />
             </div>
           </CollapseSection>
         )}
@@ -232,7 +231,7 @@ const DestinationPage = ({ data }) => {
             id="where-to-stay"
             listings
           >
-            <IntroText content={whereToStay} />
+            {whereToStay && <IntroText content={whereToStay} />}
             <div className="">
               <CollapseListings listings={placesToStay} pts />
               <CollapseCards cards={placesToStay} className="md:hidden" pts />
