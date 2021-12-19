@@ -13,7 +13,8 @@ export const Branding = ({ className, ...props }) => {
     >
       <Link to="/" className="text-white hover:text-white hover:no-underline">
         <img
-          src="/images/logo2.png"
+          src="/images/logo2.svg
+          "
           alt="logo"
           className="sm:w-[300px] w-[200px]"
         />

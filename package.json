@@ -33,6 +33,7 @@
     "gatsby": "^4.2.0",
     "gatsby-plugin-algolia": "^0.23.1",
     "gatsby-plugin-emotion": "^7.2.0",
+    "gatsby-plugin-favicons": "^2.0.0",
     "gatsby-plugin-gatsby-cloud": "^4.2.0",
     "gatsby-plugin-no-sourcemaps": "^4.3.0",
     "gatsby-plugin-postcss": "^5.2.0",

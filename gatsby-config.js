@@ -29,7 +29,7 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-no-sourcemaps`,
-    'gatsby-plugin-robots-txt',
+    "gatsby-plugin-robots-txt",
     {
       resolve: "gatsby-plugin-gatsby-cloud",
       options: {
@@ -63,6 +63,12 @@ module.exports = {
         baseUiComponents: path.join(__dirname, "src/components/ui-components"),
         baseUtils: path.join(__dirname, "src/utils"),
         baseThemeConfig: path.join(__dirname, "themeConfig"),
+      },
+    },
+    {
+      resolve: "gatsby-plugin-favicons",
+      options: {
+        logo: "./src/images/favicon2.svg",
       },
     },
   ],
