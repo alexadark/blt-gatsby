@@ -291,7 +291,7 @@ const ExperiencePage = ({ data }) => {
         {/* Destinations guides */}
         {destinations && (
           <CollapseSection
-            title="Destinations guides"
+            title="Destination guides"
             number={destinations.length}
             listings
           >
