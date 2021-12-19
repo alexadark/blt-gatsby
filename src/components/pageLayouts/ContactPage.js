@@ -6,6 +6,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { Section, Input, Button, Label, Select } from "../ui-components";
 import { v4 as uuidv4 } from "uuid";
 import useCaptcha from "../../context/GlobalCaptcha";
+import { Email, Item, Span, A, renderEmail } from "react-html-email";
 
 export const ContactPage = ({ intro }) => {
   const [isMailSent, setIsMailSent] = useState(false);
@@ -55,13 +56,22 @@ export const ContactPage = ({ intro }) => {
       reset();
       return;
     }
+
+    const emailHTML = renderEmail(
+      <Email title="email from bucket-list website">
+        <Item>{`Subject: ${subject}`}</Item>
+        <Item>{`First name: ${firstName}`}</Item>
+        <Item>{`Email: ${email}`}</Item>
+        <Item>{`Message: ${message}`}</Item>
+      </Email>
+    );
     sendEmail({
       variables: {
         input: {
           to: "matt@bucketlisttravels.com",
-          from: "matt@bucketlisttravels.com",
-          subject: "mail from bucket list site",
-          body: `First name: ${firstName}, Email:${email}, Subject:${subject}, Message:${message}`,
+          from: email,
+          subject: subject,
+          body: emailHTML,
           clientMutationId: uuidv4(),
         },
       },
