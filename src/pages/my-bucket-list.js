@@ -110,14 +110,12 @@ const BucketListPage = () => {
             );
             const allItems = [...countryRoundUps, ...otherItemsByCountry];
             return (
-
               <div key={i} className="bg-white">
                 <CollapseSection title={country} listings>
-                    <CollapseListings listings={allItems} />
-                    <CardsGrid cards={allItems} className="md:hidden" />
+                  <CollapseListings listings={allItems} />
+                  <CardsGrid cards={allItems} className="md:hidden" />
                 </CollapseSection>
               </div>
-
             );
           })
         ) : loading ? (
@@ -127,7 +125,7 @@ const BucketListPage = () => {
         ) : (
           <NoResults
             title="Your bucket list is empty"
-            subtitle="No-one should have an empty bucket list…. Add something by clicking the 'Add to bucket list' buttons on all of our recommendations - simple as that. Good luck!"
+            subtitle="No-one should have an empty travel bucket list. Add something by clicking the plus icons on all of our recommendations - simple as that. Good luck!"
             className="mt-base2"
           />
         )}

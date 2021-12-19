@@ -47,7 +47,7 @@ const BucketList = ({ items }) => {
       ) : (
         <NoResults
           title="Your bucket list is empty"
-          subtitle="No-one should have an empty bucket list…. Add something by clicking the 'Add to bucket list' buttons on all of our recommendations - simple as that. Good luck!"
+          subtitle="No-one should have an empty travel bucket list. Add something by clicking the plus icons on all of our recommendations - simple as that. Good luck!"
           className="mt-base2"
         />
       )}

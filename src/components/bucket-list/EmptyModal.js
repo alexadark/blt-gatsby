@@ -20,13 +20,12 @@ export const EmptyModal = ({ isOpen, setIsOpen, action, title, text }) => {
         </div>
 
         <div className="flex justify-between max-w-md mx-auto mt-4 space-x-3">
-        <Button className="w-[120px] h-10" onClick={closeModal}>
+          <Button secondary className="w-[120px] h-10" onClick={closeModal}>
             Cancel
           </Button>
           <Button className="w-[120px] h-10" onClick={action}>
             Yes
           </Button>
-
         </div>
       </div>
     </Modal>
