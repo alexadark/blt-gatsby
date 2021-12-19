@@ -19,7 +19,6 @@ import { Seo } from "@gatsbywpthemes/gatsby-plugin-wp-seo";
 import { useSeoGeneral } from "../lib/hooks/useSeoGeneral";
 import { useDdestinationsArray } from "../lib/hooks/useDestinationsArray";
 
-
 const slugs = (string) => slugify(string, { lower: true, strict: true });
 
 const ExperiencePage = ({ data }) => {
@@ -72,7 +71,7 @@ const ExperiencePage = ({ data }) => {
   };
   const seoImage = featuredImage?.node.localFile.childImageSharp.original;
 
-  const parsedViAffiliate = viAffiliate.map(item => JSON.parse(item));
+  const parsedViAffiliate = viAffiliate.map((item) => JSON.parse(item));
 
   useRecentlyViewed({ title, featuredImage, uri });
   const url = window.location.href;
@@ -174,7 +173,7 @@ const ExperiencePage = ({ data }) => {
           />
         </CollapseSection>
         {/* Recommendations = exp+ pts */}
-        {recos?.length >0 && (
+        {recos?.length > 0 && (
           <CollapseSection
             title="Recommendations"
             number={recos.length}
@@ -185,6 +184,7 @@ const ExperiencePage = ({ data }) => {
                 listings={recos}
                 distance={bcklgeoDistance}
                 pts
+                css={{ ".distance": { display: "none" } }}
               />
               <CollapseCards cards={recos} className="md:hidden" />
             </div>
@@ -222,9 +222,12 @@ const ExperiencePage = ({ data }) => {
             number={viAffiliate.length}
           >
             <div className="mt-5">
-
               <CollapseListings affiliate listings={parsedViAffiliate} />
-              <CollapseCards cards={parsedViAffiliate} affiliate className="md:hidden" />
+              <CollapseCards
+                cards={parsedViAffiliate}
+                affiliate
+                className="md:hidden"
+              />
             </div>
           </CollapseSection>
         )}

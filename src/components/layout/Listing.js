@@ -123,7 +123,7 @@ export const Listing = ({
                   </div>
                 ))}
               {distance && distanceObject?.[databaseId] && (
-                <span className="inline-block ml-2 font-bold">
+                <span className="distance inline-block ml-2 font-bold">
                   [{distanceToParent} miles]
                 </span>
               )}
@@ -137,7 +137,7 @@ export const Listing = ({
 
             <ListingBottomInfo
               starRating={starRating}
-              age={ ageBestSuitedFrom}
+              age={ageBestSuitedFrom}
               priceFrom={priceFrom}
               whenIsIt={whenIsIt}
               duration={duration}
