@@ -182,9 +182,8 @@ const ExperiencePage = ({ data }) => {
             <div className="mt-5">
               <CollapseListings
                 listings={recos}
-                distance={bcklgeoDistance}
+                // distance={bcklgeoDistance}
                 pts
-                css={{ ".distance": { display: "none" } }}
               />
               <CollapseCards cards={recos} className="md:hidden" />
             </div>
