@@ -69,7 +69,7 @@ export const Gallery = ({ images = [], ...props }) => {
                   <div className="pb-3">
                     {caption && caption !== description && (
                       <div
-                        className="mb-1 sm:text-f-22"
+                        className=" sm:text-f-22 leading-[1.4]"
                         dangerouslySetInnerHTML={{ __html: caption }}
                       />
                     )}
