@@ -111,7 +111,6 @@ const PlaceToStayPage = ({ data }) => {
     { name: "amenities" },
     {
       name: "experiences nearby",
-      source: [...bucketListExperiences, ...otherExperiences],
     },
     { name: "map" },
   ].filter(
@@ -119,6 +118,7 @@ const PlaceToStayPage = ({ data }) => {
       tab.name === "our review" ||
       tab.name === "amenities" ||
       tab.name === "map" ||
+      tab.name === "experiences nearby" ||
       (tab.name === "price" && (website || priceCheckingLinks)) ||
       tab.source?.length > 0
   );
