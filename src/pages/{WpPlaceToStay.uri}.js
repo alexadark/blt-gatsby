@@ -110,9 +110,19 @@ const PlaceToStayPage = ({ data }) => {
     { name: "our review" },
     { name: "price" },
     { name: "amenities" },
-    { name: "experiences nearby" },
+    {
+      name: "experiences nearby",
+      source: [...bucketListExperiences, ...otherExperiences],
+    },
     { name: "map" },
-  ];
+  ].filter(
+    (tab) =>
+      tab.name === "our review" ||
+      tab.name === "amenities" ||
+      tab.name === "map" ||
+      (tab.name === "price" && (website || priceCheckingLinks)) ||
+      tab.source?.length > 0
+  );
   const destinationsArray = useDdestinationsArray();
 
   const brContinent = continent?.length === 1 ? continent[0] : null;
@@ -394,38 +404,42 @@ const PlaceToStayPage = ({ data }) => {
           </HotelFeatures>
         </CollapseSection>
         {/* Bucketlist experiences */}
-        {bucketListExperiences && bucketListExperiences?.length > 0 && (
-          <CollapseSection
-            title="Bucket list experiences nearby"
-            number={bucketListExperiences.length}
-            listings
-          >
-            <div className="mt-5">
-              <CollapseListings
-                listings={bucketListExperiences}
-                databaseId={databaseId}
-                distance={bcklgeoDistance}
-              />
-              <CollapseCards
-                cards={bucketListExperiences}
-                className="md:hidden"
-              />
-            </div>
-          </CollapseSection>
-        )}
-        {/* Other experiences */}
-        {otherExperiences && otherExperiences?.length > 0 && (
-          <CollapseSection
-            title="Other experiences nearby"
-            number={otherExperiences.length}
-            listings
-          >
-            <CollapseListings
-              listings={otherExperiences}
-              distance={bcklgeoDistance}
-            />
-            <CollapseCards cards={otherExperiences} className="md:hidden" />
-          </CollapseSection>
+        {(bucketListExperiences.length > 0 || otherExperiences.length > 0) && (
+          <div id="experiences-nearby">
+            {bucketListExperiences && bucketListExperiences?.length > 0 && (
+              <CollapseSection
+                title="Bucket list experiences nearby"
+                number={bucketListExperiences.length}
+                listings
+              >
+                <div className="mt-5">
+                  <CollapseListings
+                    listings={bucketListExperiences}
+                    databaseId={databaseId}
+                    distance={bcklgeoDistance}
+                  />
+                  <CollapseCards
+                    cards={bucketListExperiences}
+                    className="md:hidden"
+                  />
+                </div>
+              </CollapseSection>
+            )}
+            {/* Other experiences */}
+            {otherExperiences && otherExperiences?.length > 0 && (
+              <CollapseSection
+                title="Other experiences nearby"
+                number={otherExperiences.length}
+                listings
+              >
+                <CollapseListings
+                  listings={otherExperiences}
+                  distance={bcklgeoDistance}
+                />
+                <CollapseCards cards={otherExperiences} className="md:hidden" />
+              </CollapseSection>
+            )}
+          </div>
         )}
         {/* Destination guide */}
         {destinations && (

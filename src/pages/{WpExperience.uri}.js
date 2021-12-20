@@ -23,7 +23,7 @@ const slugs = (string) => slugify(string, { lower: true, strict: true });
 
 const ExperiencePage = ({ data }) => {
   const { wpExperience: experience } = data || {};
-  const {
+  let {
     title,
     uri,
     featuredImage,
@@ -44,7 +44,7 @@ const ExperiencePage = ({ data }) => {
     bcklgeoDistance,
   } = commonDataAttributes || {};
 
-  const {
+  let {
     writer,
     whereToStay,
     recommendationsExp,
@@ -71,18 +71,29 @@ const ExperiencePage = ({ data }) => {
   };
   const seoImage = featuredImage?.node.localFile.childImageSharp.original;
 
-  const parsedViAffiliate = viAffiliate.map((item) => JSON.parse(item));
+  const parsedViAffiliate = viAffiliate?.map((item) => JSON.parse(item));
 
   useRecentlyViewed({ title, featuredImage, uri });
   const url = window.location.href;
 
+  viAffiliate = viAffiliate || [];
+  tourOperator = tourOperator || [];
+  const whoToGoWith = [...viAffiliate, ...tourOperator];
+
   const tabs = [
     { name: "our review" },
     { name: "logistics" },
-    { name: "who to go with" },
-    { name: "where to stay" },
+    { name: "who to go with", source: whoToGoWith },
+    { name: "where to stay", source: whereToStay },
     { name: "map" },
-  ];
+  ].filter(
+    (tab) =>
+      tab.name === "our review" ||
+      tab.name === "logistics" ||
+      tab.name === "map" ||
+      tab.source?.length > 0
+  );
+
   const brContinent = continent?.length === 1 ? continent[0] : null;
   const destinationsArray = useDdestinationsArray();
 
@@ -215,38 +226,45 @@ const ExperiencePage = ({ data }) => {
         </CollapseSection>
 
         {/* Affiliate tours */}
-        {viAffiliate?.length > 0 && (
-          <CollapseSection
-            title="Destination Tickets & tours"
-            number={viAffiliate.length}
-          >
-            <div className="mt-5">
-              <CollapseListings affiliate listings={parsedViAffiliate} />
-              <CollapseCards
-                cards={parsedViAffiliate}
-                affiliate
-                className="md:hidden"
-              />
-            </div>
-          </CollapseSection>
-        )}
-
-        {/* Tour operators */}
-        {tourOperator && (
-          <CollapseSection
-            title="Who to go with: tour operators"
-            number={tourOperator.length}
-            listings
-          >
-            <div className="mt-5">
-              <CollapseListings
-                listings={tourOperator}
-                distance={bcklgeoDistance}
-                noBl
-              />
-              <CollapseCards cards={tourOperator} className="md:hidden" noBl />
-            </div>
-          </CollapseSection>
+        {(viAffiliate?.length > 0 || tourOperator.length > 0) && (
+          <div id="who-to-go-with">
+            {viAffiliate?.length > 0 && (
+              <CollapseSection
+                title="Who to go with: organised tours"
+                number={viAffiliate.length}
+              >
+                <div className="mt-5">
+                  <CollapseListings affiliate listings={parsedViAffiliate} />
+                  <CollapseCards
+                    cards={parsedViAffiliate}
+                    affiliate
+                    className="md:hidden"
+                  />
+                </div>
+              </CollapseSection>
+            )}
+            {/* Tour operators */}
+            {tourOperator && (
+              <CollapseSection
+                title="Who to go with: tour operators"
+                number={tourOperator.length}
+                listings
+              >
+                <div className="mt-5">
+                  <CollapseListings
+                    listings={tourOperator}
+                    distance={bcklgeoDistance}
+                    noBl
+                  />
+                  <CollapseCards
+                    cards={tourOperator}
+                    className="md:hidden"
+                    noBl
+                  />
+                </div>
+              </CollapseSection>
+            )}
+          </div>
         )}
         {/* Where to stay */}
         {whereToStay && (

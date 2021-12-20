@@ -102,12 +102,18 @@ const DestinationPage = ({ data }) => {
 
   const tabs = [
     { name: "our review" },
-    { name: "experiences" },
-    { name: "where to stay" },
+    { name: "experiences", source: allExperiences },
+    { name: "where to stay", source: whereToStay },
     { name: "logistics" },
-    { name: "who to go with" },
+    { name: "who to go with", source: tourOperators },
     { name: "map" },
-  ];
+  ].filter(
+    (tab) =>
+      tab.name === "our review" ||
+      tab.name === "logistics" ||
+      tab.name === "map" ||
+      tab.source?.length > 0
+  );
 
   const brContinent = continent?.length === 1 ? continent[0] : null;
   const destinationsArray = useDdestinationsArray();
