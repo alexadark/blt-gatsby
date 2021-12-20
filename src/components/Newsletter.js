@@ -43,7 +43,7 @@ const EnvelopeInput = ({
         name="email"
         placeholder={placeholder}
         className={clsx(
-          " pl-12 !placeholder-grey3 focus:!placeholder-transparent",
+          " pl-12 !placeholder-grey3 focus:!placeholder-transparent text-text",
           "focus:outline-none focus:ring-transparent focus:border-grey3",
           height,
           className
