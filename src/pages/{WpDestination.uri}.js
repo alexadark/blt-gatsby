@@ -86,9 +86,9 @@ const DestinationPage = ({ data }) => {
   const bucketListExperiences = experiences?.filter(
     (exp) => exp.customDataAttributes.isBucketList === "yes"
   );
-  const otherExperiences = experiences?.filter(
-    (exp) => exp.customDataAttributes.isBucketList === "no"
-  );
+  const otherExperiences = experiences
+    ?.filter((exp) => exp.customDataAttributes.isBucketList === "no")
+    .filter((exp) => exp.customDataAttributes.isGenericRecommendation === "no");
 
   const allExperiences = [
     {

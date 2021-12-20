@@ -29,6 +29,7 @@ import { CollapseCards } from "../components/layout/CollapseCards";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import slugify from "slugify";
 import DetailPageMap from "./../components/maps/DetailPageMap";
+import { IoLogoFoursquare } from "react-icons/io5";
 
 const slugs = (string) => slugify(string, { lower: true, strict: true });
 
@@ -102,9 +103,7 @@ const PlaceToStayPage = ({ data }) => {
   );
   const otherExperiences = experiences
     ?.filter((exp) => exp.customDataAttributes.isBucketList === "no")
-    .filter(
-      (exp) => exp.customDataAttributes.isGenericRecommmendation === "no"
-    );
+    .filter((exp) => exp.customDataAttributes.isGenericRecommendation === "no");
 
   const tabs = [
     { name: "our review" },

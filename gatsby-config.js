@@ -28,7 +28,7 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-emotion`,
-    // `gatsby-plugin-no-sourcemaps`,
+    `gatsby-plugin-no-sourcemaps`,
     "gatsby-plugin-robots-txt",
     {
       resolve: "gatsby-plugin-gatsby-cloud",
