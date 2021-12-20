@@ -28,7 +28,7 @@ const FOOTER_QUERY = graphql`
 `;
 
 const FooterItem = ({ children }) => {
-  return <li className="mb-5 text-white">{children}</li>;
+  return <li className="mb-4 text-white leading-normal">{children}</li>;
 };
 
 export const Footer = () => {

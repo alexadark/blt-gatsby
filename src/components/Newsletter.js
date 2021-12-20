@@ -196,7 +196,7 @@ const NewsletterHome = ({ className, ...props }) => {
 
 const NewsletterSmall = () => {
   return (
-    <div className="text-[20px]">
+    <div className="text-[20px] leading-normal">
       Get a monthly fix of inspiring ideas & exclusive offers:
       <form className="mt-5">
         <EnvelopeInput
