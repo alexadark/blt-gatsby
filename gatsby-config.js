@@ -65,11 +65,11 @@ module.exports = {
         baseThemeConfig: path.join(__dirname, "themeConfig"),
       },
     },
-    {
-      resolve: "gatsby-plugin-favicons",
-      options: {
-        logo: "./src/images/favicon2.svg",
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-favicons",
+    //   options: {
+    //     logo: "./src/images/favicon2.svg",
+    //   },
+    // },
   ],
 };
