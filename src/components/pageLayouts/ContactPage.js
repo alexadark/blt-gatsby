@@ -92,12 +92,11 @@ export const ContactPage = ({ intro }) => {
       />
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         <div className="grid-cols-2 gap-16 md:grid">
-          <div>
+          <div className="mb-5 md:mb-0">
             <Label htmlFor="firstName">First name</Label>
             <Input
               type="text"
               id="firstName"
-              className="focus:placeholder-transparent"
               {...register("firstName", { required: true })}
             />
             {errors.firstName && (
@@ -109,7 +108,6 @@ export const ContactPage = ({ intro }) => {
             <Input
               type="text"
               id="email"
-              className="focus:placeholder-transparent"
               {...register("email", { required: true })}
             />
             {errors.email && (
