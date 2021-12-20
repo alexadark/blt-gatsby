@@ -403,7 +403,8 @@ const PlaceToStayPage = ({ data }) => {
           </HotelFeatures>
         </CollapseSection>
         {/* Bucketlist experiences */}
-        {(bucketListExperiences.length > 0 || otherExperiences.length > 0) && (
+        {(bucketListExperiences?.length > 0 ||
+          otherExperiences?.length > 0) && (
           <div id="experiences-nearby">
             {bucketListExperiences && bucketListExperiences?.length > 0 && (
               <CollapseSection
@@ -428,7 +429,7 @@ const PlaceToStayPage = ({ data }) => {
             {otherExperiences && otherExperiences?.length > 0 && (
               <CollapseSection
                 title="Other experiences nearby"
-                number={otherExperiences.length}
+                number={otherExperiences?.length}
                 listings
               >
                 <CollapseListings
