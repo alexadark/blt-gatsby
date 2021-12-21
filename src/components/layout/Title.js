@@ -24,13 +24,18 @@ const Title = ({
   return (
     <div
       className={clsx(
-        "bg-veryLightGold py-4  pr-5 my-4 container max-w-big min-h-[160px] flex flex-col justify-center",
-        className
+        "bg-veryLightGold py-4  pr-5 my-4 container max-w-big min-h-[160px] ",
+
+        className,
+        {
+          "flex flex-col justify-center":!intro
+        },
       )}
       {...props}
     >
-      <div className="ml-5 xl:ml-14">
-        {intro && <div className={clsx("text-gold text-f-24 leading-relaxed sm:leading-normal")}>{intro}</div>}
+      {intro && <div className={clsx("text-gold text-f-24 leading-relaxed sm:leading-normal  ml-5 xl:ml-14")}>{intro}</div>}
+      <div className="ml-5 xl:ml-14 ">
+
         <div
           className={clsx(
             "max-w-[940px] gap-5 flex justify-between items-center"
@@ -39,7 +44,7 @@ const Title = ({
           <Typo
             as="h1"
             h1
-            className="max-w-[940px] -ml-1"
+            className="max-w-[940px] -ml-1 leading-tight py-1 sm:py-0 "
             dangerouslySetInnerHTML={{ __html: title }}
             css={{ span: { border: "3px solid #d3b27d", padding: "0 5px" } }}
           />
