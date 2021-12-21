@@ -37,7 +37,7 @@ const ExperienceMapBox = ({
     <Modal isOpen={isMapOpen} closeModal={closeModal}>
       <div
         style={{ height: "90vh" }}
-        className="inline-block z-[100] px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle md:w-5/6 sm:p-6"
+        className="inline-block z-[100] px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle w-full md:w-5/6 sm:p-6"
       >
         <div className="mb-3">
           <TickBox
