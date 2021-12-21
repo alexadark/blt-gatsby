@@ -38,7 +38,13 @@ export const Header = () => {
           <MobileMenu />
         </div>
       </div>
-      <Toaster position="bottom-center" reverseOrder={false} />
+      <div className="toster">
+        <Toaster
+          containerClassName="!top-2/4"
+          position="top-center"
+          reverseOrder={false}
+        />
+      </div>
     </header>
     // </Headroom>
   );
