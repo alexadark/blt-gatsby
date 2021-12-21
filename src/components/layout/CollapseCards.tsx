@@ -30,7 +30,7 @@ export const CollapseCards = ({
   return (
     <div
       className={clsx(
-        `flex justify-center flex-wrap md:justify-start gap-12 relative ${
+        `flex justify-center flex-col items-center md:justify-start gap-12 relative ${
           open && "mb-14"
         }`,
         className
