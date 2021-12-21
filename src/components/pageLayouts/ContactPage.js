@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
 import tw, { styled } from "twin.macro";
 import { useMutation, gql } from "@apollo/client";
-import ReCAPTCHA from "react-google-recaptcha";
 import { Section, Input, Button, Label, Select } from "../ui-components";
 import { v4 as uuidv4 } from "uuid";
 import useCaptcha from "../../context/GlobalCaptcha";
