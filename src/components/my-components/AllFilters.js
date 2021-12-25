@@ -6,8 +6,7 @@ export default function AllFilters({ facets, mainState }) {
   const shouldVisible = (list) => {
     return !list.includes(mainState);
   };
-  //   console.log(mainState);
-  //console.log(facets);
+
   return (
     <>
       <CustomRefinementList
