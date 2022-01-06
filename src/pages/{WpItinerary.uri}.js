@@ -43,7 +43,7 @@ const ItineraryPage = ({ data }) => {
     page: itinerary?.seo,
     general: seoGeneral?.wp?.seo,
   };
-  const seoImage = featuredImage?.node.localFile.childImageSharp.original;
+  const seoImage = featuredImage?.node?.localFile?.childImageSharp?.original;
 
   const { about, sidebarTourOperator, sbtouroperatordescription, review } =
     commonDataAttributes || {};
@@ -110,11 +110,7 @@ const ItineraryPage = ({ data }) => {
 
           const allLinks = [...expLinks, ...ptsLinks];
           return (
-            <CollapseSection
-              key={index}
-              title={day.title}
-              listings
-            >
+            <CollapseSection key={index} title={day.title} listings>
               <IntroText content={about} />
               <div>
                 <CollapseListings listings={allLinks} />

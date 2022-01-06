@@ -9,9 +9,7 @@ const Sentences = ({ topSentences }) => {
   const isSmall = useMediaQuery("(max-width:640px)");
   return (
     <>
-      <p
-        className="text-gold font-bold text-[20px] sm:text-f-22  mb-4 sm:mb-0 "
-      >
+      <p className="text-gold font-bold text-[20px] sm:text-f-22  mb-4 sm:mb-0 ">
         For those who want to:
       </p>
       {topSentences?.map((item, i) => (
@@ -34,24 +32,24 @@ export const HomeHero = ({ homeHero }) => {
         <div className="z-0">
           {heroImage && (
             <>
-            <Image
-              img={heroImage?.localFile}
-              alt={heroImage?.altText}
-              priority={true}
-              objectFit="cover"
-              objectPosition="center"
-              className="h-[277px] sm:h-[578px]"
-            />
-            <div
-                  className={clsx(
-                    "absolute left-0 bottom-0  w-full h-[50%] z-0",
-                    "flex flex-col justify-end",
-                    "bg-gradient-to-b from-transparent to-darkBlue",
-                    "text-white",
-                    "leading-none"
-                  )}
-                  />
-                  </>
+              <Image
+                img={heroImage?.localFile}
+                alt={heroImage?.altText}
+                priority={true}
+                objectFit="cover"
+                objectPosition="center"
+                className="h-[277px] sm:h-[578px]"
+              />
+              <div
+                className={clsx(
+                  "absolute left-0 bottom-0  w-full h-[50%] z-0",
+                  "flex flex-col justify-end",
+                  "bg-gradient-to-b from-transparent to-darkBlue",
+                  "text-white",
+                  "leading-none"
+                )}
+              />
+            </>
           )}
         </div>
 

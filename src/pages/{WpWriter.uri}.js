@@ -15,12 +15,7 @@ import {
   FaCheck as Check,
 } from "react-icons/fa";
 import { IoGlobeOutline as Website } from "react-icons/io5";
-import {
-  Layout,
-  Section,
-  Typo,
-  TravelQuote,
-} from "../components";
+import { Layout, Section, Typo, TravelQuote } from "../components";
 import PageLayout from "../components/layout/PageLayout";
 import { Newsletter } from "../components/Newsletter";
 import { TitleContent } from "../components/layout/TitleContent";
@@ -107,7 +102,7 @@ const WriterPage = ({ data }) => {
     page: writer?.seo,
     general: seoGeneral?.wp?.seo,
   };
-  const seoImage = featuredImage?.node.localFile.childImageSharp.original;
+  const seoImage = featuredImage?.node?.localFile?.childImageSharp?.original;
 
   const iconStyle = "text-[30px] text-gold";
 

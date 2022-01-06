@@ -109,7 +109,7 @@ const RoundupPage = ({ data }) => {
     updateItemExist(existingItems);
   }, []);
 
-  const seoImage = featuredImage?.node.localFile.childImageSharp.original;
+  const seoImage = featuredImage?.node?.localFile?.childImageSharp?.original;
   const [isMapOpen, setIsMapOpen] = useState(false);
 
   return (

@@ -42,7 +42,7 @@ const DestinationPage = ({ data }) => {
     uri,
     viAffiliate,
   } = destination || {};
-  const seoImage = featuredImage?.node.localFile.childImageSharp.original;
+  const seoImage = featuredImage?.node?.localFile?.childImageSharp?.original;
   const parsedViAffiliate = viAffiliate.map((item) => JSON.parse(item));
 
   const seo = {

@@ -69,7 +69,7 @@ const ExperiencePage = ({ data }) => {
     page: experience?.seo,
     general: seoGeneral?.wp?.seo,
   };
-  const seoImage = featuredImage?.node.localFile.childImageSharp.original;
+  const seoImage = featuredImage?.node?.localFile?.childImageSharp?.original;
 
   const parsedViAffiliate = viAffiliate?.map((item) => JSON.parse(item));
 
