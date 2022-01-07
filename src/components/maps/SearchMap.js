@@ -32,10 +32,13 @@ function SearchMap(props) {
         // console.log({ searchText: currentRefinement, mainState, hits });
       });
   }, [mainState, currentRefinement]);
+
+  console.log(hits);
   if (!hits) {
     return null;
   }
   const allMapPoints = FormatMapsData(hits);
+  console.log(allMapPoints);
   if (!allMapPoints) {
     return null;
   }
@@ -47,7 +50,6 @@ function SearchMap(props) {
 }
 
 const SearchMapBox = ({ isMapOpen, closeModal, allMapPoints }) => {
-  //console.log(allMapPoints);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCJkZohj9sqn6H_LrfHMNG5cY794SWFJgA",
