@@ -6,7 +6,7 @@ import { Section, Input, Button, Label, Select } from "../ui-components";
 import { v4 as uuidv4 } from "uuid";
 import useCaptcha from "../../context/GlobalCaptcha";
 import { Email, Item, Span, A, renderEmail } from "react-html-email";
-
+import toast from "react-hot-toast";
 export const ContactPage = ({ intro }) => {
   const [isMailSent, setIsMailSent] = useState(false);
   const [isBot, setIsBot] = useState(false);
@@ -33,6 +33,7 @@ export const ContactPage = ({ intro }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    setIsMailSent(false);
     setIsBot(false);
     const { firstName, email, subject, message } = data;
     const rToken = await rRef?.current?.executeAsync();
@@ -77,6 +78,24 @@ export const ContactPage = ({ intro }) => {
     });
     setIsMailSent(true);
     reset();
+    toast.custom(
+      <div className="bg-gold flex items-center px-2 py-1 rounded shadow-lg text-white">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" />
+        </svg>
+        <span className="ml-2 text-lg text-gray-900">
+          Thanks, message received! We’ll get back to you as soon as we can
+        </span>
+      </div>,
+      {
+        duration: 1000,
+      }
+    );
   };
 
   const ErrorMessage = styled.div(() => [
@@ -172,7 +191,7 @@ export const ContactPage = ({ intro }) => {
       {isMailSent && (
         <div className="flex justify-center">
           <div className="px-5 py-2 text-center text-green-500 bg-green-100 rounded-lg">
-            Your email has been sent
+            Thanks, message received! We’ll get back to you as soon as we can.
           </div>
         </div>
       )}
