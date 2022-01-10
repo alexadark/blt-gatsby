@@ -33,6 +33,7 @@ export const placeTostayFragments = graphql`
       longitudeOfLocation1
       priceCheckingLinks {
         url
+        hotelAffiliate
         logo {
           sourceUrl
           title
@@ -133,6 +134,7 @@ export const placeTostayFragments = graphql`
       beach
       priceCheckingLinks {
         url
+        hotelAffiliate
         logo {
           altText
           sourceUrl
