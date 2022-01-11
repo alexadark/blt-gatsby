@@ -12,8 +12,8 @@ import { Modal } from "..";
 import FormatMapsData from "./FormatMapsData";
 import algoliasearch from "algoliasearch/lite";
 const searchClient = algoliasearch(
-  "E4TS2J6OFT",
-  "8878e427a5a3d373a179bab058ca2641"
+  process.env.GATSBY_ALGOLIA_APP_ID,
+  process.env.GATSBY_ALGOLIA_SEARCH_KEY
 );
 const index = searchClient.initIndex("BucketList");
 
@@ -33,12 +33,12 @@ function SearchMap(props) {
       });
   }, [mainState, currentRefinement]);
 
-  console.log(hits);
+  // console.log("hits", hits);
   if (!hits) {
     return null;
   }
   const allMapPoints = FormatMapsData(hits);
-  console.log(allMapPoints);
+  //console.log("allMapPoints", allMapPoints);
   if (!allMapPoints) {
     return null;
   }
