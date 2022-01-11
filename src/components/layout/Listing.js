@@ -56,14 +56,27 @@ export const Listing = ({
   } = customDataAttributes || {};
 
   profile = profile ? profile : "full";
+  const profileLink = profile === "full" || pts || itinerary || writer || roundUp || nested
 
   website = externalLink ? externalLink : website;
   uri =
-    profile === "full" || pts || itinerary || writer || roundUp || nested
+    profileLink
       ? uri
       : website
       ? website
       : "#";
+
+const WithLink = ({ children, link, uri, ...props }) => {
+  if (link) {
+    return (
+      <Link to={uri} {...props}>
+       {children}
+      </Link>
+    );
+  }
+  return <div {...props}>{children}</div>
+}
+
 
   const img = featuredImage ? (
     featuredImage.node.localFile ? (
@@ -95,9 +108,9 @@ export const Listing = ({
       <div className={clsx("flex justify-between")} {...props}>
         <div className="flex">
           {/* Left: Image */}
-          <Link to={`${uri}`} className="hover:no-underline">
+          <WithLink link={profileLink} to={`${uri}`} className="hover:no-underline">
             <div className="flex mr-5 w-[249px] ">{img}</div>
-          </Link>
+          </WithLink>
 
           {/* Middle: title content stars features */}
           <div
@@ -106,12 +119,12 @@ export const Listing = ({
             } flex flex-col justify-between`}
           >
             <div>
-              <Link to={`${uri}`} className="hover:no-underline ">
+              <WithLink to={`${uri}`} link={profileLink} className="hover:no-underline ">
                 <h2
                   className="font-bold leading-none text-grey4 text-f-24"
                   dangerouslySetInnerHTML={{ __html: title }}
                 />
-              </Link>
+              </WithLink>
 
               {city ||
                 region ||

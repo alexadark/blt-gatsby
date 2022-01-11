@@ -2,8 +2,9 @@ import React from "react";
 import clsx from "clsx";
 import { Button } from "./ui-components";
 
+
 export const Price = ({ priceCheckingLinks, website, className, ...props }) => {
-  //console.log({ priceCheckingLinks, website, className, ...props });
+
   return (
     <div
       className={clsx(
@@ -17,6 +18,9 @@ export const Price = ({ priceCheckingLinks, website, className, ...props }) => {
       <div className="relative flex flex-wrap items-center justify-center">
         {priceCheckingLinks &&
           priceCheckingLinks?.map((item, i) => {
+
+            const {hotelAffiliate, url, logo} = item || {};
+
             return (
               <a
                 href={item?.url ?? "/"}
@@ -24,10 +28,12 @@ export const Price = ({ priceCheckingLinks, website, className, ...props }) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                {item?.logo?.sourceUrl && (
+                {item?.hotelAffiliate && (
                   <img
-                    src={item?.logo?.sourceUrl}
-                    alt={item?.logo?.altText}
+                    src={`../../images/${hotelAffiliate}.svg`}
+                    width="100%"
+                    height="auto"
+                    alt={hotelAffiliate}
                     className="max-w-[100px] mx-3 mb-3 md:mb-0"
                   />
                 )}
