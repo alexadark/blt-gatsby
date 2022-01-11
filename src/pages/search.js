@@ -140,7 +140,7 @@ const SearchPage = () => {
                         "bg-white "
                       )}
                     >
-                      <div className="lg:max-w-[300px] relative px-5 pt-3 pb-10 mb-10 border border-grey2">
+                      <div className="relative px-5 pt-3 pb-10 mb-10 border border-grey2">
                         <div
                           className="absolute flex items-center justify-center border-2 cursor-pointer top-4 right-4 w-base2 h-base2 border-lightBlue lg:hidden"
                           onClick={(e) => {
