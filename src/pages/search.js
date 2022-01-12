@@ -126,7 +126,7 @@ const SearchPage = () => {
               </div>
               <SearchHit view={view} />
             </div>
-            <div className="w-full lg:w-1/3 xl:w-[320px]  lg:mt-base2  lg:mr-5 mb-base2 lg:mb-0 order-1 lg:order-2">
+            <div className="w-full lg:w-1/3 xl:w-[320px] lg:mr-5 mb-base2 lg:mb-0 order-1 lg:order-2">
               <Sticky enabled={min1024} bottomBoundary="#content">
                 <div>
                   <WithCollapse
