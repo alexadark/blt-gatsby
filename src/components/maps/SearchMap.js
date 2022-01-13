@@ -33,7 +33,7 @@ function SearchMap(props) {
       });
   }, [mainState, currentRefinement]);
 
-  // console.log("hits", hits);
+  console.log(mainState, hits?.length);
   if (!hits) {
     return null;
   }
