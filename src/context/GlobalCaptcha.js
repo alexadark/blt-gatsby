@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useRef } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha-enterprise";
+
 export const GlobalCaptchaContext = createContext();
 export function GlobalCaptchaProvider({ children }) {
   const globalCaptcha = useRef();
