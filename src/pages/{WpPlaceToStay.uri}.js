@@ -138,7 +138,7 @@ const PlaceToStayPage = ({ data }) => {
     {
       name: city,
       link: destinationsArray.includes(city?.toLowerCase())
-        ? `/destination/${city && slugs(city)}`
+        ? `/destination/best-things-to-do-in-${city && slugs(city)}`
         : `/search/?q=${city}`,
     },
   ].filter((term) => term.name);

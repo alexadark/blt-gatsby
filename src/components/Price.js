@@ -15,7 +15,7 @@ export const Price = ({ priceCheckingLinks, website, className, ...props }) => {
       {...props}
     >
       <div className="mb-3 md:mb-0">Check pricing & availability on:</div>
-      <div className="relative flex flex-wrap items-center justify-center">
+      <div className="relative flex flex-wrap items-center justify-between">
         {priceCheckingLinks &&
           priceCheckingLinks?.map((item, i) => {
 
