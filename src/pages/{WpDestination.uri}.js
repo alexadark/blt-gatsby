@@ -125,7 +125,7 @@ const DestinationPage = ({ data }) => {
     {
       name: region,
       link: destinationsArray.includes(region?.toLowerCase())
-        ? `/destination/best-things-to-do-in-${region && slugs(region)}`
+        ? `/destination/${region && slugs(region)}`
         : `/search/?q=${region}`,
     },
   ].filter((term) => term.name);
@@ -193,7 +193,7 @@ const DestinationPage = ({ data }) => {
         </CollapseSection>
 
         {/* Experiences */}
-        {experiences &&
+        {experiences?.length > 0 &&
           allExperiences?.map((exp) => {
             const { title, experiences, id } = exp;
             if (experiences === null || experiences?.length === 0) {
@@ -230,7 +230,7 @@ const DestinationPage = ({ data }) => {
           </CollapseSection>
         )}
         {/* Where to stay */}
-        {placesToStay && (
+        {placesToStay?.length > 0 && (
           <CollapseSection
             title="Where to stay"
             number={placesToStay?.length}
@@ -246,26 +246,37 @@ const DestinationPage = ({ data }) => {
         )}
 
         {/* Travel advice */}
-        <CollapseSection title="Travel advice" id="logistics">
-          <div className="space-y-base2">
-            <TitleContent title="When to go" content={whenToGo} />
-            <TitleContent
-              title="Getting there and away"
-              content={gettingThere}
-            />
-            <TitleContent title="Getting around" content={gettingAround} />
+        {(whenToGo ||
+          whereToEat ||
+          whereToShop ||
+          gettingThere ||
+          gettingAround ||
+          healthSafety ||
+          additionalSections) && (
+          <CollapseSection title="Travel advice" id="logistics">
+            <div className="space-y-base2">
+              <TitleContent title="When to go" content={whenToGo} />
+              <TitleContent
+                title="Getting there and away"
+                content={gettingThere}
+              />
+              <TitleContent title="Getting around" content={gettingAround} />
 
-            <TitleContent title="Where to eat or drink" content={whereToEat} />
-            <TitleContent title="Where to shop" content={whereToShop} />
-            <TitleContent title="Health & Safety" content={healthSafety} />
-            {additionalSections?.map((section, i) => {
-              const { title, content } = section;
-              return <TitleContent key={i} title={title} content={content} />;
-            })}
-          </div>
-        </CollapseSection>
+              <TitleContent
+                title="Where to eat or drink"
+                content={whereToEat}
+              />
+              <TitleContent title="Where to shop" content={whereToShop} />
+              <TitleContent title="Health & Safety" content={healthSafety} />
+              {additionalSections?.map((section, i) => {
+                const { title, content } = section;
+                return <TitleContent key={i} title={title} content={content} />;
+              })}
+            </div>
+          </CollapseSection>
+        )}
         {/* Tour operators */}
-        {tourOperators && (
+        {tourOperators?.length > 0 && (
           <CollapseSection
             title="Who to go with: tour operators"
             number={tourOperators?.length}
@@ -279,7 +290,7 @@ const DestinationPage = ({ data }) => {
           </CollapseSection>
         )}
         {/* Recommended itineraries */}
-        {itineraries && (
+        {itineraries?.length > 0 && (
           <CollapseSection
             title="Recommended itineraries"
             number={itineraries.length}
@@ -296,7 +307,7 @@ const DestinationPage = ({ data }) => {
           </CollapseSection>
         )}
         {/* Destination guides */}
-        {destinationGuides && (
+        {destinationGuides?.length > 0 && (
           <CollapseSection
             title="Destination guides"
             number={destinationGuides.length}
