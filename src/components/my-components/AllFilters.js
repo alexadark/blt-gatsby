@@ -10,6 +10,7 @@ export default function AllFilters({ facets, mainState }) {
   return (
     <>
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.recommendationType"]}
         attribute="customDataAttributes.recommendationType"
@@ -30,6 +31,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["commonDataAttributes.continent"]}
         attribute="commonDataAttributes.continent"
@@ -46,6 +48,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.setting"]}
         attribute="customDataAttributes.setting"
@@ -62,6 +65,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.theme"]}
         attribute="customDataAttributes.theme"
@@ -77,6 +81,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.whenAvailable"]}
         attribute="customDataAttributes.whenAvailable"
@@ -85,6 +90,7 @@ export default function AllFilters({ facets, mainState }) {
         className={clsx({ hidden: shouldVisible(["Experience"]) })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.bestTime"]}
         attribute="customDataAttributes.bestTime"
@@ -100,6 +106,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.whoFor"]}
         attribute="customDataAttributes.whoFor"
@@ -114,6 +121,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.priceGuide"]}
         attribute="customDataAttributes.priceGuide"
@@ -125,6 +133,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.priceGuideExp"]}
         attribute="customDataAttributes.priceGuideExp"
@@ -134,6 +143,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.experienceType"]}
         attribute="customDataAttributes.experienceType"
@@ -143,6 +153,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.attractionType"]}
         attribute="customDataAttributes.attractionType"
@@ -152,6 +163,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.activityType"]}
         attribute="customDataAttributes.activityType"
@@ -161,6 +173,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.eventType"]}
         attribute="customDataAttributes.eventType"
@@ -170,6 +183,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.standard"]}
         attribute="customDataAttributes.standard"
@@ -179,6 +193,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.starRating"]}
         attribute="customDataAttributes.starRating"
@@ -191,6 +206,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.accommodationType"]}
         attribute="customDataAttributes.accommodationType"
@@ -200,6 +216,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.roomType"]}
         attribute="customDataAttributes.roomType"
@@ -209,6 +226,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.hotelFacility"]}
         attribute="customDataAttributes.hotelFacility"
@@ -218,6 +236,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.roomFacility"]}
         attribute="customDataAttributes.roomFacility"
@@ -227,6 +246,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.forFamilies"]}
         attribute="customDataAttributes.forFamilies"
@@ -237,6 +257,7 @@ export default function AllFilters({ facets, mainState }) {
       />
       {/* {Inclusions missing} */}
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.skiFacilities"]}
         attribute="customDataAttributes.skiFacilities"
@@ -246,6 +267,7 @@ export default function AllFilters({ facets, mainState }) {
         })}
       />
       <CustomRefinementList
+        limit={40}
         state={mainState}
         values={facets["customDataAttributes.brand"]}
         attribute="customDataAttributes.brand"
