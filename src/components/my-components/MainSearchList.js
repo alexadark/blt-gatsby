@@ -14,6 +14,7 @@ const MainSearchList = (props) => {
     setMainState,
     setTotalSearchHit,
   } = props;
+
   const [dataFound, setDataFound] = useState(false);
   const [searchResultCount, setSearchResultCount] = useState({
     All: 0,
@@ -124,7 +125,7 @@ const MainSearchList = (props) => {
                   }
                 }}
               >
-                {staticItem.label}
+                {convertName(staticItem.label)}
                 <span className="ml-1">
                   [{searchResultCount[staticItem.value]}]
                 </span>
@@ -137,3 +138,14 @@ const MainSearchList = (props) => {
   );
 };
 export default connectRefinementList(MainSearchList);
+function convertName(name) {
+  switch (name) {
+    case "PlaceToStay":
+      return "Place to Stay";
+      break;
+
+    default:
+      return name;
+      break;
+  }
+}

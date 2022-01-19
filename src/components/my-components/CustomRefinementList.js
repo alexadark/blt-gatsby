@@ -33,7 +33,7 @@ const CustomRefinementList = (props) => {
     showAsSymbol = false,
     symbol,
   } = props;
-
+  //console.log(values);
   useEffect(() => {
     //console.log("should be resetting");
     refine([]);
@@ -131,12 +131,9 @@ const CustomRefinementList = (props) => {
                     key={staticItem.value}
                   >
                     <label
-                      className={clsx(
-                        "input-item leading-tight text-grey4 capitalize ",
-                        {
-                          "cursor-not-allowed ": !count,
-                        }
-                      )}
+                      className={clsx("input-item leading-tight text-grey4", {
+                        "cursor-not-allowed ": !count,
+                      })}
                     >
                       <input
                         type="checkbox"
