@@ -25,7 +25,7 @@ function SearchMap(props) {
     index
       .search(currentRefinement, {
         facetFilters: mainState === "All" ? [] : [`nodeType:${mainState}`],
-        hitsPerPage: 100,
+        hitsPerPage: 1000,
       })
       .then(({ hits }) => {
         setHits(hits);

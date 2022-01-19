@@ -10,12 +10,9 @@ export const Layout = ({ children, page, type = "page", ...props }) => {
 
   const fullWidthClass = pageTemplate === "full width" ? "fullWidth" : "";
 
-
-
   return (
     <>
       <HelmetForFavicon />
-
       <div
         className={clsx(
           "flex min-h-full flex-col",
