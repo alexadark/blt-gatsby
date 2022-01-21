@@ -21,21 +21,14 @@ import { Newsletter } from "../components/Newsletter";
 import { window } from "browser-monads";
 
 const BucketListPage = () => {
-  //   const { data: filters } = filtersData
   let [lsItems, setLsItems] = useLocalStorage("bucketList", []);
-  //   const [openFilters, setOpenFilters] = useState(false)
   let [isOpenModal, setIsOpenModal] = useState(false);
-
   const url = window.location.href;
-
-  // let { bucketListId, items } = useContext(GlobalStateContext);
   const { loggedIn } = useAuth();
-
   const updateBlMutation = useUpdateBucketList();
 
   const { data, loading } = useDbBucketList();
   const bl = data?.bucketLists?.nodes[0];
-  // const blItems = bl?.bucketListElements?.blLinks;
   const items = lsItems;
 
   const emptyBl = () => {
@@ -51,35 +44,21 @@ const BucketListPage = () => {
         },
       });
   };
-  console.log(items);
-  const roundUpsItems = items?.filter(
-    (item) => item.__typename === "WpRoundUp_Roundupdataattributes_links"
-  );
-  const otherItems = items?.filter(
-    (item) => item.__typename !== "WpRoundUp_Roundupdataattributes_links"
-  );
-  const roundUpsCountries = roundUpsItems?.map(
-    (item) => item.link[0].commonDataAttributes?.country?.name
-  ) || ["1"];
 
-  const otherCountries = otherItems?.map(
+  const allCountries = items?.map(
     (item) => item.commonDataAttributes?.country?.name
   ) || ["1"];
 
-  const countries = uniq([...roundUpsCountries, ...otherCountries]);
+  const countries = uniq(allCountries);
   const breadcrumbsTerms = [
     { name: "home", link: "/" },
     { name: "My lists" },
     { name: "Bucket list" },
   ];
 
-  // const countries = uniq([...roundUpsCountries, ...otherCountries]);
   return (
     <Layout>
       <Breadcrumbs terms={breadcrumbsTerms} />
-
-      {/* <Toaster position="bottom-center" reverseOrder={false} /> */}
-
       <EmptyModal
         title="Empty bucket list"
         text="Are you sure? this cannot be undone."
@@ -100,15 +79,10 @@ const BucketListPage = () => {
       >
         {items?.length > 0 ? (
           countries?.map((country, i) => {
-            const countryRoundUps = roundUpsItems.filter(
-              (item) =>
-                item.link[0].commonDataAttributes?.country?.name === country
-            );
-
-            const otherItemsByCountry = otherItems.filter(
+            const allItems = items.filter(
               (item) => item?.commonDataAttributes?.country?.name === country
             );
-            const allItems = [...countryRoundUps, ...otherItemsByCountry];
+
             return (
               <div key={i} className="bg-white">
                 <CollapseSection title={country} listings>

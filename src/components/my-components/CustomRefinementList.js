@@ -33,10 +33,8 @@ const CustomRefinementList = (props) => {
     showAsSymbol = false,
     symbol,
   } = props;
-  // console.log(title);
-  // console.log(items);
+
   useEffect(() => {
-    //console.log("should be resetting");
     refine([]);
   }, [state]);
 
