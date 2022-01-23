@@ -25,6 +25,21 @@ export default function HTML(props) {
           src="https://consent.cookiefirst.com/banner.js"
           data-cookiefirst-key="d9189a97-cf3d-4e69-ab78-38130e01274f"
         ></script>
+
+        <script
+          id="mcjs"
+          dangerouslySetInnerHTML={{
+            __html: `          !function(c,h,i,m,p)
+          {
+            ((m = c.createElement(h)),
+            (p = c.getElementsByTagName(h)[0]),
+            (m.async = 1),
+            (m.src = i),
+            p.parentNode.insertBefore(m, p))
+          }
+          (document,"script","https://chimpstatic.com/mcjs-connected/js/users/41a2fd602212b6bd36c51b724/77104eceb0adda5b29b51b0a7.js");`,
+          }}
+        />
       </body>
     </html>
   );
