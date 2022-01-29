@@ -17,13 +17,13 @@ async function validateHuman(token) {
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
   const siteKey = process.env.GATSBY_RECAPTCHA_SITE_KEY;
   const projectID = "bucket-list-with-1520349505342";
-  //console.log(token);
   const response = await fetch(
     `https://recaptchaenterprise.googleapis.com/v1beta1/projects/${projectID}/assessments?key=${secretKey}`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Referer: "https://blt2021.gatsbyjs.io/",
       },
       body: JSON.stringify({
         event: {
@@ -35,7 +35,20 @@ async function validateHuman(token) {
     }
   );
   const data = await response.json();
-  console.log(data);
 
-  return false;
+  let valid = data?.tokenProperties?.valid ?? false;
+  let score = data?.score ?? 0.0;
+
+  let isvalid = valid && score >= 0.5;
+
+  console.log({
+    valid,
+    score,
+    userIp: data?.event?.userIpAddress,
+  });
+  if (isvalid) {
+    return true;
+  } else {
+    return false;
+  }
 }
