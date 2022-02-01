@@ -157,9 +157,9 @@ const CustomRefinementList = (props) => {
                         }}
                       />
                       {!showAsSymbol && (
-                        <>
+                        <span className="filter-text-uppercase inline-block">
                           {staticItem.label} {extraText ? extraText : ""}
-                        </>
+                        </span>
                       )}
                       {showAsSymbol && (
                         <div className="inline-block">

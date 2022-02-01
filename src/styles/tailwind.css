@@ -112,3 +112,6 @@
     @apply px-2 py-3 text-sm h-7;
   }
 }
+.filter-text-uppercase:first-letter {
+  text-transform: uppercase;
+}
