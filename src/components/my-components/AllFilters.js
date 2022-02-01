@@ -138,6 +138,7 @@ export default function AllFilters({ facets, mainState }) {
         values={facets["customDataAttributes.priceGuideExp"]}
         attribute="customDataAttributes.priceGuideExp"
         title="Price Guide"
+        showpriceGuide={true}
         className={clsx({
           hidden: shouldVisible(["Experience"]),
         })}

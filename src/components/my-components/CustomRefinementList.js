@@ -31,6 +31,7 @@ const CustomRefinementList = (props) => {
       "december",
     ],
     showAsSymbol = false,
+    showpriceGuide = false,
     symbol,
   } = props;
 
@@ -156,11 +157,17 @@ const CustomRefinementList = (props) => {
                           refine(next);
                         }}
                       />
-                      {!showAsSymbol && (
+                      {!showAsSymbol && !showpriceGuide && (
                         <span className="filter-text-uppercase inline-block">
                           {staticItem.label} {extraText ? extraText : ""}
                         </span>
                       )}
+                      {showpriceGuide && (
+                        <span className="filter-text-uppercase inline-block">
+                          {priceguideCase(staticItem.label)}
+                        </span>
+                      )}
+
                       {showAsSymbol && (
                         <div className="inline-block">
                           {Array.from({
@@ -216,3 +223,27 @@ const CustomRefinementList = (props) => {
   );
 };
 export default connectRefinementList(CustomRefinementList);
+
+function priceguideCase(label) {
+  switch (label) {
+    case "1-10":
+      return "£";
+      break;
+    case "11-20":
+      return "£ £";
+      break;
+    case "21-30":
+      return "£ £ £";
+      break;
+    case "31-50":
+      return "£ £ £ £";
+      break;
+    case "50+":
+      return "£ £ £ £ £";
+      break;
+
+    default:
+      return label;
+      break;
+  }
+}
