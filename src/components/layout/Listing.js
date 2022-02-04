@@ -26,6 +26,7 @@ export const Listing = ({
 }) => {
   const [open, setOpen] = useState(false);
 
+
   let { title, intro, externalLink, link, databaseId } = item || {};
 
   const distanceObject = JSON.parse(distance);
@@ -148,7 +149,7 @@ const WithLink = ({ children, link, uri, ...props }) => {
                 className="mt-4 mb-3 mr-2 leading-tight prose"
               />
             </div>
-
+  {!roundUp &&
             <ListingBottomInfo
               starRating={starRating}
               age={ageBestSuitedFrom}
@@ -156,6 +157,7 @@ const WithLink = ({ children, link, uri, ...props }) => {
               whenIsIt={whenIsIt}
               duration={duration}
             />
+      }
           </div>
         </div>
 

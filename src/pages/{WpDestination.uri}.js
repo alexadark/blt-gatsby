@@ -87,9 +87,10 @@ const DestinationPage = ({ data }) => {
     (exp) => exp.customDataAttributes.isBucketList === "yes"
   );
   const otherExperiences = experiences
-    ?.filter((exp) => exp.customDataAttributes.isBucketList === "no")
-    .filter((exp) => exp.customDataAttributes.isGenericRecommendation === "no");
+  ?.filter((exp) => exp.customDataAttributes.isBucketList === "no")
+  .filter((exp) => exp.customDataAttributes.isGenericRecommendation === "no");
 
+  console.log("BL", otherExperiences);
   const allExperiences = [
     {
       title: "Bucket list experiences",

@@ -2,9 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import { Button } from "./ui-components";
 
-
 export const Price = ({ priceCheckingLinks, website, className, ...props }) => {
-
   return (
     <div
       className={clsx(
@@ -18,8 +16,7 @@ export const Price = ({ priceCheckingLinks, website, className, ...props }) => {
       <div className="relative flex flex-wrap items-center justify-between">
         {priceCheckingLinks &&
           priceCheckingLinks?.map((item, i) => {
-
-            const {hotelAffiliate, url, logo} = item || {};
+            const { hotelAffiliate, url, logo } = item || {};
 
             return (
               <a
@@ -34,7 +31,7 @@ export const Price = ({ priceCheckingLinks, website, className, ...props }) => {
                     width="100%"
                     height="auto"
                     alt={hotelAffiliate}
-                    className="max-w-[100px] mx-3 mb-3 md:mb-0"
+                    className="max-w-[100px] mx-3 mb-3 md:mb-0 border border-slate-100 rounded-md px-4 py-1 min-w-[110px] md:min-w-[149px]"
                   />
                 )}
               </a>
