@@ -84,6 +84,7 @@ export const RecentlyViewed = ({ className, ...props }) => {
                       <Image
                         img={localFile}
                         alt={altText}
+                        loading="eager"
                         // className="w-full h-[233px] sm:h-[127px]"
                       />
                     ) : (

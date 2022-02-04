@@ -87,6 +87,7 @@ const WithLink = ({ children, link, uri, ...props }) => {
         height={166}
         objectFit="cover"
         objectPosition="center"
+        loading="eager"
       />
     ) : (
       <img
