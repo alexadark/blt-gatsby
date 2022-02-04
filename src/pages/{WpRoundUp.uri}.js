@@ -17,6 +17,7 @@ import filters from "../utils/FiltersData";
 import { useSeoGeneral } from "../lib/hooks/useSeoGeneral";
 import { Seo } from "@gatsbywpthemes/gatsby-plugin-wp-seo";
 import DetailPageMap from "./../components/maps/DetailPageMap";
+import { useRecentlyViewed } from "../lib/hooks/useRecentlyViewed";
 
 const RoundupPage = ({ data }) => {
   console.log("data", data);
@@ -38,6 +39,7 @@ const RoundupPage = ({ data }) => {
   const url = window.location.href;
 
   const {
+    id,
     title,
     commonDataAttributes,
     customDataAttributes,
@@ -46,6 +48,7 @@ const RoundupPage = ({ data }) => {
     featuredImage,
     uri,
   } = roundUp || {};
+  useRecentlyViewed({ title, featuredImage, uri, id });
 
   const { about } = commonDataAttributes || {};
   const { links } = customDataAttributes || {};

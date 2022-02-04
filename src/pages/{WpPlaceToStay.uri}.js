@@ -38,6 +38,7 @@ const PlaceToStayPage = ({ data }) => {
   const { wpPlaceToStay: pts } = data || {};
 
   const {
+    id,
     title,
     modified,
     commonDataAttributes,
@@ -47,7 +48,7 @@ const PlaceToStayPage = ({ data }) => {
     databaseId,
   } = pts || {};
 
-  useRecentlyViewed({ title, featuredImage, uri });
+  useRecentlyViewed({ title, featuredImage, uri, id });
 
   const seoGeneral = useSeoGeneral();
   const seo = {

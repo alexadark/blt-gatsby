@@ -27,6 +27,7 @@ const ItineraryPage = ({ data }) => {
   const { wpItinerary: itinerary } = data || {};
 
   const {
+    id,
     modified,
     uri,
     title,
@@ -36,7 +37,7 @@ const ItineraryPage = ({ data }) => {
     featuredImage,
   } = itinerary || {};
 
-  useRecentlyViewed({ title, featuredImage, uri });
+  useRecentlyViewed({ title, featuredImage, uri, id });
 
   const seoGeneral = useSeoGeneral();
   const seo = {

@@ -24,6 +24,7 @@ const slugs = (string) => slugify(string, { lower: true, strict: true });
 const ExperiencePage = ({ data }) => {
   const { wpExperience: experience } = data || {};
   let {
+    id,
     title,
     uri,
     featuredImage,
@@ -73,7 +74,7 @@ const ExperiencePage = ({ data }) => {
 
   const parsedViAffiliate = viAffiliate?.map((item) => JSON.parse(item));
 
-  useRecentlyViewed({ title, featuredImage, uri });
+  useRecentlyViewed({ title, featuredImage, uri, id });
   const url = window.location.href;
 
   viAffiliate = viAffiliate || [];

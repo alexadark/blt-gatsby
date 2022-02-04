@@ -34,6 +34,7 @@ const DestinationPage = ({ data }) => {
   const seoGeneral = useSeoGeneral();
 
   const {
+    id,
     title,
     modified,
     commonDataAttributes,
@@ -50,7 +51,7 @@ const DestinationPage = ({ data }) => {
     general: seoGeneral?.wp?.seo,
   };
 
-  const rvData = { title, featuredImage, uri };
+  const rvData = { title, featuredImage, uri, id };
   useRecentlyViewed(rvData);
 
   const {
@@ -87,8 +88,8 @@ const DestinationPage = ({ data }) => {
     (exp) => exp.customDataAttributes.isBucketList === "yes"
   );
   const otherExperiences = experiences
-  ?.filter((exp) => exp.customDataAttributes.isBucketList === "no")
-  .filter((exp) => exp.customDataAttributes.isGenericRecommendation === "no");
+    ?.filter((exp) => exp.customDataAttributes.isBucketList === "no")
+    .filter((exp) => exp.customDataAttributes.isGenericRecommendation === "no");
 
   console.log("BL", otherExperiences);
   const allExperiences = [
