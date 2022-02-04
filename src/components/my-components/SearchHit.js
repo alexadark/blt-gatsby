@@ -11,7 +11,7 @@ const SearchHit = ({ hits, hasMore, view, refineNext }) => {
   let listView = view || "list";
 
   const results = hits;
-  //console.log("results", results);
+
 
   const isList = useMediaQuery("(min-width:768px)");
 
@@ -29,6 +29,7 @@ const SearchHit = ({ hits, hasMore, view, refineNext }) => {
             <Section className={clsx("p-5 md:p-8  mb-base2")}>
               {results.map((item) => {
                 const { id, nodeType } = item;
+
 
                 return (
                   <Listing

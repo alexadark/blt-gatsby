@@ -26,7 +26,6 @@ export const Listing = ({
 }) => {
   const [open, setOpen] = useState(false);
 
-
   let { title, intro, externalLink, link, databaseId } = item || {};
 
   const distanceObject = JSON.parse(distance);
@@ -57,27 +56,22 @@ export const Listing = ({
   } = customDataAttributes || {};
 
   profile = profile ? profile : "full";
-  const profileLink = profile === "full" || pts || itinerary || writer || roundUp || nested
+  const profileLink =
+    profile === "full" || pts || itinerary || writer || roundUp || nested;
 
   website = externalLink ? externalLink : website;
-  uri =
-    profileLink
-      ? uri
-      : website
-      ? website
-      : "#";
+  uri = profileLink ? uri : website ? website : "#";
 
-const WithLink = ({ children, link, uri, ...props }) => {
-  if (link) {
-    return (
-      <Link to={uri} {...props}>
-       {children}
-      </Link>
-    );
-  }
-  return <div {...props}>{children}</div>
-}
-
+  const WithLink = ({ children, link, uri, ...props }) => {
+    if (link) {
+      return (
+        <Link to={uri} {...props}>
+          {children}
+        </Link>
+      );
+    }
+    return <div {...props}>{children}</div>;
+  };
 
   const img = featuredImage ? (
     featuredImage.node.localFile ? (
@@ -110,7 +104,11 @@ const WithLink = ({ children, link, uri, ...props }) => {
       <div className={clsx("flex justify-between")} {...props}>
         <div className="flex">
           {/* Left: Image */}
-          <WithLink link={profileLink} to={`${uri}`} className="hover:no-underline">
+          <WithLink
+            link={profileLink}
+            to={`${uri}`}
+            className="hover:no-underline"
+          >
             <div className="flex mr-5 w-[249px] ">{img}</div>
           </WithLink>
 
@@ -121,7 +119,11 @@ const WithLink = ({ children, link, uri, ...props }) => {
             } flex flex-col justify-between`}
           >
             <div>
-              <WithLink to={`${uri}`} link={profileLink} className="hover:no-underline ">
+              <WithLink
+                to={`${uri}`}
+                link={profileLink}
+                className="hover:no-underline "
+              >
                 <h2
                   className="font-bold leading-none text-grey4 text-f-24"
                   dangerouslySetInnerHTML={{ __html: title }}
@@ -138,7 +140,7 @@ const WithLink = ({ children, link, uri, ...props }) => {
                   </div>
                 ))}
               {distance && distanceObject?.[databaseId] && (
-                <span className="distance inline-block ml-2 font-bold">
+                <span className="inline-block ml-2 font-bold distance">
                   [{distanceToParent} miles]
                 </span>
               )}
@@ -149,15 +151,15 @@ const WithLink = ({ children, link, uri, ...props }) => {
                 className="mt-4 mb-3 mr-2 leading-tight prose"
               />
             </div>
-  {!roundUp &&
-            <ListingBottomInfo
-              starRating={starRating}
-              age={ageBestSuitedFrom}
-              priceFrom={priceFrom}
-              whenIsIt={whenIsIt}
-              duration={duration}
-            />
-      }
+            {!roundUp && item.nodeType !== "destination" && (
+              <ListingBottomInfo
+                starRating={starRating}
+                age={ageBestSuitedFrom}
+                priceFrom={priceFrom}
+                whenIsIt={whenIsIt}
+                duration={duration}
+              />
+            )}
           </div>
         </div>
 

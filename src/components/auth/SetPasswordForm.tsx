@@ -1,6 +1,6 @@
-import React, { useState } from "react"
-import { useMutation, gql } from "@apollo/client"
-import { Label, Input, Button } from "../ui-components"
+import React, { useState } from "react";
+import { useMutation, gql } from "@apollo/client";
+import { Label, Input, Button } from "../ui-components";
 
 const RESET_PASSWORD = gql`
   mutation resetUserPassword(
@@ -16,25 +16,25 @@ const RESET_PASSWORD = gql`
       }
     }
   }
-`
+`;
 
 interface Props {
-  resetKey: string
-  login: string
+  resetKey: string;
+  login: string;
 }
 
 export function SetPasswordForm({ resetKey: key, login }: Props) {
-  const [password, setPassword] = useState("")
-  const [passwordConfirm, setPasswordConfirm] = useState("")
-  const [clientErrorMessage, setClientErrorMessage] = useState("")
-  const [resetPassword, { data, loading, error }] = useMutation(RESET_PASSWORD)
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [clientErrorMessage, setClientErrorMessage] = useState("");
+  const [resetPassword, { data, loading, error }] = useMutation(RESET_PASSWORD);
 
-  const wasPasswordReset = Boolean(data?.resetUserPassword?.user)
+  const wasPasswordReset = Boolean(data?.resetUserPassword?.user);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const isValid = validate()
-    if (!isValid) return
+    event.preventDefault();
+    const isValid = validate();
+    if (!isValid) return;
 
     resetPassword({
       variables: {
@@ -43,39 +43,35 @@ export function SetPasswordForm({ resetKey: key, login }: Props) {
         password,
       },
     }).catch((error) => {
-      console.error(error)
-    })
+      console.error(error);
+    });
   }
 
   function validate() {
-    setClientErrorMessage("")
+    setClientErrorMessage("");
 
-    const isPasswordLongEnough = password.length >= 5
+    const isPasswordLongEnough = password.length >= 5;
     if (!isPasswordLongEnough) {
-      setClientErrorMessage("Password must be at least 5 characters.")
-      return false
+      setClientErrorMessage("Password must be at least 5 characters.");
+      return false;
     }
 
-    const doPasswordsMatch = password === passwordConfirm
+    const doPasswordsMatch = password === passwordConfirm;
     if (!doPasswordsMatch) {
-      setClientErrorMessage("Passwords must match.")
-      return false
+      setClientErrorMessage("Passwords must match.");
+      return false;
     }
 
-    return true
+    return true;
   }
 
   if (wasPasswordReset) {
     return (
       <div className="flex justify-center">
-        <p
-          className={`orange-box`}
-        >
-          Your new password has been set
-        </p>
+        <p className={`orange-box`}>Your new password has been set</p>
         {/*{setIsOpen(true)}*/}
       </div>
-    )
+    );
   }
 
   return (
@@ -101,7 +97,7 @@ export function SetPasswordForm({ resetKey: key, login }: Props) {
               <Label htmlFor="password-confirm" className={"!text-white"}>
                 Confirm Password
               </Label>
-              <input
+              <Input
                 id="password-confirm"
                 type="password"
                 value={passwordConfirm}
@@ -113,18 +109,22 @@ export function SetPasswordForm({ resetKey: key, login }: Props) {
             </div>
           </div>
           {clientErrorMessage ? (
-            <p
-              className={`error-message bg-red-300 font-semiBold text-xl py-2 px-5 text-red-500 rounded-md mb-5 inline-block`}
-            >
-              {clientErrorMessage}
-            </p>
+            <div className="flex justify-center">
+              <p
+                className={`error-message bg-orange font-semiBold text-xl py-2 px-5 text-white rounded-md mb-5 inline-block`}
+              >
+                {clientErrorMessage}
+              </p>
+            </div>
           ) : null}
           {error ? (
-            <p
-              className={`error-message bg-red-300 font-semiBold text-xl py-2 px-5 text-red-500 rounded-md mb-5 inline-block`}
-            >
-              {error.message}
-            </p>
+            <div className="flex justify-center">
+              <p
+                className={`error-message bg-orange font-semiBold text-xl py-2 px-5 text-white rounded-md mb-5 inline-block`}
+              >
+                {error.message}
+              </p>
+            </div>
           ) : null}
 
           <div className="flex justify-center">
@@ -139,5 +139,5 @@ export function SetPasswordForm({ resetKey: key, login }: Props) {
         </fieldset>
       </form>
     </>
-  )
+  );
 }
