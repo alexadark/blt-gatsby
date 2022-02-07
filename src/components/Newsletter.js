@@ -40,7 +40,9 @@ const EnvelopeInput = ({
       />
       <Input
         type="email"
-        name="email"
+        name="EMAIL"
+        id="mce-EMAIL"
+        required={true}
         placeholder={placeholder}
         className={clsx(
           " pl-12 !placeholder-grey3 focus:!placeholder-transparent text-text",
@@ -57,22 +59,31 @@ const EbookCheckboxes = ({ homeNl }) => {
   return (
     <>
       <Checkbox
-        id="ebook"
-        label="Our e-book of the top 200 must-do travel experiences"
+        type="checkbox"
+        value="1"
+        name="group[183162][1]"
+        id="mce-group[183162]-183162-0"
+        label="Newsletter"
         className="mb-8"
         large
         homeNl={homeNl}
       />
       <Checkbox
-        id="round-up"
-        label="Our newsletter round-up of ideas & inspiration"
+        type="checkbox"
+        value="2"
+        name="group[183162][2]"
+        id="mce-group[183162]-183162-1"
+        label="An email every 6m reminding you we're here"
         className="mb-8"
         large
         homeNl={homeNl}
       />
       <Checkbox
-        id="reminder"
-        label="A reminder every 6 months that we're here"
+        type="checkbox"
+        value="4"
+        name="group[183162][4]"
+        id="mce-group[183162]-183162-2"
+        label="Free eBook of world's Top 250 bucket list travel experiences"
         className="mb-8"
         large
         homeNl={homeNl}
@@ -157,14 +168,22 @@ const NewsletterHome = ({ className, ...props }) => {
           )}
         </div>
 
-        <div>
+        <div id="mc_embed_signup">
           <div className="inline-block">
             <h3 className="font-light sm:text-[48px] inline-block text-grey5 leading-none">
               Want one of these?
             </h3>
             <Underline mb="mb-base2" />
           </div>
-          <form>
+          <form
+            action="https://bucketlisttravels.us20.list-manage.com/subscribe/post?u=41a2fd602212b6bd36c51b724&amp;id=b59df86e24"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            className="validate"
+            target="_blank"
+            novalidate
+          >
             <EbookCheckboxes homeNl />
             <div className="relative">
               <EnvelopeInput
@@ -174,10 +193,36 @@ const NewsletterHome = ({ className, ...props }) => {
                 placeholder="Enter your email here"
                 className="text-[20px]"
               />
+              <div className="h">
+                <div id="mce-responses" className="clear">
+                  <div
+                    className="response"
+                    id="mce-error-response"
+                    style={{ display: "none" }}
+                  ></div>
+                  <div
+                    className="response"
+                    id="mce-success-response"
+                    style={{ display: "none" }}
+                  ></div>
+                </div>
+                <div
+                  style={{ position: "absolute", left: "-5000px" }}
+                  aria-hidden="true"
+                >
+                  <input
+                    type="text"
+                    name="b_41a2fd602212b6bd36c51b724_b59df86e24"
+                    tabindex="-1"
+                    value=""
+                  />
+                </div>
+              </div>
               <Button
                 as="input"
                 type="submit"
                 value="submit"
+                id="mc-embedded-subscribe"
                 className={clsx("absolute top-0 right-0", "h-full w-[131px]")}
               />
             </div>

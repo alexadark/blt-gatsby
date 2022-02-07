@@ -3,9 +3,7 @@ import { NewsletterHome } from "../Newsletter";
 import { Awards } from "./Awards";
 import { HomeHero } from "./HomeHero";
 import { WhatWeOffer } from "./WhatWeOffer";
-
 export const FrontPage = ({ homeHero, whatWeOffer, url, awards }) => {
-
   return (
     <>
       <HomeHero homeHero={homeHero} />
