@@ -1,5 +1,5 @@
-import React from "react"
-import { StarIcons } from "../ui-components"
+import React from "react";
+import { StarIcons } from "../ui-components";
 
 export const ListingBottomInfo = ({
   starRating,
@@ -10,7 +10,6 @@ export const ListingBottomInfo = ({
   card,
   className,
 }) => {
-
   return (
     <>
       {starRating ? (
@@ -18,15 +17,23 @@ export const ListingBottomInfo = ({
           <StarIcons stars={parseInt(starRating)} small card={card} />
         </div>
       ) : (
-
-         <div className={`flex mt-4 text-grey4 ${card && 'md:hidden'} ${className ? className : ""}`}>
-         {
-           `Ages: ${!age ? "Any " : age + "+ "}`}
-           {priceFrom ? ` |  Price from: ${priceFrom.toLowerCase() === "varies" ? priceFrom : "£" + priceFrom }`: `  | Price: Free`}
-           {duration && ` | Duration: ${duration}`}
-           {whenIsIt && ` | When: ${whenIsIt}`}
-       </div>
+        <div
+          className={`flex mt-4 text-grey4 ${card && "md:hidden"} ${
+            className ? className : ""
+          }`}
+        >
+          {`Ages: ${!age ? "Any " : age + "+ "}`}
+          {priceFrom
+            ? ` |  Price from: ${
+                priceFrom.toLowerCase() === "varies"
+                  ? priceFrom
+                  : "£" + priceFrom
+              }`
+            : `  | Price: Free`}
+          {duration && ` | Duration: ${duration}`}
+          {whenIsIt && ` | When: ${whenIsIt}`}
+        </div>
       )}
     </>
-  )
-}
+  );
+};

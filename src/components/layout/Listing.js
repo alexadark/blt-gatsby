@@ -151,7 +151,7 @@ export const Listing = ({
                 className="mt-4 mb-3 mr-2 leading-tight prose"
               />
             </div>
-            {!roundUp && item.nodeType !== "destination" && (
+            {!roundUp && item.nodeType !== "Destination" && (
               <ListingBottomInfo
                 starRating={starRating}
                 age={ageBestSuitedFrom}
