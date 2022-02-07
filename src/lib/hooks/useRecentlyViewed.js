@@ -14,7 +14,7 @@ export const useRecentlyViewed = (data) => {
       const withOutCurrentItem = bucket.filter(
         (bucketItem) => bucketItem.id !== data.id
       );
-      setBucket([data, ...withOutCurrentItem]?.slice(0, 10));
+      setBucket([...withOutCurrentItem, data]?.slice(0, 10));
     }
   }, []);
 };

@@ -9,7 +9,7 @@ import { Image } from "../images";
 import noImage from "../../images/noimage.svg";
 
 export const RecentlyViewed = ({ className, ...props }) => {
-  const RawRvData = ls("recentlyViewed") || [];
+  const RawRvData = ls("recentlyViewed")?.reverse() || [];
   const rvData = RawRvData.filter(
     (item) => item?.id !== undefined && item?.id !== null
   );

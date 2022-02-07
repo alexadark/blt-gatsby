@@ -82,7 +82,7 @@ export const Listing = ({
         height={166}
         objectFit="cover"
         objectPosition="center"
-        loading="eager"
+        //loading="eager"
       />
     ) : (
       <img
