@@ -50,7 +50,7 @@ const CustomRefinementList = (props) => {
     });
   }
 
-  const filteredValues = orderAlphabetically
+  const filteredValuesOrder = orderAlphabetically
     ? values.sort(function (a, b) {
         var nameA = a.label.toUpperCase();
         var nameB = b.label.toUpperCase();
@@ -64,8 +64,17 @@ const CustomRefinementList = (props) => {
       })
     : sortCustomArray(values);
 
-  const firstFour = filteredValues.slice(0, 4);
-  const haveMore = filteredValues.slice(4, filteredValues.length).length;
+  function sortCustomArrayTwo(arr) {
+    let lastArrayItem = arr.filter((item) => item.label === "free");
+    let excludedLatItemArray = arr.filter((item) => item.label !== "free");
+    return [...lastArrayItem, ...excludedLatItemArray];
+  }
+  let filteredValues = showpriceGuide
+    ? sortCustomArrayTwo(filteredValuesOrder)
+    : filteredValuesOrder;
+
+  const firstFour = filteredValues?.slice(0, 4);
+  const haveMore = filteredValues?.slice(4, filteredValues.length).length;
   const [arrayItems, setArrayItems] = useState(firstFour);
   if (!values) {
     return (

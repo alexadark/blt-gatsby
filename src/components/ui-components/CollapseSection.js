@@ -28,6 +28,7 @@ export const CollapseSection = ({
   const collapseContainer = useRef(null);
   useEffect(() => {
     const isDefaultOpen = window.matchMedia("(min-width: 768px)").matches;
+    console.log(isDefaultOpen);
     const currentElm = collapseContainer?.current;
     if (!open && !isDefaultOpen && buttonLocation) {
       currentElm.scrollIntoView();
