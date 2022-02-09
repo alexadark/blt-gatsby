@@ -13,19 +13,15 @@ export const CollapseSection = ({
   listings,
   ...props
 }) => {
-  // const min768 = useMediaQuery('(min-width: 768px)')
-
-  // const isDefaultOpen = exists(window) ? min768 : undefined
-  console.log(title);
   const [open, setOpen] = useState(true);
   const [buttonLocation, setButtonLocation] = useState(false);
+  const collapseContainer = useRef(null);
 
   useEffect(() => {
     const isDefaultOpen = window.matchMedia("(min-width: 768px)").matches;
     !isDefaultOpen && setOpen(isDefaultOpen);
   }, []);
 
-  const collapseContainer = useRef(null);
   useEffect(() => {
     const isDefaultOpen = window.matchMedia("(min-width: 768px)").matches;
     console.log(isDefaultOpen);
