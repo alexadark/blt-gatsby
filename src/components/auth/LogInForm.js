@@ -60,9 +60,8 @@ export function LogInForm({ setTabIndex, closeModal }) {
       setIsBot(true);
       return;
     }
-    const data = new FormData(event.currentTarget);
-    const { email, password } = Object.fromEntries(data);
-
+    const formData = Object.fromEntries(new FormData(event.target).entries());
+    const { email, password } = formData;
     logIn({
       variables: {
         login: email,
