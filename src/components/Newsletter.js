@@ -196,7 +196,7 @@ const NewsletterHome = ({ className, ...props }) => {
               <div className="h">
                 <div id="mce-responses" className="clear">
                   <div
-                    className="response"
+                    className="response hidden"
                     id="mce-error-response"
                     style={{ display: "none" }}
                   ></div>
