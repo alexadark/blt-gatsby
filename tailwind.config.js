@@ -1,7 +1,7 @@
-const rem = (px) => px / 16 + "rem"
+const rem = (px) => px / 16 + "rem";
 
 //palette
-const darkBlue = "#26496c",
+const darkBlue = "#263c58",
   lightBlue = "#a9e8ff",
   veryLightBlue = "#c0eeff",
   blue1 = "#eaecf2",
@@ -16,7 +16,7 @@ const darkBlue = "#26496c",
   grey2 = "#e1e1e1",
   grey1 = "#f8f5f5",
   white = "#fff",
-  orange = "#fda658"
+  orange = "#fda658";
 
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -71,7 +71,7 @@ module.exports = {
         orange,
         primary: darkBlue,
         highlight: gold,
-        text: grey4,
+        text: "#3c3c3c",
       },
       spacing: {
         base: rem(15),
@@ -108,7 +108,7 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            color: grey4,
+            color: "#3c3c3c",
             a: {
               color: blueLink,
               textDecoration: "none",
@@ -166,4 +166,4 @@ module.exports = {
   corePlugins: {
     preflight: true,
   },
-}
+};
