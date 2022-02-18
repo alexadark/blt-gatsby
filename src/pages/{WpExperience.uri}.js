@@ -213,7 +213,7 @@ const ExperiencePage = ({ data }) => {
               {" "}
               {priceFrom === null ? "Price: Free" : `Price from: ${priceFrom}`}
             </div>
-            <div>Minimum Age: {minAge === null ? "Any" : minAge}</div>
+            <div>Minimum age: {minAge === null ? "Any" : minAge}</div>
             <div>Age suitable: {ageBestSuitedFrom}+</div>
 
             <div>When: {whenIsIt === null ? "All year around" : whenIsIt}</div>

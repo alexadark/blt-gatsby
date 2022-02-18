@@ -22,16 +22,16 @@ export const ListingBottomInfo = ({
             className ? className : ""
           }`}
         >
-          {`Ages: ${!age ? "Any " : age + "+ "}`}
+          {`Min age: ${!age ? "Any " : age + "+ "}`}
           {priceFrom
-            ? ` |  Price from: ${
+            ? ` | ${
                 priceFrom.toLowerCase() === "varies"
                   ? priceFrom
                   : "£" + priceFrom
               }`
-            : `  | Price: Free`}
-          {duration && ` | Duration: ${duration}`}
-          {whenIsIt && ` | When: ${whenIsIt}`}
+            : `  | Free`}
+          {duration && ` | ${duration}`}
+          {whenIsIt && ` | ${whenIsIt}`}
         </div>
       )}
     </>

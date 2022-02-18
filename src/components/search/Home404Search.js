@@ -25,11 +25,11 @@ export const Home404Search = () => {
           placeholder={
             isSmall
               ? "destinations | experiences | places to stay"
-              : "Search for experiences, destinations & places to stay"
+              : "e.g. Grand Canyon, Paris, swim with dolphins"
           }
           className={clsx(
             "bg-white border-none shadow-input pl-6",
-            " text-base sm:text-f-18 lg:text-f-26 placeholder-grey3 focus:placeholder-transparent font-bold",
+            " text-base sm:text-f-18 lg:text-f-28 placeholder-grey3 focus:placeholder-transparent",
             "w-full h-10 sm:h-20"
           )}
         />

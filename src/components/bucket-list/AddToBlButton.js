@@ -9,6 +9,7 @@ import { AuthModal } from "../auth";
 
 export const AddToBlButton = ({
   className = null,
+  placeTop = false,
   addToBl,
   add = false,
   remove = false,
@@ -24,8 +25,12 @@ export const AddToBlButton = ({
         type="button"
         secondary
         className={clsx(
-          "w-10 h-10 !p-0 !bg-transparent cursor-pointer hover:!bg-lightBlue",
-          className
+          {
+            "w-10 h-10 !p-0 !bg-transparent cursor-pointer hover:!bg-lightBlue":
+              !placeTop,
+          },
+          { className: !placeTop },
+          { "whitespace-nowrap": placeTop }
         )}
         onClick={() => {
           addToBl();
@@ -39,7 +44,13 @@ export const AddToBlButton = ({
           }
         }}
       >
-        {add ? (
+        {placeTop ? (
+          add ? (
+            `Add +`
+          ) : (
+            `Remove -`
+          )
+        ) : add ? (
           <img src="/images/cross.svg" alt="add to bucket list" {...props} />
         ) : (
           <Trash className="text-gold text-[20px]" />

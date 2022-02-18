@@ -81,7 +81,7 @@ const MainSearchList = (props) => {
             className={clsx(
               "all-button h-[45px] sm:h-[54px] md:min-w-1/6 sm:min-w-1/3 min-w-1/2 w-full  hover:bg-gold ",
               {
-                "bg-gold ": !currentRefinement.length,
+                "bg-gold text-white": !currentRefinement.length,
               }
             )}
             onClick={() => {
@@ -112,7 +112,7 @@ const MainSearchList = (props) => {
                 className={clsx(
                   "button h-[45px] sm:h-[54px] md:min-w-1/6sm:min-w-1/3 min-w-1/2 w-full  hover:bg-gold ",
                   {
-                    "bg-gold": isRefined,
+                    "bg-gold text-white": isRefined,
                   }
                 )}
                 onClick={() => {

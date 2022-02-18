@@ -8,10 +8,10 @@ const darkBlue = "#263c58",
   blueLink = "#3a8de1",
   gold = "#d3b27d",
   lightGold = "#d2be9b",
-  veryLightGold = "#f8f3ec",
+  veryLightGold = "#f2f3f3",
   black = "#000000",
-  grey5 = "#494949",
-  grey4 = "#676767",
+  grey5 = "#3c3c3c",
+  grey4 = "#3c3c3c",
   grey3 = "#ababab",
   grey2 = "#e1e1e1",
   grey1 = "#f8f5f5",
@@ -109,6 +109,8 @@ module.exports = {
         DEFAULT: {
           css: {
             color: "#3c3c3c",
+            fontSize: "1.25rem",
+            lineHeight: 1.1,
             a: {
               color: blueLink,
               textDecoration: "none",
@@ -117,11 +119,12 @@ module.exports = {
               },
             },
             "h1,h2,h3,h4,h5,h6": {
-              color: "#494949",
+              color: "#3c3c3c",
+              fontWeight: "700",
             },
             h2: {
               fontSize: "36px",
-              color: "#494949",
+              color: "#3c3c3c",
             },
             ol: {
               counterReset: "item",
@@ -148,6 +151,12 @@ module.exports = {
                 },
               },
             },
+          },
+        },
+        lg: {
+          css: {
+            fontSize: "1.5rem",
+            lineHeight: "1.25",
           },
         },
       },

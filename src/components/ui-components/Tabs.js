@@ -24,7 +24,7 @@ export const Tabs = ({ tabs = [], className, mapOpen, ...props }) => {
           return (
             <Button
               key={tab.name}
-              className={clsx("h-[54px]", "!text-grey4")}
+              className={clsx("h-[54px]", "!text-grey4 ")}
               onClick={mapOpen}
               tab="true"
             >
@@ -54,7 +54,7 @@ const LinkTabs = ({ name }) => {
       className={clsx(
         "h-[54px]",
 
-        "!text-grey4"
+        "text-grey4 hover:text-white focus:text-white"
       )}
       key={name}
       href={`#${slugify(name.toLowerCase())}`}
