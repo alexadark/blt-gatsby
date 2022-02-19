@@ -104,13 +104,13 @@ const ExperiencePage = ({ data }) => {
     { name: country.name, link: `/search/?q=${country.name}` },
     {
       name: region,
-      link: destinationsArray.includes(region?.toLowerCase())
+      link: destinationsArray.includes(region?.trim().toLowerCase())
         ? `/destination/${region && slugs(region)}`
         : `/search/?q=${region}`,
     },
     {
       name: city,
-      link: destinationsArray.includes(city?.toLowerCase())
+      link: destinationsArray.includes(city?.trim().toLowerCase())
         ? `/destination/best-things-to-do-in-${city && slugs(city)}`
         : `/search/?q=${city}`,
     },
