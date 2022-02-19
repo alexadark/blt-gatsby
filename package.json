@@ -14,7 +14,7 @@
     "analyze": "rm -rf .cache && ANALYZE_BUNDLE_SIZE=true gatsby build"
   },
   "dependencies": {
-    "@gatsbywpthemes/gatsby-plugin-gwpt-packages": "2.0.0",
+    "@gatsbywpthemes/gatsby-plugin-gwpt-packages": "2.0.8",
     "@googlemaps/js-api-loader": "^1.12.9",
     "@headlessui/react": "^1.4.2",
     "@kunukn/react-collapse": "^2.2.9",
@@ -31,10 +31,10 @@
     "clsx": "^1.1.1",
     "cross-fetch": "^3.1.4",
     "fake-tag": "^3.0.0",
-    "gatsby": "^4.2.0",
+    "gatsby": "^4.7.2",
     "gatsby-plugin-algolia": "^0.23.1",
     "gatsby-plugin-emotion": "^7.2.0",
-    "gatsby-plugin-gatsby-cloud": "^4.2.0",
+    "gatsby-plugin-gatsby-cloud": "^4.7.0",
     "gatsby-plugin-google-tagmanager": "^4.5.0",
     "gatsby-plugin-no-sourcemaps": "^4.3.0",
     "gatsby-plugin-postcss": "^5.2.0",
