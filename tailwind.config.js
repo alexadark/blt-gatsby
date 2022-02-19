@@ -1,22 +1,22 @@
-const rem = (px) => px / 16 + "rem"
+const rem = (px) => px / 16 + "rem";
 
 //palette
-const darkBlue = "#26496c",
+const darkBlue = "#263c58",
   lightBlue = "#a9e8ff",
   veryLightBlue = "#c0eeff",
   blue1 = "#eaecf2",
   blueLink = "#3a8de1",
   gold = "#d3b27d",
   lightGold = "#d2be9b",
-  veryLightGold = "#f8f3ec",
+  veryLightGold = "#f2f3f3",
   black = "#000000",
-  grey5 = "#494949",
-  grey4 = "#676767",
+  grey5 = "#3c3c3c",
+  grey4 = "#3c3c3c",
   grey3 = "#ababab",
   grey2 = "#e1e1e1",
   grey1 = "#f8f5f5",
   white = "#fff",
-  orange = "#fda658"
+  orange = "#fda658";
 
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -71,7 +71,7 @@ module.exports = {
         orange,
         primary: darkBlue,
         highlight: gold,
-        text: grey4,
+        text: "#3c3c3c",
       },
       spacing: {
         base: rem(15),
@@ -108,7 +108,9 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            color: grey4,
+            color: "#3c3c3c",
+            fontSize: "1.25rem",
+            lineHeight: 1.1,
             a: {
               color: blueLink,
               textDecoration: "none",
@@ -117,11 +119,12 @@ module.exports = {
               },
             },
             "h1,h2,h3,h4,h5,h6": {
-              color: "#494949",
+              color: "#3c3c3c",
+              fontWeight: "700",
             },
             h2: {
               fontSize: "36px",
-              color: "#494949",
+              color: "#3c3c3c",
             },
             ol: {
               counterReset: "item",
@@ -150,6 +153,12 @@ module.exports = {
             },
           },
         },
+        lg: {
+          css: {
+            fontSize: "1.5rem",
+            lineHeight: "1.25",
+          },
+        },
       },
     },
   },
@@ -166,4 +175,4 @@ module.exports = {
   corePlugins: {
     preflight: true,
   },
-}
+};

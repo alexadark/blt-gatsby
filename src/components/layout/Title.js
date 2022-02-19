@@ -20,7 +20,6 @@ const Title = ({
   const path = window.location.pathname;
   const url = typeof window !== "undefined" ? window.location.href : "";
 
-
   return (
     <div
       className={clsx(
@@ -28,14 +27,21 @@ const Title = ({
 
         className,
         {
-          "flex flex-col justify-center":!intro
-        },
+          "flex flex-col justify-center": !intro,
+        }
       )}
       {...props}
     >
-      {intro && <div className={clsx("text-gold text-f-24 leading-relaxed sm:leading-normal  ml-5 xl:ml-14")}>{intro}</div>}
+      {intro && (
+        <div
+          className={clsx(
+            "text-gold text-f-24 leading-relaxed sm:leading-normal  ml-5 xl:ml-14"
+          )}
+        >
+          {intro}
+        </div>
+      )}
       <div className="ml-5 xl:ml-14 ">
-
         <div
           className={clsx(
             "max-w-[940px] gap-5 flex justify-between items-center"
@@ -51,11 +57,11 @@ const Title = ({
           {bl &&
             (isAdded ? (
               <div>
-                <AddToBlButton remove addToBl={removeFromBl} />
+                <AddToBlButton placeTop={true} remove addToBl={removeFromBl} />
               </div>
             ) : (
               <div>
-                <AddToBlButton add addToBl={addToBl} />
+                <AddToBlButton placeTop={true} add addToBl={addToBl} />
               </div>
             ))}{" "}
           {path.includes("bucket") && notEmpty && (

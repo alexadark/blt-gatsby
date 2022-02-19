@@ -41,12 +41,12 @@ const SearchBox = ({ currentRefinement, refine, totalSearchHit }) => {
                 placeholder={
                   !isSmall
                     ? "destinations | experiences | places to stay"
-                    : "What are you looking for?"
+                    : "e.g. Grand Canyon, Paris, swim with dolphins"
                 }
                 className={clsx(
                   "w-full h-11 sm:h-[55px]",
                   "sm:pl-20",
-                  "border-none shadow-input placeholder-grey3 font-semibold text-f-18 focus:placeholder-transparent  focus:ring-grey2 focus:border-none"
+                  "border-none shadow-input placeholder-grey3 text-f-18 lg:text-f-24 focus:placeholder-transparent  focus:ring-grey2 focus:border-none"
                 )}
                 value={searchText}
                 onChange={(event) => setSearchtext(event.currentTarget.value)}

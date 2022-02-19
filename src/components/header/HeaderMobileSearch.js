@@ -74,7 +74,7 @@ export const HeaderMobileSearch = ({ className, ...props }) => {
                       <input
                         type="text"
                         aria-label="search"
-                        placeholder="What are you looking for?"
+                        placeholder=""
                         value={searchText}
                         onChange={(event) =>
                           setSearchtext(event.currentTarget.value)

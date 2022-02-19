@@ -19,7 +19,7 @@ export const HeaderSearch = ({ className, ...props }) => {
       >
         <input
           type="text"
-          placeholder="Search for experiences, destinations & place to stay"
+          placeholder=""
           aria-label="search"
           value={searchText}
           onChange={(event) => setSearchtext(event.currentTarget.value)}

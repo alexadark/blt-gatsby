@@ -18,7 +18,7 @@ export const About = ({
     <Fragment {...props}>
       {writer && (
         <div className="justify-between mb-5 text-f-18 sm:flex md:text-f-22">
-          <div>
+          {/* <div>
             Expert travel writer:{" "}
             <a
               href={author ? `/writers/${author.slug}` : writer?.uri || ""}
@@ -27,7 +27,7 @@ export const About = ({
             >
               {author ? author.name : writer?.title}
             </a>
-          </div>
+          </div> */}
           <div>
             Last updated: <Date date={date} />
           </div>

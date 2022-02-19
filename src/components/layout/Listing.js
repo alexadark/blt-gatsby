@@ -181,20 +181,20 @@ export const Listing = ({
           writer ||
           nested ||
           roundUp ? (
-            <Link to={uri} className="!text-sm btn h-10">
-              {writer ? "Read more" : "Review"}
+            <Link to={uri} className="!text-sm btn h-10 whitespace-nowrap">
+              {writer ? "Read more" : "Review >"}
             </Link>
           ) : (
             website && (
               <Button
                 secondary
                 as="a"
-                className="!text-sm"
+                className="!text-sm whitespace-nowrap"
                 href={website}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Website
+                {` Website >`}
               </Button>
             )
           )}
