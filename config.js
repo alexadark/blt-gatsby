@@ -14,20 +14,20 @@ const config = {
   // developLimit: 50,
   gatsbySourceWordPressOptions: {
     schema: {
-      perPage: 5, // currently set to 100
-      requestConcurrency: 5, // currently set to 15
-      previewRequestConcurrency: 1, // currently set to 5
+      perPage: 50, // currently set to 100
+      requestConcurrency: 10, // currently set to 15
+      previewRequestConcurrency: 3, // currently set to 5
       timeout: 90000,
       // queryDepth: 5,
       // circularQueryLimit: 5,
     },
-    type: {
-      MediaItem: {
-        localFile: {
-          requestConcurrency: 1,
-        },
-      },
-    },
+    // type: {
+    //   MediaItem: {
+    //     localFile: {
+    //       requestConcurrency: 1,
+    //     },
+    //   },
+    // },
     develop: {
       hardCacheData: true,
       nodeUpdateInterval: 20000,
