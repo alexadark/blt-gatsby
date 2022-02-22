@@ -117,7 +117,6 @@ const DestinationPage = ({ data }) => {
   );
 
   const brContinent = continent?.length === 1 ? continent[0] : null;
-  // const destinationsArray = useDdestinationsArray();
 
   const breadcrumbsTerms = [
     { name: "home", link: "/" },

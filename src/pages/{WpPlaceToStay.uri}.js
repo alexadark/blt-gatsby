@@ -122,7 +122,6 @@ const PlaceToStayPage = ({ data }) => {
       (tab.name === "price" && (website || priceCheckingLinks)) ||
       tab.source?.length > 0
   );
-  // const destinationsArray = useDdestinationsArray();
 
   const brContinent = continent?.length === 1 ? continent[0] : null;
   const breadcrumbsTerms = [
@@ -135,9 +134,7 @@ const PlaceToStayPage = ({ data }) => {
     },
     {
       name: city,
-      link: destinationsArray.includes(city?.toLowerCase())
-        ? `/destination/best-things-to-do-in-${city && slugs(city)}`
-        : `/search/?q=${city}`,
+      link: `/search/?q=${city}`,
     },
   ].filter((term) => term.name);
   const [isMapOpen, setIsMapOpen] = useState(false);
