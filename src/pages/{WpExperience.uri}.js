@@ -95,7 +95,7 @@ const ExperiencePage = ({ data }) => {
   );
 
   const brContinent = continent?.length === 1 ? continent[0] : null;
-  const destinationsArray = useDdestinationsArray();
+  // const destinationsArray = useDdestinationsArray();
 
   const breadcrumbsTerms = [
     { name: "home", link: "/" },
@@ -107,9 +107,7 @@ const ExperiencePage = ({ data }) => {
     },
     {
       name: city,
-      link: destinationsArray.includes(city?.trim().toLowerCase())
-        ? `/destination/best-things-to-do-in-${city && slugs(city)}`
-        : `/search/?q=${city}`,
+      link: `/search/?q=${city}`,
     },
   ].filter((term) => term.name);
 

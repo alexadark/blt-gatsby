@@ -18,7 +18,7 @@ import { CollapseListings } from "../components/layout/CollapseListings";
 import { IntroText } from "../components/layout/IntroText";
 import { CollapseCards } from "../components/layout/CollapseCards";
 import { useRecentlyViewed } from "../lib/hooks/useRecentlyViewed";
-import { Breadcrumbs } from "../components/Breadcrumbs";
+// import { Breadcrumbs } from "../components/Breadcrumbs";
 import slugify from "slugify";
 import { Seo } from "@gatsbywpthemes/gatsby-plugin-wp-seo";
 import { useSeoGeneral } from "../lib/hooks/useSeoGeneral";
@@ -119,15 +119,15 @@ const DestinationPage = ({ data }) => {
   const brContinent = continent?.length === 1 ? continent[0] : null;
   const destinationsArray = useDdestinationsArray();
 
-  const breadcrumbsTerms = [
-    { name: "home", link: "/" },
-    { name: brContinent, link: `/search/?q=${brContinent}` },
-    { name: country?.name, link: `/search/?q=${country?.name}` },
-    {
-      name: region,
-      link: `/search/?q=${region}`,
-    },
-  ].filter((term) => term.name);
+  // const breadcrumbsTerms = [
+  //   { name: "home", link: "/" },
+  //   { name: brContinent, link: `/search/?q=${brContinent}` },
+  //   { name: country?.name, link: `/search/?q=${country?.name}` },
+  //   {
+  //     name: region,
+  //     link: `/search/?q=${region}`,
+  //   },
+  // ].filter((term) => term.name);
   const [isMapOpen, setIsMapOpen] = useState(false);
 
   return (
@@ -145,7 +145,7 @@ const DestinationPage = ({ data }) => {
           }
         }
       />
-      <Breadcrumbs terms={breadcrumbsTerms} />
+      {/* <Breadcrumbs terms={breadcrumbsTerms} /> */}
       <DetailPageMap
         isMapOpen={isMapOpen}
         closeModal={() => setIsMapOpen(false)}
