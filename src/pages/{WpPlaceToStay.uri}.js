@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { graphql } from "gatsby";
 import { window } from "browser-monads";
-// import { useDdestinationsArray } from "../lib/hooks/useDestinationsArray";
 
 import {
   CollapseSection,

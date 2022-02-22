@@ -23,7 +23,6 @@ import slugify from "slugify";
 import { Seo } from "@gatsbywpthemes/gatsby-plugin-wp-seo";
 import { useSeoGeneral } from "../lib/hooks/useSeoGeneral";
 import DetailPageMap from "./../components/maps/DetailPageMap";
-// import { useDdestinationsArray } from "../lib/hooks/useDestinationsArray";
 
 const slugs = (string) => slugify(string, { lower: true, strict: true });
 
