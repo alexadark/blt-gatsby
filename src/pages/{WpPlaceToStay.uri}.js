@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { graphql } from "gatsby";
 import { window } from "browser-monads";
-import { useDdestinationsArray } from "../lib/hooks/useDestinationsArray";
+// import { useDdestinationsArray } from "../lib/hooks/useDestinationsArray";
 
 import {
   CollapseSection,
@@ -132,9 +132,7 @@ const PlaceToStayPage = ({ data }) => {
     { name: country.name, link: `/search/?q=${country.name}` },
     {
       name: region,
-      link: destinationsArray.includes(region?.toLowerCase())
-        ? `/destination/${region && slugs(region)}`
-        : `/search/?q=${region}`,
+      link: `/search/?q=${region}`,
     },
     {
       name: city,

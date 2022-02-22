@@ -13,14 +13,14 @@ const config = {
   withApollo: false,
   // developLimit: 50,
   gatsbySourceWordPressOptions: {
-    schema: {
-      perPage: 50, // currently set to 100
-      requestConcurrency: 10, // currently set to 15
-      previewRequestConcurrency: 3, // currently set to 5
-      timeout: 90000,
-      // queryDepth: 5,
-      // circularQueryLimit: 5,
-    },
+    // schema: {
+    // perPage: 50, // currently set to 100
+    // requestConcurrency: 10, // currently set to 15
+    // previewRequestConcurrency: 3, // currently set to 5
+    // timeout: 90000,
+    // queryDepth: 5,
+    // circularQueryLimit: 5,
+
     // type: {
     //   MediaItem: {
     //     localFile: {

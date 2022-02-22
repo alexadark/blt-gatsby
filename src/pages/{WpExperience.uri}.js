@@ -17,7 +17,7 @@ import { Breadcrumbs } from "../components/Breadcrumbs";
 import slugify from "slugify";
 import { Seo } from "@gatsbywpthemes/gatsby-plugin-wp-seo";
 import { useSeoGeneral } from "../lib/hooks/useSeoGeneral";
-import { useDdestinationsArray } from "../lib/hooks/useDestinationsArray";
+// import { useDdestinationsArray } from "../lib/hooks/useDestinationsArray";
 
 const slugs = (string) => slugify(string, { lower: true, strict: true });
 
@@ -104,9 +104,7 @@ const ExperiencePage = ({ data }) => {
     { name: country.name, link: `/search/?q=${country.name}` },
     {
       name: region,
-      link: destinationsArray.includes(region?.trim().toLowerCase())
-        ? `/destination/${region && slugs(region)}`
-        : `/search/?q=${region}`,
+      link: `/search/?q=${region}`,
     },
     {
       name: city,

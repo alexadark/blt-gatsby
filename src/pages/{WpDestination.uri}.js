@@ -23,7 +23,7 @@ import slugify from "slugify";
 import { Seo } from "@gatsbywpthemes/gatsby-plugin-wp-seo";
 import { useSeoGeneral } from "../lib/hooks/useSeoGeneral";
 import DetailPageMap from "./../components/maps/DetailPageMap";
-import { useDdestinationsArray } from "../lib/hooks/useDestinationsArray";
+// import { useDdestinationsArray } from "../lib/hooks/useDestinationsArray";
 
 const slugs = (string) => slugify(string, { lower: true, strict: true });
 
@@ -126,9 +126,7 @@ const DestinationPage = ({ data }) => {
     { name: country?.name, link: `/search/?q=${country?.name}` },
     {
       name: region,
-      link: destinationsArray.includes(region?.toLowerCase())
-        ? `/destination/${region && slugs(region)}`
-        : `/search/?q=${region}`,
+      link: `/search/?q=${region}`,
     },
   ].filter((term) => term.name);
   const [isMapOpen, setIsMapOpen] = useState(false);
