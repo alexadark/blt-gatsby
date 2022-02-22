@@ -117,17 +117,17 @@ const DestinationPage = ({ data }) => {
   );
 
   const brContinent = continent?.length === 1 ? continent[0] : null;
-  const destinationsArray = useDdestinationsArray();
+  // const destinationsArray = useDdestinationsArray();
 
-  // const breadcrumbsTerms = [
-  //   { name: "home", link: "/" },
-  //   { name: brContinent, link: `/search/?q=${brContinent}` },
-  //   { name: country?.name, link: `/search/?q=${country?.name}` },
-  //   {
-  //     name: region,
-  //     link: `/search/?q=${region}`,
-  //   },
-  // ].filter((term) => term.name);
+  const breadcrumbsTerms = [
+    { name: "home", link: "/" },
+    { name: brContinent, link: `/search/?q=${brContinent}` },
+    { name: country?.name, link: `/search/?q=${country?.name}` },
+    {
+      name: region,
+      link: `/search/?q=${region}`,
+    },
+  ].filter((term) => term.name);
   const [isMapOpen, setIsMapOpen] = useState(false);
 
   return (
