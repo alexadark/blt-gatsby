@@ -29,7 +29,7 @@ const BucketListPage = () => {
 
   const { data, loading } = useDbBucketList();
   const bl = data?.bucketLists?.nodes[0];
-  const items = lsItems;
+  const items = lsItems.map((item) => ({ ...item, showPlaneImage: true }));
 
   const emptyBl = () => {
     setLsItems([]);

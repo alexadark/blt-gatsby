@@ -31,9 +31,13 @@ export const Listing = ({
   const distanceObject = JSON.parse(distance);
   const distanceToParent = Math.round(distanceObject?.[databaseId] * 10) / 10;
 
-  let { featuredImage, uri, commonDataAttributes, customDataAttributes } = link
-    ? link[0] || {}
-    : item || {};
+  let {
+    showPlaneImage,
+    featuredImage,
+    uri,
+    commonDataAttributes,
+    customDataAttributes,
+  } = link ? link[0] || {} : item || {};
 
   let { standfirst, country } = commonDataAttributes || {};
   const blItem = item.link ? item.link[0] : item;
@@ -73,18 +77,8 @@ export const Listing = ({
     return <div {...props}>{children}</div>;
   };
 
-  const img = featuredImage ? (
-    featuredImage.node.localFile ? (
-      <Image
-        img={featuredImage.node.localFile}
-        alt={title}
-        width={249}
-        height={166}
-        objectFit="cover"
-        objectPosition="center"
-        //loading="eager"
-      />
-    ) : (
+  const img =
+    featuredImage?.node?.sourceUrl && showPlaneImage ? (
       <img
         src={featuredImage.node.sourceUrl}
         width={249}
@@ -92,13 +86,32 @@ export const Listing = ({
         alt=""
         className="object-cover object-center"
       />
-    )
-  ) : (
-    // <div className="flex items-center justify-center col-span-1 bg-veryLightGold w-[249px] h-[166px] text-grey4 ">
-    //   No Image
-    // </div>
-    <img src={noImage} alt="placeholder image" width="249px" height="166px" />
-  );
+    ) : featuredImage ? (
+      featuredImage.node.localFile ? (
+        <Image
+          img={featuredImage.node.localFile}
+          alt={title}
+          width={249}
+          height={166}
+          objectFit="cover"
+          objectPosition="center"
+          //loading="eager"
+        />
+      ) : (
+        <img
+          src={featuredImage.node.sourceUrl}
+          width={249}
+          height={166}
+          alt=""
+          className="object-cover object-center"
+        />
+      )
+    ) : (
+      // <div className="flex items-center justify-center col-span-1 bg-veryLightGold w-[249px] h-[166px] text-grey4 ">
+      //   No Image
+      // </div>
+      <img src={noImage} alt="placeholder image" width="249px" height="166px" />
+    );
   return (
     <div className={clsx("shadow-listing", "p-2 pr-3 mb-5", className)}>
       <div className={clsx("flex justify-between")} {...props}>
@@ -164,7 +177,7 @@ export const Listing = ({
         </div>
 
         {/* Right: Buttons */}
-        <div className="flex flex-col items-end justify-between">
+        <div className="flex flex-col items-end justify-between relative">
           {!noBl ? (
             isAdded ? (
               <AddToBlButton remove={true} addToBl={removeFromBl} />

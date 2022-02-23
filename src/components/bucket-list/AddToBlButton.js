@@ -18,7 +18,7 @@ export const AddToBlButton = ({
   const [isOpen, setIsOpen] = useState(false);
   const [bucket] = useLocalStorage("bucketList", []);
   const { loggedIn } = useAuth();
-
+  console.log(className, placeTop);
   return (
     <>
       <Button
@@ -29,8 +29,8 @@ export const AddToBlButton = ({
             "w-10 h-10 !p-0 !bg-transparent cursor-pointer hover:!bg-lightBlue":
               !placeTop,
           },
-          { className: !placeTop },
-          { "whitespace-nowrap": placeTop }
+          { "whitespace-nowrap": placeTop },
+          className
         )}
         onClick={() => {
           addToBl();
@@ -51,7 +51,7 @@ export const AddToBlButton = ({
             `Remove -`
           )
         ) : add ? (
-          <img src="/images/cross.svg" alt="add to bucket list" {...props} />
+          <img src="/images/cross.svg" alt="add to bucket list " {...props} />
         ) : (
           <Trash className="text-gold text-[20px]" />
         )}
