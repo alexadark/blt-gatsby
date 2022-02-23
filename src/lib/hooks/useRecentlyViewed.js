@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import useLocalStorage from "./use-local-storage";
 
 export const useRecentlyViewed = (data) => {
-  const [bucket, setBucket] = useLocalStorage("recentlyViewed", []);
+  const [bucket, setBucket] = useLocalStorage("recentlyviewed", []);
 
   useEffect(() => {
     let haveThisInList = bucket?.some(

@@ -9,10 +9,11 @@ import { Image } from "../images";
 import noImage from "../../images/noimage.svg";
 
 export const RecentlyViewed = ({ className, ...props }) => {
-  const RawRvData = ls("recentlyViewed")?.reverse() || [];
+  const RawRvData = ls("recentlyviewed")?.reverse() || [];
   const rvData = RawRvData.filter(
     (item) => item?.id !== undefined && item?.id !== null
   );
+  console.log(rvData);
   const isLarge = useMediaQuery("(min-width:1024px)");
   const isMedium = useMediaQuery("(min-width:600px)");
   const isSmall = useMediaQuery("(min-width:480px)");
@@ -71,7 +72,7 @@ export const RecentlyViewed = ({ className, ...props }) => {
       <Slider {...settings} css={{ ...styles }}>
         {rvData?.map((item, i) => {
           const { featuredImage, title, uri } = item;
-          const { altText, localFile } = featuredImage?.node || {};
+          const { altText, sourceUrl } = featuredImage?.node || {};
           return (
             <div key={i} className="px-base py-base2 group">
               <Link
@@ -83,18 +84,14 @@ export const RecentlyViewed = ({ className, ...props }) => {
               >
                 <div className="cursor-pointer shadow-listing">
                   <div className="aspect-w-6 aspect-h-4 max-h-[127px] group">
-                    {localFile ? (
-                      <Image
-                        img={localFile}
+                    {sourceUrl ? (
+                      <img
+                        src={sourceUrl}
                         alt={altText}
                         loading="eager"
                         // className="w-full h-[233px] sm:h-[127px]"
                       />
                     ) : (
-                      // <div className="aspect-6 aspect-h-4">
-                      //   <img src="/images/noimage.svg" alt="no-image" />
-                      // </div>
-                      // <div className="relative aspect-w-6 aspect-h-4 bg-veryLightGold" />
                       <img
                         src={noImage}
                         alt="image placeholder"

@@ -11,7 +11,7 @@ import FormatRoundUpMapsData from "./FormatRoundUpMapsData";
 
 const RoundupMapBox = ({ isMapOpen, closeModal, roundupData }) => {
   const allMapPoints = FormatRoundUpMapsData(roundupData);
-  console.log(allMapPoints);
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCJkZohj9sqn6H_LrfHMNG5cY794SWFJgA",
