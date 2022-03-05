@@ -1,8 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { Section, Typo, Button, Image, Underline } from "..";
-import noImage from "../../images/noimage.svg"
-
+import noImage from "../../images/noimage.svg";
 
 const SidebarTourOperator = ({
   tourOperator,
@@ -30,13 +29,21 @@ const SidebarTourOperator = ({
           {title}
         </Typo>
         <div className="flex justify-center">
-          {featuredImage ? <Image
-            img={featuredImage?.node.localFile}
-            objectFit="cover"
-            objectPosition="center"
-            className="w-full max-w-[300px]"
-          /> : <img src={noImage} alt="placeholder image" width="249px" height="166px" /> }
-
+          {featuredImage ? (
+            <Image
+              img={featuredImage?.node.localFile}
+              objectFit="cover"
+              objectPosition="center"
+              className="w-full max-w-[300px]"
+            />
+          ) : (
+            <img
+              src={noImage}
+              alt="placeholder image"
+              width="249px"
+              height="166px"
+            />
+          )}
         </div>
         <div
           className="prose max-w-none"
@@ -59,7 +66,7 @@ const SidebarTourOperator = ({
             rel="noopener noreferrer"
             secondary
           >
-            See Website
+            {`See Website >`}
           </Button>
         </div>
       </div>

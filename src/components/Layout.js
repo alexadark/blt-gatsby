@@ -4,7 +4,12 @@ import clsx from "clsx";
 import { Header } from "./header/Header";
 import { Footer } from "./footer";
 
-export const Layout = ({ children, page, type = "page", ...props }) => {
+export const Layout = ({
+  children,
+  page = undefined,
+  type = "page",
+  ...props
+}) => {
   const layoutClass = page !== undefined ? (page.slug ? page.slug : page) : "";
   const pageTemplate = page?.headlesswp?.pageTemplate;
 

@@ -12,9 +12,6 @@ import { CollapseListings } from "../components/layout/CollapseListings";
 import PageLayout from "../components/layout/PageLayout";
 import { NoResults } from "../components/search";
 import useLocalStorage from "../lib/hooks/use-local-storage";
-import { useDbBucketList } from "../lib/hooks/useDbBucketList";
-import { useAuth } from "../lib/hooks/useAuth";
-import { useUpdateBucketList } from "../lib/hooks/useUpdateBucketList";
 import Loader from "react-spinners/BeatLoader";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { Newsletter } from "../components/Newsletter";
@@ -24,25 +21,10 @@ const BucketListPage = () => {
   let [lsItems, setLsItems] = useLocalStorage("bucketList", []);
   let [isOpenModal, setIsOpenModal] = useState(false);
   const url = window.location.href;
-  const { loggedIn } = useAuth();
-  const updateBlMutation = useUpdateBucketList();
-
-  const { data, loading } = useDbBucketList();
-  const bl = data?.bucketLists?.nodes[0];
   const items = lsItems.map((item) => ({ ...item, showPlaneImage: true }));
-
   const emptyBl = () => {
     setLsItems([]);
     setIsOpenModal(false);
-    loggedIn &&
-      updateBlMutation({
-        variables: {
-          input: {
-            idInput: bl?.databaseId,
-            linksInput: [],
-          },
-        },
-      });
   };
 
   const allCountries = items?.map(
@@ -92,7 +74,7 @@ const BucketListPage = () => {
               </div>
             );
           })
-        ) : loading ? (
+        ) : false ? (
           <div className="flex justify-center py-20">
             <Loader size={20} color="#d3b27d" />
           </div>

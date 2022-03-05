@@ -3,13 +3,25 @@ import { Input, Button } from "../../components/ui-components";
 import { useForm } from "react-hook-form";
 import { Tooltip } from "react-tippy";
 import tw, { styled } from "twin.macro";
-
+import useAuth from "~/context/AuthContext";
 export const AccountForm = ({ onSubmit }) => {
+  const { user } = useAuth();
+  const {
+    email,
+    user_metadata: { first_name, location },
+  } = user || {};
   const {
     register,
     handleSubmit,
     formState: { isSubmitSuccessful },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      firstName: first_name,
+      location,
+      email,
+      password: "",
+    },
+  });
 
   const Label = styled.label(() => [tw`block mb-1 font-bold text-black`]);
   const questionMarkStyles =
@@ -39,9 +51,6 @@ export const AccountForm = ({ onSubmit }) => {
               className="w-full h-14"
               {...register("firstName")}
             />
-            {/* {errors.firstName && (
-              <ErrorMessage>This field is required</ErrorMessage>
-            )} */}
           </div>
           <div className="md:w-1/2">
             <div className="flex space-x-3">
@@ -63,9 +72,6 @@ export const AccountForm = ({ onSubmit }) => {
               className="h-14"
               {...register("location")}
             />
-            {/* {errors.location && (
-              <ErrorMessage>This field is required</ErrorMessage>
-            )} */}
           </div>
         </div>
         <div className=" md:space-x-14 md:flex">
@@ -77,9 +83,6 @@ export const AccountForm = ({ onSubmit }) => {
               className="h-14"
               {...register("email")}
             />
-            {/* {errors.location && (
-              <ErrorMessage>This field is required</ErrorMessage>
-            )} */}
           </div>
           <div className="mb-5 md:w-1/2">
             <Label htmlFor="location">Password</Label>
@@ -89,9 +92,6 @@ export const AccountForm = ({ onSubmit }) => {
               className="h-14"
               {...register("password")}
             />
-            {/* {errors.location && (
-              <ErrorMessage>This field is required</ErrorMessage>
-            )} */}
           </div>
         </div>
         <div className="flex justify-end">

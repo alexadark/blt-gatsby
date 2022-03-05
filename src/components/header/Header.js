@@ -7,7 +7,7 @@ import clsx from "clsx";
 import { window } from "browser-monads";
 import { Toaster } from "react-hot-toast";
 import { Branding } from "./Branding";
-
+import AuthModal from "~/components/modal/AuthModal";
 export const Header = () => {
   const path = window?.location?.pathname;
 
@@ -45,6 +45,7 @@ export const Header = () => {
           reverseOrder={false}
         />
       </div>
+      <AuthModal />
     </header>
     // </Headroom>
   );

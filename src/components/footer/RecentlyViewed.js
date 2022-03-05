@@ -5,7 +5,6 @@ import ls from "local-storage";
 import { Link } from "gatsby";
 import { Section, Underline } from "..";
 import { useMediaQuery } from "../../lib/hooks";
-import { Image } from "../images";
 import noImage from "../../images/noimage.svg";
 
 export const RecentlyViewed = ({ className, ...props }) => {
@@ -13,7 +12,6 @@ export const RecentlyViewed = ({ className, ...props }) => {
   const rvData = RawRvData.filter(
     (item) => item?.id !== undefined && item?.id !== null
   );
-  console.log(rvData);
   const isLarge = useMediaQuery("(min-width:1024px)");
   const isMedium = useMediaQuery("(min-width:600px)");
   const isSmall = useMediaQuery("(min-width:480px)");

@@ -3,14 +3,11 @@ import { Dialog, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { GiHamburgerMenu as Hamburger } from "react-icons/gi";
 import { MdClose as Close } from "react-icons/md";
-
 import { Branding } from "./Branding";
-
 import { Link, useStaticQuery, graphql } from "gatsby";
 import { Button } from "..";
-import { useAuth } from "../../lib/hooks/useAuth";
-import { AuthModal } from "../auth";
-
+import useAuth from "~/context/AuthContext";
+import useAuthModal from "~/context/AuthModalContext";
 const MOBILE_MENU_QUERY = graphql`
   query {
     mobileMenuData: allWpMenuItem(filter: { locations: { eq: MOBILE } }) {
@@ -31,14 +28,12 @@ const MOBILE_MENU_QUERY = graphql`
 export const MobileMenu = ({ className, ...props }) => {
   const [open, setOpen] = useState(false);
   const data = useStaticQuery(MOBILE_MENU_QUERY);
-
   const { mobileMenuData, mobileLogguedMenuData } = data;
   const { nodes: items } = mobileMenuData || [];
   const { nodes: logguedItems } = mobileLogguedMenuData || [];
-  const { loggedIn } = useAuth();
-  const [openLogin, setOpenLogin] = useState(false);
-
-  const menuItems = loggedIn ? logguedItems : items;
+  const { user } = useAuth();
+  const { openModal } = useAuthModal();
+  const menuItems = user ? logguedItems : items;
 
   return (
     <div className={clsx(className)} {...props}>
@@ -115,7 +110,6 @@ export const MobileMenu = ({ className, ...props }) => {
                       </button>
                     </div>
 
-
                     <nav className={`px-4`}>
                       {menuItems?.map((item) => {
                         const { label, path, cssClasses, id } = item;
@@ -132,7 +126,7 @@ export const MobileMenu = ({ className, ...props }) => {
                                     className={`h-10 text-f-14`}
                                     onClick={() => {
                                       setOpen(false);
-                                      setOpenLogin(true);
+                                      openModal();
                                     }}
                                   >
                                     {label}
@@ -177,7 +171,6 @@ export const MobileMenu = ({ className, ...props }) => {
           </div>
         </Dialog>
       </Transition>
-      <AuthModal isOpen={openLogin} setIsOpen={setOpenLogin} />
     </div>
   );
 };

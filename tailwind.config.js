@@ -109,7 +109,7 @@ module.exports = {
         DEFAULT: {
           css: {
             color: "#3c3c3c",
-            fontSize: "1.25rem",
+            fontSize: "1.1rem",
             lineHeight: 1.1,
             a: {
               color: blueLink,
@@ -120,7 +120,7 @@ module.exports = {
             },
             "h1,h2,h3,h4,h5,h6": {
               color: "#3c3c3c",
-              fontWeight: "700",
+              fontWeight: "bold",
             },
             h2: {
               fontSize: "36px",
@@ -155,7 +155,7 @@ module.exports = {
         },
         lg: {
           css: {
-            fontSize: "1.5rem",
+            fontSize: "1.2rem",
             lineHeight: "1.25",
           },
         },

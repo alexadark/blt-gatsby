@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import clsx from "clsx";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import { Button } from "..";
-import { useAuth } from "../../lib/hooks/useAuth";
-import { AuthModal } from "../auth";
+import useAuthModal from "~/context/AuthModalContext";
+import useAuth from "~/context/AuthContext";
 
 const MENU_QUERY = graphql`
   query {
@@ -22,18 +22,13 @@ const MENU_QUERY = graphql`
   }
 `;
 
-const MenuItem = ({ item, setIsOpen }) => {
+const MenuItem = ({ item }) => {
   const { label, path, cssClasses, id } = item;
-
+  const { openModal } = useAuthModal();
   return (
     <>
       {cssClasses.includes("sign") ? (
-        <Button
-          className={`h-10 text-f-14`}
-          onClick={() => {
-            setIsOpen(true);
-          }}
-        >
+        <Button className={`h-10 text-f-14`} onClick={openModal}>
           {label}
         </Button>
       ) : (
@@ -55,15 +50,11 @@ const MenuItem = ({ item, setIsOpen }) => {
 
 export const Menu = ({ className, ...props }) => {
   const data = useStaticQuery(MENU_QUERY);
-
   const { primaryMenuData, primaryLogguedMenuData } = data;
   const { nodes: items } = primaryMenuData || [];
   const { nodes: logguedItems } = primaryLogguedMenuData || [];
-  const [isOpen, setIsOpen] = useState(false);
-
-  const { loggedIn } = useAuth();
-
-  const menuItems = loggedIn ? logguedItems : items;
+  const { user } = useAuth();
+  const menuItems = user ? logguedItems : items;
 
   return (
     <>
@@ -72,11 +63,9 @@ export const Menu = ({ className, ...props }) => {
         {...props}
       >
         {menuItems?.map((item) => (
-          <MenuItem item={item} key={item.id} setIsOpen={setIsOpen} />
+          <MenuItem item={item} key={item.id} />
         ))}
       </nav>
-
-      <AuthModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </>
   );
 };

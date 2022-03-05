@@ -79,7 +79,7 @@ const MainSearchList = (props) => {
         <li className="border text-center">
           <button
             className={clsx(
-              "all-button h-[45px] sm:h-[54px] md:min-w-1/6 sm:min-w-1/3 min-w-1/2 w-full  hover:bg-gold ",
+              "all-button h-[45px] sm:h-[54px] md:min-w-1/6 sm:min-w-1/3 min-w-1/2 w-full  hover:bg-gold hover:text-white focus:text-white",
               {
                 "bg-gold text-white": !currentRefinement.length,
               }
@@ -110,7 +110,7 @@ const MainSearchList = (props) => {
             <li className="border text-center" key={staticItem.value}>
               <button
                 className={clsx(
-                  "button h-[45px] sm:h-[54px] md:min-w-1/6sm:min-w-1/3 min-w-1/2 w-full  hover:bg-gold ",
+                  "button h-[45px] sm:h-[54px] md:min-w-1/6sm:min-w-1/3 min-w-1/2 w-full  hover:bg-gold hover:text-white focus:text-white",
                   {
                     "bg-gold text-white": isRefined,
                   }

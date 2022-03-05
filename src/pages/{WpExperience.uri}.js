@@ -139,7 +139,6 @@ const ExperiencePage = ({ data }) => {
         }
       />
       <Breadcrumbs terms={breadcrumbsTerms} />
-      {/* {loadMap && <ExperienceMap experience={experience} />} */}
       <DetailPageMap
         isMapOpen={isMapOpen}
         closeModal={() => setIsMapOpen(false)}

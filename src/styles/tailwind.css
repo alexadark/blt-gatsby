@@ -47,7 +47,7 @@
     font-style: normal;
     font-display: swap;
   }
-  #___gatsby {
+  body {
     @apply text-base bg-white text-text;
   }
   a {
@@ -114,4 +114,7 @@
 }
 .filter-text-uppercase:first-letter {
   text-transform: uppercase;
+}
+.prose-lg h4 {
+  font-weight: bold;
 }

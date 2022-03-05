@@ -1,40 +1,29 @@
-/* eslint-disable react/no-unescaped-entities */
-import { useMutation, gql } from "@apollo/client";
 import { Input, Button } from "../ui-components";
-
 import React, { useState } from "react";
-import { AuthModal } from "./AuthModal";
-
-const SEND_PASSWORD_RESET_EMAIL = gql`
-  mutation sendPasswordResetEmail($username: String!) {
-    sendPasswordResetEmail(input: { username: $username }) {
-      user {
-        databaseId
-      }
-    }
-  }
-`;
+import useAuthModal from "~/context/AuthModalContext";
+import { supabase } from "~/lib/supabaseClient";
 
 export function SendPasswordResetEmailForm() {
-  const [sendPasswordResetEmail, { loading, error, data }] = useMutation(
-    SEND_PASSWORD_RESET_EMAIL
-  );
-  const wasEmailSent = Boolean(data?.sendPasswordResetEmail?.user);
-
-  console.log("wasEmailSent", data);
-  const [isOpen, setIsOpen] = useState(false);
-
-  function handleSubmit(event) {
+  const [wasEmailSent, setWasEmailSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const { openModal } = useAuthModal();
+  async function handleSubmit(event) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const { email } = Object.fromEntries(data);
-    sendPasswordResetEmail({
-      variables: {
-        username: email,
-      },
-    }).catch((error) => {
-      console.error(error);
-    });
+    const formData = new FormData(event.currentTarget);
+    const { email } = Object.fromEntries(formData);
+    setLoading(true);
+    try {
+      await supabase.auth.api.resetPasswordForEmail(email, {
+        redirectTo: "/set-password",
+      });
+      setLoading(false);
+      setWasEmailSent(true);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+      setWasEmailSent(false);
+    }
   }
 
   if (wasEmailSent) {
@@ -47,14 +36,12 @@ export function SendPasswordResetEmailForm() {
             className={`text-blueLink mt-3 text-center font-bold mx-auto w-full`}
             onClick={(e) => {
               e.preventDefault();
-              setIsOpen(true);
+              openModal();
             }}
           >
             Sign in
           </button>
         </p>
-
-        <AuthModal isOpen={isOpen} setIsOpen={setIsOpen} warning={false} propsTabIndex={1} />
       </div>
     );
   }
@@ -80,11 +67,13 @@ export function SendPasswordResetEmailForm() {
           aria-label="email"
           autoComplete="email"
           className="h-14"
-          required
+          required={true}
         />
-        {error ? <div className="flex justify-center">
-          <p className="error-message">{error.message}</p>
-        </div> : null}
+        {error ? (
+          <div className="flex justify-center">
+            <p className="error-message">{error.message}</p>
+          </div>
+        ) : null}
         <div className={` flex justify-center mt-10`}>
           <Button type="submit" disabled={loading} className={`h-14 w-[300px]`}>
             {loading ? "Sending..." : "Send password reset email"}

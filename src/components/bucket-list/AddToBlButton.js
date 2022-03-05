@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-// import { Button } from 'components'
+import React from "react";
 import clsx from "clsx";
 import { FaTrashAlt as Trash } from "react-icons/fa";
 import { Button } from "..";
 import useLocalStorage from "../../lib/hooks/use-local-storage";
-import { useAuth } from "../../lib/hooks/useAuth";
-import { AuthModal } from "../auth";
+import useAuth from "~/context/AuthContext";
+import useAuthModal from "~/context/AuthModalContext";
 
 export const AddToBlButton = ({
   className = null,
@@ -15,10 +14,10 @@ export const AddToBlButton = ({
   remove = false,
   ...props
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [bucket] = useLocalStorage("bucketList", []);
   const { loggedIn } = useAuth();
-  console.log(className, placeTop);
+  const { openModal } = useAuthModal();
+
   return (
     <>
       <Button
@@ -40,7 +39,7 @@ export const AddToBlButton = ({
             add === true &&
             !loggedIn
           ) {
-            setIsOpen(true);
+            openModal();
           }
         }}
       >
@@ -56,7 +55,6 @@ export const AddToBlButton = ({
           <Trash className="text-gold text-[20px]" />
         )}
       </Button>
-      <AuthModal isOpen={isOpen} setIsOpen={setIsOpen} warning />
     </>
   );
 };

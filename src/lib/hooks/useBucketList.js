@@ -1,16 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import toast from "react-hot-toast";
 import useLocalStorage from "./use-local-storage";
-import { useAuth } from "./useAuth";
-import { useDbBucketList } from "./useDbBucketList";
-import { useUpdateBucketList } from "./useUpdateBucketList";
 
 export const useBucketList = (item) => {
   const [bucket, setBucket] = useLocalStorage("bucketList", []);
-
-  const updateBlMutation = useUpdateBucketList();
-
-  const { loggedIn } = useAuth();
 
   const isAdded =
     item?.__typename === "WpRoundUp_Roundupdataattributes_links"
@@ -20,21 +13,6 @@ export const useBucketList = (item) => {
             : i.id === item.link[0].id
         )
       : bucket?.find((i) => i.id === item.id);
-
-  const { blId } = useDbBucketList();
-
-  useEffect(() => {
-    loggedIn &&
-      updateBlMutation({
-        variables: {
-          input: {
-            idInput: blId,
-            linksInput: bucket?.map((item) => item?.databaseId),
-          },
-        },
-      });
-  }, [bucket]);
-
   const addToBl = () => {
     setBucket([...bucket, item]);
     toast.custom(

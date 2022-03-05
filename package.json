@@ -20,6 +20,7 @@
     "@kunukn/react-collapse": "^2.2.9",
     "@reach/tabs": "^0.16.4",
     "@react-google-maps/api": "^2.7.0",
+    "@supabase/supabase-js": "^1.30.7",
     "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/forms": "^0.3.4",
     "@tailwindcss/line-clamp": "^0.2.2",
