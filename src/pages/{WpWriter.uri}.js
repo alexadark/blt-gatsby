@@ -160,6 +160,7 @@ const WriterPage = ({ data }) => {
             {featuredImage && (
               <div className="flex mb-5">
                 <Image
+                  fullObj={featuredImage.node}
                   img={featuredImage?.node.localFile}
                   alt={`${title} photo`}
                   // width={414}

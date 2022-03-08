@@ -13,6 +13,15 @@ const config = {
   withApollo: false,
   // developLimit: 50,
   gatsbySourceWordPressOptions: {
+    html: {
+      useGatsbyImage: false,
+    },
+    type: {
+      MediaItem: {
+        createFileNodes: false,
+      },
+    },
+
     schema: {
       // perPage: 50, // currently set to 100
       // requestConcurrency: 10, // currently set to 15

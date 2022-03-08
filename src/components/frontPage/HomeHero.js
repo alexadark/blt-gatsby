@@ -36,6 +36,7 @@ export const HomeHero = ({ homeHero }) => {
                 img={heroImage?.localFile}
                 alt={heroImage?.altText}
                 priority={true}
+                fullObj={heroImage}
                 objectFit="cover"
                 objectPosition="center"
                 className="h-[277px] sm:h-[578px]"

@@ -15,6 +15,7 @@ export const Gallery = ({ images = [], ...props }) => {
       return (
         <a className="flex mx-1 mb-2 cursor-pointer">
           <Image
+            fullObj={img}
             img={img.thumbLocalFile}
             alt={img.altText}
             loading="eager"
@@ -48,6 +49,7 @@ export const Gallery = ({ images = [], ...props }) => {
         return (
           <div key={id + index} className="relative mb-2">
             <Image
+              fullObj={image}
               img={localFile}
               alt={altText}
               loading="eager"

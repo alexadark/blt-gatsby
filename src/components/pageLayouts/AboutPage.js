@@ -23,6 +23,7 @@ export const AboutPage = ({ aboutPageContent }) => {
               <div className="flex justify-center">
                 <Image
                   img={aboutImage?.localFile}
+                  fullObj={aboutImage}
                   alt={aboutImage?.altText}
                   objectFit="cover"
                   objectPosition="center"

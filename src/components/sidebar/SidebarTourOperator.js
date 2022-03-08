@@ -32,6 +32,7 @@ const SidebarTourOperator = ({
           {featuredImage ? (
             <Image
               img={featuredImage?.node.localFile}
+              fullObj={featuredImage.node}
               objectFit="cover"
               objectPosition="center"
               className="w-full max-w-[300px]"

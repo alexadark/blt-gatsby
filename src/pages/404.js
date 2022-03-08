@@ -30,6 +30,7 @@ const NotFoundPage = () => {
         {/* <div className="z-0"> */}
         <Image
           img={image?.localFile}
+          fullObj={image}
           alt={image?.altText}
           loading="eager"
           objectFit="cover"

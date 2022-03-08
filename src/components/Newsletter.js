@@ -102,6 +102,7 @@ const Newsletter = ({ home, ...props }) => {
         {image && (
           <Image
             img={image?.localFile}
+            fullObj={image}
             loading={isLarge ? "eager" : "lazy"}
             // imgClassName={`${
             //   isLarge ? "w-[991px] h-[658px]" : "w-[292px] h-[195px]"
@@ -161,6 +162,7 @@ const NewsletterHome = ({ className, ...props }) => {
         <div className="max-w-[566px]">
           {image && (
             <Image
+              fullObj={image}
               img={image?.localFile}
               className="mr-14 max-w-[556px]"
               imgClassName="max-w-[566px]"

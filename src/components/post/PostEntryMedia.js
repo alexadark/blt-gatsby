@@ -1,6 +1,6 @@
-import React from "react"
-import { Link } from "gatsby"
-import { Image } from "baseComponents"
+import React from "react";
+import { Link } from "gatsby";
+import { Image } from "baseComponents";
 
 const WithLink = ({ post, location, children }) =>
   location === "single" ? (
@@ -9,7 +9,7 @@ const WithLink = ({ post, location, children }) =>
     <Link to={`${post.uri}`} aria-label="View the entire post">
       {children}
     </Link>
-  )
+  );
 
 export const PostEntryMedia = ({
   imageLoading = "lazy",
@@ -17,17 +17,17 @@ export const PostEntryMedia = ({
   location,
   ...props
 }) => {
-  const img = post.featuredImage
+  const img = post.featuredImage;
 
   return (
     <>
       {img && (
         <WithLink location={location} post={post}>
           <div {...props}>
-            <Image img={img} loading={imageLoading} />
+            <Image fullObj={img} img={img} loading={imageLoading} />
           </div>
         </WithLink>
       )}
     </>
-  )
-}
+  );
+};

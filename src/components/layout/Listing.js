@@ -90,6 +90,7 @@ export const Listing = ({
       featuredImage.node.localFile ? (
         <Image
           img={featuredImage.node.localFile}
+          fullObj={featuredImage.node}
           alt={title}
           width={249}
           height={166}
