@@ -1,14 +1,15 @@
-import React from "react"
-import { Container } from "baseUiComponents"
-import { Layout, PostEntry, Sidebar } from "baseComponents"
-import { Seo } from "@gatsbywpthemes/gatsby-plugin-wp-seo"
+import React from "react";
+import { Container } from "baseUiComponents";
+import { Layout, PostEntry, Sidebar } from "baseComponents";
+import { Seo } from "@gatsbywpthemes/gatsby-plugin-wp-seo";
 
 const Post = ({ post, ctx }) => {
-  const { title, uri, headlesswp } = post
+  const { title, uri, headlesswp } = post;
 
-  const pageTemplate = headlesswp?.pageTemplate || "default"
-  const featuredImage =
-    post.featuredImage?.node.localFile.childImageSharp.original
+  const pageTemplate = headlesswp?.pageTemplate || "default";
+  // const featuredImage =
+  //   post.featuredImage?.node.localFile.childImageSharp.original
+  const featuredImage = post.featuredImage?.node.sourceUrl;
 
   return (
     <Layout page={post} type="post">
@@ -31,7 +32,7 @@ const Post = ({ post, ctx }) => {
         </div>
       </Container>
     </Layout>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;

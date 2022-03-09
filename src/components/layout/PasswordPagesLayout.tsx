@@ -8,7 +8,7 @@ export const PasswordPagesLayout = ({ title, image, children }: any) => {
     <>
       <div className={clsx(" relative mb-base2")}>
         <Image
-          img={image?.localFile}
+          // img={image?.localFile}
           fullObj={image}
           alt={image?.altText}
           loading="eager"

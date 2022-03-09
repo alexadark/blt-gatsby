@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+// import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Underline } from "../ui-components";
 
 export default function LatestRoundups() {
@@ -14,12 +14,13 @@ export default function LatestRoundups() {
           featuredImage {
             node {
               altText
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(placeholder: BLURRED)
-                }
-                publicURL
-              }
+              sourceUrl
+              # localFile {
+              #   childImageSharp {
+              #     gatsbyImageData(placeholder: BLURRED)
+              #   }
+              #   publicURL
+              # }
             }
           }
         }
@@ -39,7 +40,7 @@ export default function LatestRoundups() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {allRoundups &&
           allRoundups.map(({ title, id, uri, featuredImage }) => {
-            const image = getImage(featuredImage.node.localFile);
+            // const image = getImage(featuredImage.node.localFile);
             const altText = featuredImage.node.altText;
             return (
               <div key={id} className="px-base py-base2 group">
@@ -52,7 +53,8 @@ export default function LatestRoundups() {
                 >
                   <div className="cursor-pointer shadow-listing">
                     <div className="aspect-w-6 aspect-h-4 max-h-[127px] group">
-                      <GatsbyImage image={image} alt={altText} />
+                      {/* <GatsbyImage image={image} alt={altText} /> */}
+                      <img src={featuredImage?.node?.sourceUrl} alt={altText} />
                     </div>
                     <div className="py-4 text-center px-base group h-[100px]">
                       <h3
@@ -69,7 +71,7 @@ export default function LatestRoundups() {
       <div className="flex items-center justify-center mt-5 lg:mt-10">
         <Link
           to="/search/?q=&tab=RoundUp"
-          className="hover:no-underline bg-lightBlue text-grey5 px-8 py-3 uppercase font-bold"
+          className="px-8 py-3 font-bold uppercase hover:no-underline bg-lightBlue text-grey5"
         >
           See all Roundups
         </Link>

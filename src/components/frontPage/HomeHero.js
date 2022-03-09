@@ -33,7 +33,7 @@ export const HomeHero = ({ homeHero }) => {
           {heroImage && (
             <>
               <Image
-                img={heroImage?.localFile}
+                // img={heroImage?.localFile}
                 alt={heroImage?.altText}
                 priority={true}
                 fullObj={heroImage}

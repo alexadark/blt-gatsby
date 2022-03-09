@@ -1,5 +1,5 @@
 import React from "react";
-import { HelmetForFavicon } from "./HelmetForFavicon";
+// import { HelmetForFavicon } from "./HelmetForFavicon";
 import clsx from "clsx";
 import { Header } from "./header/Header";
 import { Footer } from "./footer";
@@ -17,7 +17,7 @@ export const Layout = ({
 
   return (
     <>
-      <HelmetForFavicon />
+      {/* <HelmetForFavicon /> */}
       <div
         className={clsx(
           "flex min-h-full flex-col",

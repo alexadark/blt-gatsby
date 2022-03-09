@@ -101,7 +101,7 @@ const Newsletter = ({ home, ...props }) => {
       <div className={`px-3 pt-3`}>
         {image && (
           <Image
-            img={image?.localFile}
+            // img={image?.localFile}
             fullObj={image}
             loading={isLarge ? "eager" : "lazy"}
             // imgClassName={`${
@@ -132,7 +132,7 @@ const Newsletter = ({ home, ...props }) => {
             as="input"
             type="submit"
             value="submit"
-            className="my-5 w-full h-50px"
+            className="w-full my-5 h-50px"
           />
         </form>
         <div className="text-sm text-center text-grey3">
@@ -163,7 +163,7 @@ const NewsletterHome = ({ className, ...props }) => {
           {image && (
             <Image
               fullObj={image}
-              img={image?.localFile}
+              // img={image?.localFile}
               className="mr-14 max-w-[556px]"
               imgClassName="max-w-[566px]"
             />
@@ -198,7 +198,7 @@ const NewsletterHome = ({ className, ...props }) => {
               <div className="h">
                 <div id="mce-responses" className="clear">
                   <div
-                    className="response hidden"
+                    className="hidden response"
                     id="mce-error-response"
                     style={{ display: "none" }}
                   ></div>

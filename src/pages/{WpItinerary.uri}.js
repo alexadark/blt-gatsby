@@ -44,7 +44,8 @@ const ItineraryPage = ({ data }) => {
     page: itinerary?.seo,
     general: seoGeneral?.wp?.seo,
   };
-  const seoImage = featuredImage?.node?.localFile?.childImageSharp?.original;
+  // const seoImage = featuredImage?.node?.localFile?.childImageSharp?.original;
+  const seoImage = featuredImage?.node?.sourceUrl;
 
   const { about, sidebarTourOperator, sbtouroperatordescription, review } =
     commonDataAttributes || {};

@@ -16,20 +16,20 @@ const allWpExperienceQuery = gql`
             sourceUrl
             caption
             description
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  quality: 80
-                  aspectRatio: 1.5
-                  layout: CONSTRAINED
-                )
-                original {
-                  height
-                  width
-                  src
-                }
-              }
-            }
+            # localFile {
+            #   childImageSharp {
+            #     gatsbyImageData(
+            #       quality: 80
+            #       aspectRatio: 1.5
+            #       layout: CONSTRAINED
+            #     )
+            #     original {
+            #       height
+            #       width
+            #       src
+            #     }
+            #   }
+            # }
           }
         }
         commonDataAttributes {
@@ -104,20 +104,20 @@ const allWpDestinationQuery = gql`
             sourceUrl
             caption
             description
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  quality: 80
-                  aspectRatio: 1.5
-                  layout: CONSTRAINED
-                )
-                original {
-                  height
-                  width
-                  src
-                }
-              }
-            }
+            # localFile {
+            #   childImageSharp {
+            #     gatsbyImageData(
+            #       quality: 80
+            #       aspectRatio: 1.5
+            #       layout: CONSTRAINED
+            #     )
+            #     original {
+            #       height
+            #       width
+            #       src
+            #     }
+            #   }
+            # }
           }
         }
         commonDataAttributes {
@@ -186,20 +186,20 @@ const allWpPlaceToStayQuery = gql`
             sourceUrl
             caption
             description
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  quality: 80
-                  aspectRatio: 1.5
-                  layout: CONSTRAINED
-                )
-                original {
-                  height
-                  width
-                  src
-                }
-              }
-            }
+            # localFile {
+            #   childImageSharp {
+            #     gatsbyImageData(
+            #       quality: 80
+            #       aspectRatio: 1.5
+            #       layout: CONSTRAINED
+            #     )
+            #     original {
+            #       height
+            #       width
+            #       src
+            #     }
+            #   }
+            # }
           }
         }
         commonDataAttributes {
@@ -239,20 +239,20 @@ const allWpRoundUpQuery = gql`
             sourceUrl
             caption
             description
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  quality: 80
-                  aspectRatio: 1.5
-                  layout: CONSTRAINED
-                )
-                original {
-                  height
-                  width
-                  src
-                }
-              }
-            }
+            # localFile {
+            #   childImageSharp {
+            #     gatsbyImageData(
+            #       quality: 80
+            #       aspectRatio: 1.5
+            #       layout: CONSTRAINED
+            #     )
+            #     original {
+            #       height
+            #       width
+            #       src
+            #     }
+            #   }
+            # }
           }
         }
         commonDataAttributes {
@@ -307,20 +307,20 @@ const allWpItineraryQuery = gql`
             sourceUrl
             caption
             description
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  quality: 80
-                  aspectRatio: 1.5
-                  layout: CONSTRAINED
-                )
-                original {
-                  height
-                  width
-                  src
-                }
-              }
-            }
+            # localFile {
+            #   childImageSharp {
+            #     gatsbyImageData(
+            #       quality: 80
+            #       aspectRatio: 1.5
+            #       layout: CONSTRAINED
+            #     )
+            #     original {
+            #       height
+            #       width
+            #       src
+            #     }
+            #   }
+            # }
           }
         }
         commonDataAttributes {

@@ -54,7 +54,8 @@ const PlaceToStayPage = ({ data }) => {
     page: pts?.seo,
     general: seoGeneral?.wp?.seo,
   };
-  const seoImage = featuredImage?.node?.localFile?.childImageSharp?.original;
+  // const seoImage = featuredImage?.node?.localFile?.childImageSharp?.original;
+  const seoImage = featuredImage?.node?.sourceUrl;
 
   const {
     imageGallery,

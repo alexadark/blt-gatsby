@@ -25,29 +25,29 @@ const GET_SEO_GENERAL = graphql`
           frontPage {
             title
             description
-            image {
-              localFile {
-                childImageSharp {
-                  original {
-                    height
-                    src
-                    width
-                  }
-                }
-              }
-            }
+            # image {
+            #   localFile {
+            #     childImageSharp {
+            #       original {
+            #         height
+            #         src
+            #         width
+            #       }
+            #     }
+            #   }
+            # }
           }
-          defaultImage {
-            localFile {
-              childImageSharp {
-                original {
-                  height
-                  src
-                  width
-                }
-              }
-            }
-          }
+          # defaultImage {
+          #   localFile {
+          #     childImageSharp {
+          #       original {
+          #         height
+          #         src
+          #         width
+          #       }
+          #     }
+          #   }
+          # }
         }
       }
     }

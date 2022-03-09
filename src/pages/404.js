@@ -29,7 +29,7 @@ const NotFoundPage = () => {
       <div className={clsx(" relative mb-base2")}>
         {/* <div className="z-0"> */}
         <Image
-          img={image?.localFile}
+          // img={image?.localFile}
           fullObj={image}
           alt={image?.altText}
           loading="eager"

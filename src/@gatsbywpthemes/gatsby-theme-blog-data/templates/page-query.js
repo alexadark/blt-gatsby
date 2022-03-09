@@ -19,16 +19,16 @@ export const pageQuery = graphql`
         aboutImage {
           sourceUrl
           altText
-          localFile {
-            childImageSharp {
-              gatsbyImageData(
-                width: 420
-                height: 280
-                quality: 80
-                layout: FIXED
-              )
-            }
-          }
+          # localFile {
+          #   childImageSharp {
+          #     gatsbyImageData(
+          #       width: 420
+          #       height: 280
+          #       quality: 80
+          #       layout: FIXED
+          #     )
+          #   }
+          # }
         }
       }
       faq {

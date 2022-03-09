@@ -102,7 +102,8 @@ const WriterPage = ({ data }) => {
     page: writer?.seo,
     general: seoGeneral?.wp?.seo,
   };
-  const seoImage = featuredImage?.node?.localFile?.childImageSharp?.original;
+  // const seoImage = featuredImage?.node?.localFile?.childImageSharp?.original;
+  const seoImage = featuredImage?.node?.sourceUrl;
 
   const iconStyle = "text-[30px] text-gold";
 
@@ -161,7 +162,7 @@ const WriterPage = ({ data }) => {
               <div className="flex mb-5">
                 <Image
                   fullObj={featuredImage.node}
-                  img={featuredImage?.node.localFile}
+                  // img={featuredImage?.node.localFile}
                   alt={`${title} photo`}
                   // width={414}
                   // height={276}

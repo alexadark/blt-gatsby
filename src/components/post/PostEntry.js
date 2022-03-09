@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 import {
   PostEntryTitle,
@@ -9,9 +9,9 @@ import {
   ReadMoreButton,
   PrevNextPostNavigation,
   SocialShare,
-} from "baseComponents"
-import { Card } from "baseUiComponents"
-import normalize from "normalize-path"
+} from "baseComponents";
+import { Card } from "baseUiComponents";
+import normalize from "normalize-path";
 
 export const PostEntry = ({
   isFirst = false,
@@ -20,10 +20,11 @@ export const PostEntry = ({
   location,
   ...props
 }) => {
-  const pageTemplate = post.headlesswp?.pageTemplate || "default"
-  const media = post.featuredImage
-    ? post.featuredImage.node.localFile.childImageSharp.original.src
-    : null
+  const pageTemplate = post.headlesswp?.pageTemplate || "default";
+  // const media = post.featuredImage
+  //   ? post.featuredImage.node.localFile.childImageSharp.original.src
+  //   : null
+  const media = post.featuredImage ? post.featuredImage.node.sourceUrl : null;
 
   return (
     <article className="max-w-full entry mb-14" {...props}>
@@ -68,5 +69,5 @@ export const PostEntry = ({
         )}
       </Card>
     </article>
-  )
-}
+  );
+};

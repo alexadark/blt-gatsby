@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby'
+import { graphql } from "gatsby";
 
 export const fragments = graphql`
   fragment PostTemplateFragment_starter on WpPost {
@@ -48,20 +48,20 @@ export const fragments = graphql`
   fragment GatsbyImageQuery_starter on WpMediaItem {
     altText
     sourceUrl
-    localFile {
-      childImageSharp {
-        gatsbyImageData(
-          width: 1200
-          height: 600
-          quality: 80
-          layout: CONSTRAINED
-        )
-        original {
-          height
-          width
-          src
-        }
-      }
-    }
+    # localFile {
+    #   childImageSharp {
+    #     gatsbyImageData(
+    #       width: 1200
+    #       height: 600
+    #       quality: 80
+    #       layout: CONSTRAINED
+    #     )
+    #     original {
+    #       height
+    #       width
+    #       src
+    #     }
+    #   }
+    # }
   }
-`
+`;

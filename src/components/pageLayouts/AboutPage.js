@@ -22,7 +22,7 @@ export const AboutPage = ({ aboutPageContent }) => {
             <div className="space-y-12">
               <div className="flex justify-center">
                 <Image
-                  img={aboutImage?.localFile}
+                  // img={aboutImage?.localFile}
                   fullObj={aboutImage}
                   alt={aboutImage?.altText}
                   objectFit="cover"

@@ -6,119 +6,121 @@ export const commonFragments = graphql`
     sourceUrl
     caption
     description
-    localFile {
-      childImageSharp {
-        gatsbyImageData(
-          # width: 940
-          # height: 626
-          quality: 80
-          aspectRatio: 1.5
-          layout: CONSTRAINED
-          # placeholder: BLURRED
-        )
-        original {
-          height
-          width
-          src
-        }
-      }
-    }
+    # localFile {
+    #   childImageSharp {
+    #     gatsbyImageData(
+    #       # width: 940
+    #       # height: 626
+    #       quality: 80
+    #       aspectRatio: 1.5
+    #       layout: CONSTRAINED
+    #       # placeholder: BLURRED
+    #     )
+    #     original {
+    #       height
+    #       width
+    #       src
+    #     }
+    #   }
+    # }
   }
 
   fragment ListingImage on WpMediaItem {
     altText
     sourceUrl
-    localFile {
-      childImageSharp {
-        gatsbyImageData(
-          # width: 249
-          # height: 166
-          aspectRatio: 1.5
-          quality: 80
-          layout: CONSTRAINED
-          # placeholder: BLURRED
-        )
-        original {
-          height
-          width
-          src
-        }
-      }
-    }
+    # localFile {
+    #   childImageSharp {
+    #     gatsbyImageData(
+    #       # width: 249
+    #       # height: 166
+    #       aspectRatio: 1.5
+    #       quality: 80
+    #       layout: CONSTRAINED
+    #       # placeholder: BLURRED
+    #     )
+    #     original {
+    #       height
+    #       width
+    #       src
+    #     }
+    #   }
+    # }
   }
 
   fragment NlImage on WpMediaItem {
     altText
     sourceUrl
-    localFile {
-      childImageSharp {
-        gatsbyImageData(
-          aspectRatio: 1.5
-          width: 1000
-          quality: 80
-          layout: CONSTRAINED
-          # placeholder: BLURRED
-        )
-        original {
-          height
-          width
-          src
-        }
-      }
-    }
+    # localFile {
+    #   childImageSharp {
+    #     gatsbyImageData(
+    #       aspectRatio: 1.5
+    #       width: 1000
+    #       quality: 80
+    #       layout: CONSTRAINED
+    #       # placeholder: BLURRED
+    #     )
+    #     original {
+    #       height
+    #       width
+    #       src
+    #     }
+    #   }
+    # }
   }
 
   fragment WriterImage on WpMediaItem {
     altText
     sourceUrl
-    localFile {
-      childImageSharp {
-        gatsbyImageData(
-          width: 414
-          height: 276
-          quality: 80
-          layout: CONSTRAINED
-          # placeholder: BLURRED
-        )
-        original {
-          height
-          width
-          src
-        }
-      }
-    }
+    # localFile {
+    #   childImageSharp {
+    #     gatsbyImageData(
+    #       width: 414
+    #       height: 276
+    #       quality: 80
+    #       layout: CONSTRAINED
+    #       # placeholder: BLURRED
+    #     )
+    #     original {
+    #       height
+    #       width
+    #       src
+    #     }
+    #   }
+    # }
   }
 
   fragment ThumbImage on WpMediaItem {
-    thumbLocalFile: localFile {
-      childImageSharp {
-        gatsbyImageData(
-          width: 110
-          aspectRatio: 1.5
-          layout: CONSTRAINED
-          # placeholder: BLURRED
-        )
-        original {
-          height
-          width
-          src
-        }
-      }
-    }
+    altText
+    sourceUrl
+    # thumbLocalFile: localFile {
+    #   childImageSharp {
+    #     gatsbyImageData(
+    #       width: 110
+    #       aspectRatio: 1.5
+    #       layout: CONSTRAINED
+    #       # placeholder: BLURRED
+    #     )
+    #     original {
+    #       height
+    #       width
+    #       src
+    #     }
+    #   }
+    # }
   }
 
   fragment FullImage on WpMediaItem {
     altText
     sourceUrl
-    localFile {
-      childImageSharp {
-        gatsbyImageData(
-          quality: 80
-          layout: FULL_WIDTH
-          # placeholder: BLURRED
-        )
-      }
-    }
+    # localFile {
+    #   childImageSharp {
+    #     gatsbyImageData(
+    #       quality: 80
+    #       layout: FULL_WIDTH
+    #       # placeholder: BLURRED
+    #     )
+    #   }
+    # }
   }
 
   fragment Tag on WpTag {
@@ -164,27 +166,27 @@ export const commonFragments = graphql`
     twitterTitle
     cornerstone
     title
-    opengraphImage {
-      localFile {
-        childImageSharp {
-          original {
-            src
-            height
-            width
-          }
-        }
-      }
-    }
-    twitterImage {
-      localFile {
-        childImageSharp {
-          original {
-            src
-            height
-            width
-          }
-        }
-      }
-    }
+    # opengraphImage {
+    #   localFile {
+    #     childImageSharp {
+    #       original {
+    #         src
+    #         height
+    #         width
+    #       }
+    #     }
+    #   }
+    # }
+    # twitterImage {
+    #   localFile {
+    #     childImageSharp {
+    #       original {
+    #         src
+    #         height
+    #         width
+    #       }
+    #     }
+    #   }
+    # }
   }
 `;

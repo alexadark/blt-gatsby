@@ -16,7 +16,7 @@ export const Gallery = ({ images = [], ...props }) => {
         <a className="flex mx-1 mb-2 cursor-pointer">
           <Image
             fullObj={img}
-            img={img.thumbLocalFile}
+            // img={img.thumbLocalFile}
             alt={img.altText}
             loading="eager"
             objectFit="cover"
@@ -44,13 +44,13 @@ export const Gallery = ({ images = [], ...props }) => {
   return (
     <Slider {...settings} {...props} css={{ ...styles }}>
       {images?.map((image, index) => {
-        const { id, altText, caption, description, localFile } = image || {};
+        const { id, altText, caption, description } = image || {};
 
         return (
           <div key={id + index} className="relative mb-2">
             <Image
               fullObj={image}
-              img={localFile}
+              // img={localFile}
               alt={altText}
               loading="eager"
               objectFit="cover"
