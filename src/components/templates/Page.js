@@ -37,7 +37,7 @@ const Page = ({ page, ctx }) => {
   const breadcrumbTerms = [{ name: "home", link: "/" }, { name: title }];
 
   const featuredImage =
-    page.featuredImage?.node.localFile.childImageSharp.original;
+    page.featuredImage?.node.sourceUrl
 
   return (
     <Layout page={page} type="page">
