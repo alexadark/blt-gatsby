@@ -31,7 +31,7 @@ const SidebarTourOperator = ({
         <div className="flex justify-center">
           {featuredImage ? (
             <Image
-              img={featuredImage?.node.localFile}
+              // img={featuredImage?.node.localFile}
               fullObj={featuredImage.node}
               objectFit="cover"
               objectPosition="center"

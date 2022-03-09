@@ -53,7 +53,7 @@ export const ListingCard = ({
 
   const img = featuredImage ? (
     <Image
-      img={featuredImage.node.localFile}
+      // img={featuredImage.node.localFile}
       fullObj={featuredImage.node}
       alt={title}
       objectFit="cover"
