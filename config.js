@@ -19,6 +19,9 @@ const config = {
     type: {
       MediaItem: {
         createFileNodes: false,
+        localFile: {
+          excludeByMimeTypes: [`image/jpg`,`image/png`,`image/jpeg`],
+        },
       },
     },
 
